@@ -902,6 +902,17 @@ footer {
   .sponsors-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-photo-strip { display: none; }
 }
+
+/* Force fallback images to be visible when no CMS data is active */
+.contestant-placeholder img,
+.sp-logo-box img {
+  display: block !important;
+}
+/* Hide number/role when fallback image is shown */
+.contestant-placeholder img:not([data-cms-src=""]) ~ .contestant-number,
+.contestant-placeholder img:not([data-cms-src=""]) ~ .contestant-role {
+  display: none;
+}
 </style>
 </head>
 <body>
