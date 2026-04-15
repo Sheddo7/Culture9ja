@@ -902,7 +902,7 @@ footer {
   .sponsors-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-photo-strip { display: none; }
 }
-
+/* clear from here */
 /* Force fallback images to be visible when no CMS data is active */
 .contestant-placeholder img,
 .sp-logo-box img {
@@ -912,6 +912,11 @@ footer {
 .contestant-placeholder img:not([data-cms-src=""]) ~ .contestant-number,
 .contestant-placeholder img:not([data-cms-src=""]) ~ .contestant-role {
   display: none;
+}
+/* Show overlay when card has 'tap-active' class (used on touch devices) */
+.contestant-card.tap-active .contestant-overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
 </head>
@@ -993,7 +998,7 @@ footer {
     <div class="video-container">
       <div class="video-placeholder">
         <video id="aboutVideo" data-cms-poster="about-video-poster" poster="https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg" preload="metadata">
-          <source data-cms-src="about-video-src" src="about culture9ja.mp4" type="video/mp4">
+          <source data-cms-src="about-video-src" src="https://culture9ja.com/wp-content/uploads/2026/03/WhatsApp-Video-2026-02-27-at-12.30.07-PM.mp4#t=,18" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="video-overlay">
@@ -1026,7 +1031,7 @@ footer {
     <!-- Card 1 -->
     <div class="contestant-card">
       <div class="contestant-placeholder">
-        <img data-cms-src="con1-photo" src="https://images.pexels.com/photos/36549907/pexels-photo-36549907.jpeg" alt="Contestant 1">
+        <img data-cms-src="con1-photo" src="https://images.pexels.com/photos/33687176/pexels-photo-33687176.jpeg" alt="Contestant 1">
         <div class="contestant-number" data-cms-text="con1-num">01</div>
         <div class="contestant-role" data-cms-text="con1-role">Heritage Showcase</div>
       </div>
@@ -1078,7 +1083,7 @@ footer {
     <!-- Card 5 -->
     <div class="contestant-card">
       <div class="contestant-placeholder">
-        <img data-cms-src="con5-photo" src="https://images.pexels.com/photos/17236253/pexels-photo-17236253.jpeg" alt="Contestant 5">
+        <img data-cms-src="con5-photo" src="https://images.pexels.com/photos/34734122/pexels-photo-34734122.jpeg" alt="Contestant 5">
         <div class="contestant-number" data-cms-text="con5-num">05</div>
         <div class="contestant-role" data-cms-text="con5-role">Cuisine</div>
       </div>
@@ -1457,6 +1462,56 @@ if (playBtn && aboutVideo && videoContainer) {
       resizeTimer = setTimeout(function() { if (window.innerWidth > 768) closeMenu(); }, 150);
     });
   }
+})();
+
+
+
+// Enable tap-to-show for contestant cards on mobile/touch devices
+(function() {
+  const cards = document.querySelectorAll('.contestant-card');
+  if (!cards.length) return;
+
+  // Function to remove active class from all cards
+  function removeActiveClass() {
+    cards.forEach(card => card.classList.remove('tap-active'));
+  }
+
+  // Function to add active class to a specific card
+  function setActiveCard(card) {
+    removeActiveClass();
+    card.classList.add('tap-active');
+  }
+
+  // Handle tap/click on cards
+  cards.forEach(card => {
+    // For touch devices: use 'touchstart' to respond immediately
+    card.addEventListener('touchstart', function(e) {
+      e.preventDefault();          // Prevents long-press menu
+      e.stopPropagation();
+      setActiveCard(card);
+    });
+
+    // For mouse devices (optional, but keeps hover behaviour intact)
+    card.addEventListener('click', function(e) {
+      // If on non-touch device, hover already works, but we still allow click to toggle
+      // Only used for devices that don't have hover (rare)
+      if (!window.matchMedia('(hover: hover)').matches) {
+        setActiveCard(card);
+      }
+    });
+  });
+
+  // Tap outside any card should close the overlay
+  document.body.addEventListener('touchstart', function(e) {
+    if (!e.target.closest('.contestant-card')) {
+      removeActiveClass();
+    }
+  });
+  document.body.addEventListener('click', function(e) {
+    if (!e.target.closest('.contestant-card')) {
+      removeActiveClass();
+    }
+  });
 })();
 </script>
 </body>
