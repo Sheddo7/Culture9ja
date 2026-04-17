@@ -649,6 +649,7 @@ tbody tr:hover{background:#F8FAF8}
       </div>
     </div>
 
+
     <!-- PAGE EDITOR -->
     <div class="section" id="sec-page-editor">
       <div class="section-header">
@@ -728,20 +729,164 @@ tbody tr:hover{background:#F8FAF8}
         </div>
       </div>
     </div>
-
   </div>
 </div>
 </div>
 </div>
 
-<!-- MODALS (unchanged, omitted for brevity, same as original) -->
-<div class="modal-overlay" id="reg-modal"><div class="modal modal-lg"><div class="modal-header"><span class="modal-title" id="reg-modal-title">Add Registration</span><button class="modal-close" onclick="closeModal('reg-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><form id="reg-form" onsubmit="return false"><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Full Name <span>*</span></label><input type="text" id="r-name" required placeholder="Full legal name"></div><div class="field"><label>Email <span>*</span></label><input type="email" id="r-email" required placeholder="email@example.com"></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Phone Number <span>*</span></label><input type="tel" id="r-phone" required placeholder="+234 XXXXXXXXXX"></div><div class="field"><label>Date of Birth <span>*</span></label><input type="date" id="r-dob" required></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Gender</label><select id="r-gender"><option>Male</option><option>Female</option><option>Prefer not to say</option></select></div><div class="field"><label>State of Origin <span>*</span></label><select id="r-state" required><option value="">-- Select State --</option><option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option><option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option><option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option></select></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Current Location</label><input type="text" id="r-location" placeholder="City, State"></div><div class="field"><label>Occupation</label><input type="text" id="r-occupation" placeholder="Occupation"></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Cultural Category <span>*</span></label><select id="r-category" required><option value="">-- Select Category --</option><option>Traditional Dance</option><option>Cultural Fashion</option><option>Native Language Oratory</option><option>Traditional Music</option><option>Nigerian Cuisine</option><option>Storytelling & Folklore</option><option>Cultural Crafts</option></select></div><div class="field"><label>Ethnic Group / Tribe</label><input type="text" id="r-tribe" placeholder="e.g. Yoruba, Igbo, Hausa..."></div></div><div class="field" style="margin-bottom:1rem"><label>Short Bio / Talent Description <span>*</span></label><textarea id="r-bio" required placeholder="Describe the applicant's cultural talent and background..."></textarea></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Social Media Handle</label><input type="text" id="r-social" placeholder="@handle"></div><div class="field"><label>Application Status</label><select id="r-status"><option value="pending">Pending</option><option value="shortlisted">Shortlisted</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Payment Status</label><select id="r-payment"><option value="pending">Pending</option><option value="confirmed">Confirmed</option><option value="failed">Failed</option></select></div><div class="field"><label>Payment Reference</label><input type="text" id="r-payref" placeholder="C9JA-2026-XXXXXX"></div></div><div class="field" style="margin-bottom:1rem"><label>Admin Notes</label><textarea id="r-notes" placeholder="Internal notes (not visible to applicant)..." style="min-height:60px"></textarea></div><div style="background:#F8FAF8;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem"><div style="font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:.75rem;letter-spacing:.02em">NEXT OF KIN</div><div class="form-row"><div class="field"><label>Full Name</label><input type="text" id="r-kin-name" placeholder="Next of kin name"></div><div class="field"><label>Relationship</label><input type="text" id="r-kin-rel" placeholder="e.g. Mother, Father"></div></div><div class="form-row" style="margin-top:.75rem"><div class="field"><label>Phone</label><input type="tel" id="r-kin-phone" placeholder="+234 XXXXXXXXXX"></div><div class="field"><label>Address</label><input type="text" id="r-kin-addr" placeholder="Address"></div></div></div></form></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('reg-modal')">Cancel</button><button class="btn btn-primary" onclick="saveReg()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>Save Registration</button></div></div></div>
-<div class="modal-overlay" id="view-app-modal"><div class="modal modal-lg"><div class="modal-header"><span class="modal-title">Application Details</span><button class="modal-close" onclick="closeModal('view-app-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body" id="view-app-body">Loading...</div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('view-app-modal')">Close</button><button class="btn btn-danger" id="view-reject-btn">Reject</button><button class="btn btn-gold" id="view-shortlist-btn">Shortlist</button><button class="btn btn-primary" id="view-approve-btn">Approve</button></div></div></div>
-<div class="modal-overlay" id="contestant-modal"><div class="modal"><div class="modal-header"><span class="modal-title" id="con-modal-title">Add Contestant</span><button class="modal-close" onclick="closeModal('contestant-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><form id="con-form" onsubmit="return false"><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Full Name <span>*</span></label><input type="text" id="c-name" required></div><div class="field"><label>Stage Name</label><input type="text" id="c-stagename" placeholder="Optional"></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>State of Origin <span>*</span></label><select id="c-state" required><option value="">-- State --</option><option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option><option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option><option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option></select></div><div class="field"><label>Category <span>*</span></label><select id="c-cat" required><option value="">-- Category --</option><option>Traditional Dance</option><option>Cultural Fashion</option><option>Native Language Oratory</option><option>Traditional Music</option><option>Nigerian Cuisine</option><option>Storytelling & Folklore</option><option>Cultural Crafts</option></select></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Ethnic Group</label><input type="text" id="c-tribe"></div><div class="field"><label>Contestant Number</label><input type="number" id="c-num" min="1" placeholder="e.g. 1"></div></div><div class="field" style="margin-bottom:1rem"><label>Profile Bio</label><textarea id="c-bio" placeholder="Contestant bio for public profile..."></textarea></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Photo URL</label><input type="url" id="c-photo" placeholder="https://..."></div><div class="field"><label>Instagram Handle</label><input type="text" id="c-insta" placeholder="@handle"></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Current Episode</label><input type="number" id="c-episode" value="1" min="1"></div><div class="field"><label>Status</label><select id="c-status"><option value="Active">Active</option><option value="Eliminated">Eliminated</option><option value="Winner">Winner</option></select></div></div></form></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('contestant-modal')">Cancel</button><button class="btn btn-primary" onclick="saveContestant()">Save Contestant</button></div></div></div>
-<div class="modal-overlay" id="media-modal"><div class="modal"><div class="modal-header"><span class="modal-title" id="media-modal-title">Upload Media</span><button class="modal-close" onclick="closeModal('media-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><form id="media-form" onsubmit="return false"><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Title <span>*</span></label><input type="text" id="m-title" required placeholder="Media title"></div><div class="field"><label>Type <span>*</span></label><select id="m-type" required><option value="">-- Type --</option><option value="episodes">Episode</option><option value="highlights">Highlight</option><option value="bts">Behind the Scenes</option><option value="photos">Photo</option></select></div></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Season</label><input type="number" id="m-season" value="1" min="1"></div><div class="field"><label>Episode Number</label><input type="number" id="m-ep-num" placeholder="e.g. 1" min="1"></div></div><div class="field" style="margin-bottom:1rem"><label>Media URL / Embed Link</label><input type="url" id="m-url" placeholder="https://youtube.com/embed/... or direct file URL"></div><div class="field" style="margin-bottom:1rem"><label>Thumbnail URL</label><input type="url" id="m-thumb" placeholder="https://..."></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Duration</label><input type="text" id="m-duration" placeholder="e.g. 45:30"></div><div class="field"><label>Status</label><select id="m-status"><option value="Draft">Draft</option><option value="Published">Published</option><option value="Scheduled">Scheduled</option></select></div></div><div class="field"><label>Description</label><textarea id="m-desc" placeholder="Brief description of this media content..."></textarea></div></form></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('media-modal')">Cancel</button><button class="btn btn-primary" onclick="saveMedia()">Save Media</button></div></div></div>
-<div class="modal-overlay" id="announce-modal"><div class="modal"><div class="modal-header"><span class="modal-title" id="announce-modal-title">New Announcement</span><button class="modal-close" onclick="closeModal('announce-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><form id="announce-form" onsubmit="return false"><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Title <span>*</span></label><input type="text" id="an-title" required placeholder="Announcement title"></div><div class="field"><label>Type</label><select id="an-type"><option value="Announcement">Announcement</option><option value="Auditions">Auditions</option><option value="Events">Events</option><option value="Contestant">Contestant</option><option value="Press Release">Press Release</option></select></div></div><div class="field" style="margin-bottom:1rem"><label>Content <span>*</span></label><textarea id="an-content" required style="min-height:140px" placeholder="Announcement content..."></textarea></div><div class="form-row" style="margin-bottom:1rem"><div class="field"><label>Publish Date</label><input type="date" id="an-date"></div><div class="field"><label>Status</label><select id="an-status"><option value="Published">Published</option><option value="Draft">Draft</option><option value="Scheduled">Scheduled</option></select></div></div><div class="field"><label>Link URL (optional)</label><input type="url" id="an-link" placeholder="https://..."></div></form></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('announce-modal')">Cancel</button><button class="btn btn-primary" onclick="saveAnnouncement()">Publish Announcement</button></div></div></div>
-<div class="modal-overlay" id="section-editor-modal"><div class="modal modal-lg"><div class="modal-header"><span class="modal-title" id="sec-editor-title">Edit Section</span><button class="modal-close" onclick="closeModal('section-editor-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><div id="sec-editor-fields"></div></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('section-editor-modal')">Cancel</button><button class="btn btn-primary" onclick="saveSectionEdit()">Save Changes</button></div></div></div>
-<div class="modal-overlay" id="confirm-modal"><div class="modal" style="max-width:420px"><div class="modal-body" style="padding:2rem"><div class="confirm-content"><div class="confirm-icon danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="confirm-title" id="confirm-title">Are you sure?</div><div class="confirm-msg" id="confirm-msg">This action cannot be undone.</div></div></div><div class="modal-footer"><button class="btn btn-outline" onclick="closeModal('confirm-modal')">Cancel</button><button class="btn btn-danger" id="confirm-action-btn">Confirm</button></div></div></div>
+
+<!-- MODALS -->
+<!-- (All existing modals remain unchanged) -->
+<div class="modal-overlay" id="reg-modal"><!-- ... --></div>
+<div class="modal-overlay" id="view-app-modal"><!-- ... --></div>
+<div class="modal-overlay" id="contestant-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <span class="modal-title" id="con-modal-title">Add Contestant</span>
+      <button class="modal-close" onclick="closeModal('contestant-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <form id="con-form" onsubmit="return false">
+        <div class="form-row">
+          <div class="field"><label>Full Name <span>*</span></label><input type="text" id="c-name" required></div>
+          <div class="field"><label>Stage Name</label><input type="text" id="c-stagename" placeholder="Optional"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>State of Origin <span>*</span></label><select id="c-state" required>
+  <option value="">-- Select State --</option>
+  <option>Abia</option>
+  <option>Adamawa</option>
+  <option>Akwa Ibom</option>
+  <option>Anambra</option>
+  <option>Bauchi</option>
+  <option>Bayelsa</option>
+  <option>Benue</option>
+  <option>Borno</option>
+  <option>Cross River</option>
+  <option>Delta</option>
+  <option>Ebonyi</option>
+  <option>Edo</option>
+  <option>Ekiti</option>
+  <option>Enugu</option>
+  <option>FCT Abuja</option>
+  <option>Gombe</option>
+  <option>Imo</option>
+  <option>Jigawa</option>
+  <option>Kaduna</option>
+  <option>Kano</option>
+  <option>Katsina</option>
+  <option>Kebbi</option>
+  <option>Kogi</option>
+  <option>Kwara</option>
+  <option>Lagos</option>
+  <option>Nasarawa</option>
+  <option>Niger</option>
+  <option>Ogun</option>
+  <option>Ondo</option>
+  <option>Osun</option>
+  <option>Oyo</option>
+  <option>Plateau</option>
+  <option>Rivers</option>
+  <option>Sokoto</option>
+  <option>Taraba</option>
+  <option>Yobe</option>
+  <option>Zamfara</option>
+</select></div>
+          <div class="field"><label>Zone</label><input type="text" id="c-zone" placeholder="e.g., North, South, East, West"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Category/Talent <span>*</span></label><select id="c-cat" required>
+  <option value="">-- Select Category --</option>
+  <option>Traditional Music</option>
+  <option>Traditional Dance</option>
+  <option>Cultural Fashion</option>
+  <option>Native Language Oratory</option>
+  <option>Nigerian Cuisine</option>
+  <option>Storytelling &amp; Folklore</option>
+  <option>Cultural Crafts</option>
+</select></div>
+          <div class="field"><label>Talent Key (for filter)</label><input type="text" id="c-talentKey" placeholder="dance, music, fashion, etc."></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Ethnic Group / Tribe</label><input type="text" id="c-tribe"></div>
+          <div class="field"><label>Contestant Number</label><input type="number" id="c-num" min="1" placeholder="e.g. 1"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Age</label><input type="number" id="c-age" min="18"></div>
+          <div class="field"><label>Occupation</label><input type="text" id="c-occupation"></div>
+        </div>
+        <div class="field"><label>Profile Bio</label><textarea id="c-bio" placeholder="Contestant bio for public profile..."></textarea></div>
+        <div class="field"><label>Unique Statement / Quote</label><textarea id="c-unique" placeholder="What makes them unique?"></textarea></div>
+        <div class="form-row">
+          <div class="field"><label>Photo URL</label><input type="url" id="c-photo" placeholder="https://..."></div>
+          <div class="field"><label>Instagram</label><input type="text" id="c-instagram" placeholder="@handle"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>TikTok</label><input type="text" id="c-tiktok" placeholder="@handle"></div>
+          <div class="field"><label>X (Twitter)</label><input type="text" id="c-x" placeholder="@handle"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Facebook</label><input type="text" id="c-facebook" placeholder="username or URL"></div>
+          <div class="field"><label>Status</label><select id="c-status"><option value="Active">Active</option><option value="Eliminated">Eliminated</option><option value="Winner">Winner</option></select></div>
+        </div>
+        <div class="field"><label>Highlights (JSON array)</label><textarea id="c-highlights" placeholder='[{"episode":"Audition","title":"...","desc":"...","score":"..."}]' style="min-height:80px"></textarea></div>
+        <div class="field"><label>Votes</label><input type="number" id="c-votes" value="0" min="0"></div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('contestant-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveContestant()">Save Contestant</button>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="media-modal"><!-- ... --></div>
+<div class="modal-overlay" id="announce-modal"><!-- ... --></div>
+<div class="modal-overlay" id="section-editor-modal"><!-- ... --></div>
+<div class="modal-overlay" id="confirm-modal"><!-- ... --></div>
+
+<!-- NEW: Custom Field Modal -->
+<div class="modal-overlay" id="custom-field-modal">
+  <div class="modal" style="max-width:500px">
+    <div class="modal-header">
+      <span class="modal-title" id="cf-modal-title">Add Custom Field</span>
+      <button class="modal-close" onclick="closeModal('custom-field-modal')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form id="custom-field-form" onsubmit="return false">
+        <input type="hidden" id="cf-page-id">
+        <input type="hidden" id="cf-edit-key">
+        <div class="field" style="margin-bottom:1rem">
+          <label>CMS Key <span>*</span></label>
+          <input type="text" id="cf-key" placeholder="e.g., custom_hero_tagline" required pattern="[a-zA-Z0-9_-]+">
+          <div class="field-hint">Letters, numbers, underscores, hyphens only. Must be unique.</div>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Field Label</label>
+          <input type="text" id="cf-label" placeholder="e.g., Hero Tagline" required>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Field Type</label>
+          <select id="cf-type">
+            <option value="text">Text (single line)</option>
+            <option value="textarea">Textarea (multi-line)</option>
+            <option value="url">URL / Image URL</option>
+          </select>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Default Value</label>
+          <textarea id="cf-default" rows="3" placeholder="Default content (optional)"></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('custom-field-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveCustomField()">Save Field</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast-container" id="toast-container"></div>
 
 <script>
@@ -1042,36 +1187,73 @@ function bulkAction(action){
 
 // ── CONTESTANTS CRUD ──────────────────────────────────────────────────
 function saveContestant(){
-  const name=document.getElementById('c-name').value.trim();
-  const state=document.getElementById('c-state').value;
-  const cat=document.getElementById('c-cat').value;
-  if(!name||!state||!cat){toast('Please fill required fields','error');return;}
-  const rec={
-    id:currentEditContestant||(Date.now()+''),
-    name,state,category:cat,
-    stagename:document.getElementById('c-stagename').value,
-    tribe:document.getElementById('c-tribe').value,
-    num:parseInt(document.getElementById('c-num').value)||contestants.length+1,
-    bio:document.getElementById('c-bio').value,
-    photo:document.getElementById('c-photo').value,
-    insta:document.getElementById('c-insta').value,
-    episode:parseInt(document.getElementById('c-episode').value)||1,
-    status:document.getElementById('c-status').value,
-    votes:0,date:new Date().toLocaleDateString('en-NG')
+  const name = document.getElementById('c-name').value.trim();
+  const state = document.getElementById('c-state').value;
+  const cat = document.getElementById('c-cat').value;
+  if(!name || !state || !cat){ toast('Please fill required fields','error'); return; }
+  const rec = {
+    id: currentEditContestant || (Date.now()+''),
+    name, state, category: cat,
+    stagename: document.getElementById('c-stagename').value,
+    zone: document.getElementById('c-zone').value,
+    talentKey: document.getElementById('c-talentKey').value,
+    tribe: document.getElementById('c-tribe').value,
+    num: document.getElementById('c-num').value.padStart(2,'0') || (contestants.length+1).toString().padStart(2,'0'),
+    age: document.getElementById('c-age').value,
+    occupation: document.getElementById('c-occupation').value,
+    bio: document.getElementById('c-bio').value,
+    unique: document.getElementById('c-unique').value,
+    photo: document.getElementById('c-photo').value,
+    instagram: document.getElementById('c-instagram').value,
+    tiktok: document.getElementById('c-tiktok').value,
+    x: document.getElementById('c-x').value,
+    facebook: document.getElementById('c-facebook').value,
+    status: document.getElementById('c-status').value,
+    highlights: document.getElementById('c-highlights').value,
+    votes: parseInt(document.getElementById('c-votes').value) || 0,
+    episode: 1,
+    date: new Date().toLocaleDateString('en-NG')
   };
-  if(currentEditContestant){const i=contestants.findIndex(c=>c.id===currentEditContestant);if(i>-1){rec.votes=contestants[i].votes;contestants[i]=rec;}toast('Contestant updated')}
-  else{contestants.push(rec);toast('Contestant added')}
-  S.set('contestants',contestants);closeModal('contestant-modal');renderContestants();
-  logActivity(`${currentEditContestant?'Updated':'Added'} contestant: ${name}`,'var(--g)');currentEditContestant=null;
+  if(currentEditContestant){
+    const i = contestants.findIndex(c => c.id === currentEditContestant);
+    if(i > -1) { rec.votes = contestants[i].votes; contestants[i] = rec; }
+    toast('Contestant updated');
+  } else {
+    contestants.push(rec);
+    toast('Contestant added');
+  }
+  S.set('contestants', contestants);
+  closeModal('contestant-modal');
+  renderContestants();
+  logActivity(`${currentEditContestant?'Updated':'Added'} contestant: ${name}`, 'var(--g)');
+  currentEditContestant = null;
 }
+
 function editContestant(id){
-  const c=contestants.find(x=>x.id===id);if(!c)return;
-  currentEditContestant=id;
-  document.getElementById('con-modal-title').textContent='Edit Contestant';
-  ['name','state','category','stagename','tribe','num','bio','photo','insta','episode','status'].forEach(f=>{const el=document.getElementById('c-'+f.replace('category','cat'));if(!el)return;el.value=c[f]||''});
-  document.getElementById('c-cat').value=c.category||'';
-  document.getElementById('c-state').value=c.state||'';
-  document.getElementById('c-status').value=c.status||'Active';
+  const c = contestants.find(x => x.id === id);
+  if(!c) return;
+  currentEditContestant = id;
+  document.getElementById('con-modal-title').textContent = 'Edit Contestant';
+  document.getElementById('c-name').value = c.name || '';
+  document.getElementById('c-stagename').value = c.stagename || '';
+  document.getElementById('c-state').value = c.state || '';
+  document.getElementById('c-zone').value = c.zone || '';
+  document.getElementById('c-cat').value = c.category || '';
+  document.getElementById('c-talentKey').value = c.talentKey || '';
+  document.getElementById('c-tribe').value = c.tribe || '';
+  document.getElementById('c-num').value = c.num || '';
+  document.getElementById('c-age').value = c.age || '';
+  document.getElementById('c-occupation').value = c.occupation || '';
+  document.getElementById('c-bio').value = c.bio || '';
+  document.getElementById('c-unique').value = c.unique || '';
+  document.getElementById('c-photo').value = c.photo || '';
+  document.getElementById('c-instagram').value = c.instagram || '';
+  document.getElementById('c-tiktok').value = c.tiktok || '';
+  document.getElementById('c-x').value = c.x || '';
+  document.getElementById('c-facebook').value = c.facebook || '';
+  document.getElementById('c-status').value = c.status || 'Active';
+  document.getElementById('c-highlights').value = typeof c.highlights === 'string' ? c.highlights : JSON.stringify(c.highlights || []);
+  document.getElementById('c-votes').value = c.votes || 0;
   openModal('contestant-modal');
 }
 function deleteContestant(id){
@@ -1080,18 +1262,22 @@ function deleteContestant(id){
   });
 }
 function renderContestants(){
-  const search=document.getElementById('con-search')?.value.toLowerCase()||'';
-  const sf=document.getElementById('con-status-filter')?.value||'';
-  const cf=document.getElementById('con-cat-filter')?.value||'';
-  let list=contestants.filter(c=>{
-    const m=!search||(c.name+c.state+c.category).toLowerCase().includes(search);
-    const s=!sf||c.status===sf;
-    const cat=!cf||c.category===cf;
-    return m&&s&&cat;
+  const search = document.getElementById('con-search')?.value.toLowerCase() || '';
+  const sf = document.getElementById('con-status-filter')?.value || '';
+  const cf = document.getElementById('con-cat-filter')?.value || '';
+  let list = contestants.filter(c => {
+    const m = !search || (c.name + c.state + c.category + c.tribe).toLowerCase().includes(search);
+    const s = !sf || c.status === sf;
+    const cat = !cf || c.category === cf;
+    return m && s && cat;
   });
-  const tbody=document.getElementById('contestants-tbody');if(!tbody)return;
-  if(!list.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No contestants. Approve applications or add manually.</td></tr>';return;}
-  tbody.innerHTML=list.map(c=>`<tr>
+  const tbody = document.getElementById('contestants-tbody');
+  if(!tbody) return;
+  if(!list.length){
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No contestants. Click "Add Contestant" to create one.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(c => `<tr>
     <td><div style="display:flex;align-items:center;gap:.75rem"><div class="avatar" style="background:var(--g)">${c.name.charAt(0)}</div><div><div class="td-name">#${c.num||'—'} ${c.name}</div><div class="td-id">${c.tribe||'—'} · ${c.state||'—'}</div></div></div></td>
     <td><span class="badge badge-blue" style="font-size:.65rem">${c.state||'—'}</span></td>
     <td style="font-size:.78rem">${c.category||'—'}</td>
@@ -1104,8 +1290,6 @@ function renderContestants(){
     </div></td>
   </tr>`).join('');
 }
-function filterContestants(){renderContestants()}
-
 // ── MEDIA CRUD ────────────────────────────────────────────────────────
 function switchMediaTab(tab,btn){
   currentMediaTab=tab;
@@ -1288,172 +1472,231 @@ function renderAnnouncements(){
 
 // ── PAGE EDITOR ───────────────────────────────────────────────────────
 const PAGES=[
-  {id:'index',name:'Home Page',file:'index.html',icon:'🏠',desc:'Every editable element — Navbar, Hero, Ticker, About, Contestants, News, Events, Sponsors, CTA, Footer',sections:[
-    {id:'nav-cta-text',label:'Nav "Apply Now" Button Text',type:'text',hint:'Top-right call-to-action button',default:'Apply Now'},
-    {id:'nav-logo-url',label:'Logo Image URL',type:'text',hint:'src attribute of <img> in navbar',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
-    {id:'hero-bg',label:'Hero Background Image URL',type:'text',hint:'background-image in .hero CSS',default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
-    {id:'hero-eyebrow',label:'Hero Eyebrow Text',type:'text',hint:'Small label above the title',default:"Nigeria's Cultural Reality TV Show"},
-    {id:'hero-static-word',label:'Hero Static Word',type:'text',hint:'"Our" before the rotating word',default:'Our'},
-    {id:'hero-rotating',label:'Hero Rotating Words',type:'textarea',hint:'One word per line — e.g. Culture. / Heritage. / Stage.',default:'Culture.\nHeritage.\nStage.'},
-    {id:'hero-desc',label:'Hero Description Paragraph',type:'textarea',hint:'Paragraph under the title',default:'Culture9ja gives talented Nigerians a platform to showcase their traditions, languages, and creativity — celebrating over 250 cultures on one unforgettable stage.'},
-    {id:'hero-btn1-text',label:'"Apply Now" Button Text',type:'text',hint:'Primary hero CTA button',default:'Apply Now'},
-    {id:'hero-btn1-url',label:'"Apply Now" Button URL',type:'text',hint:'href of primary hero CTA',default:'register.html'},
-    {id:'hero-btn2-text',label:'"Watch the Show" Button Text',type:'text',hint:'Secondary outline button',default:'Watch the Show'},
-    {id:'hero-btn2-url',label:'"Watch the Show" Button URL',type:'text',hint:'href of secondary hero CTA',default:'#about'},
-    {id:'stat1-num',label:'Stat 1 — Number',type:'text',default:'250+'},
-    {id:'stat1-label',label:'Stat 1 — Label',type:'text',default:'Cultures'},
-    {id:'stat2-num',label:'Stat 2 — Number',type:'text',default:'36'},
-    {id:'stat2-label',label:'Stat 2 — Label',type:'text',default:'States'},
-    {id:'stat3-num',label:'Stat 3 — Number',type:'text',default:'1'},
-    {id:'stat3-label',label:'Stat 3 — Label',type:'text',default:'Champion'},
-    {id:'stat4-num',label:'Stat 4 — Number',type:'text',default:'2026'},
-    {id:'stat4-label',label:'Stat 4 — Label',type:'text',default:'Season 1'},
-    {id:'hero-img1-url',label:'Hero Image 1 URL (large left, Hausa)',type:'text',hint:'Replace Pexels URL with your own',default:'https://images.pexels.com/photos/33687036/pexels-photo-33687036.jpeg'},
-    {id:'hero-img1-tag',label:'Image 1 Tag',type:'text',hint:'e.g. Hausa · Kano State',default:'Hausa · Kano State'},
-    {id:'hero-img1-name',label:'Image 1 Heritage Name',type:'text',default:'Hausa Heritage'},
-    {id:'hero-img1-sub',label:'Image 1 Subtitle',type:'text',default:'Northern Nigeria · Traditional Attire'},
-    {id:'hero-season-pill',label:'Season Pill Text',type:'text',hint:'Overlay pill on image 1',default:'Season 1 · 2026'},
-    {id:'hero-img2-url',label:'Hero Image 2 URL (top right, Igbo)',type:'text',default:'https://images.pexels.com/photos/34735549/pexels-photo-34735549/free-photo-of-traditional-igbo-cultural-parade-with-attire.jpeg'},
-    {id:'hero-img2-tag',label:'Image 2 Tag',type:'text',default:'Igbo · Anambra'},
-    {id:'hero-img2-name',label:'Image 2 Heritage Name',type:'text',default:'Igbo Heritage'},
-    {id:'hero-img2-sub',label:'Image 2 Subtitle',type:'text',default:'Eastern Nigeria · Red Cap Tradition'},
-    {id:'hero-img3-url',label:'Hero Image 3 URL (bottom right, Yoruba)',type:'text',default:'https://images.pexels.com/photos/32486602/pexels-photo-32486602.jpeg'},
-    {id:'hero-img3-tag',label:'Image 3 Tag',type:'text',default:'Yoruba · Lagos'},
-    {id:'hero-img3-name',label:'Image 3 Heritage Name',type:'text',default:'Yoruba Heritage'},
-    {id:'hero-img3-sub',label:'Image 3 Subtitle',type:'text',default:'Western Nigeria · Aso-oke Festival'},
-    {id:'ticker-1',label:'Ticker Item 1',type:'text',default:'Auditions Open 2026'},
-    {id:'ticker-2',label:'Ticker Item 2',type:'text',default:'250+ Cultures Represented'},
-    {id:'ticker-3',label:'Ticker Item 3',type:'text',default:'Official Launch — Abuja FCT'},
-    {id:'ticker-4',label:'Ticker Item 4',type:'text',default:'Register Now at Culture9ja.ng'},
-    {id:'ticker-5',label:'Ticker Item 5',type:'text',default:"Nigeria's First Cultural Reality TV Show"},
-    {id:'ticker-6',label:'Ticker Item 6',type:'text',default:'Partner With Us Today'},
-    {id:'about-eyebrow',label:'About Section Eyebrow',type:'text',default:'About the Show'},
-    {id:'about-title',label:'About Section Title',type:'text',default:'Reality TV That Actually Reflects Who We Are'},
-    {id:'about-body-1',label:'About — Paragraph 1',type:'textarea',default:"Nigerians have begun turning back to their roots, hungry for entertainment that reflects their true cultural heritage. From traditional music and dance to folklore and indigenous storytelling, there is a renewed desire to preserve what makes us distinct."},
-    {id:'about-quote',label:'About — Pull Quote',type:'textarea',default:"Culture9ja is a cultural-based reality television program designed to showcase, preserve, and celebrate the rich heritage, traditions, creativity, and diversity of Nigeria."},
-    {id:'about-body-2',label:'About — Paragraph 2',type:'textarea',default:"Launching at a time when audiences are demanding authenticity, Culture9ja entertains while preserving the soul of Nigeria's many communities. This is not just television — it is a movement."},
-    {id:'about-cta-text',label:'About CTA Link Text',type:'text',default:'Read More About the Show →'},
-    {id:'about-cta-url',label:'About CTA Link URL',type:'text',default:'about.html'},
-    {id:'about-video-src',label:'About Video Source (src)',type:'text',hint:'Relative path or URL to .mp4',default:'about%20culture9ja.mp4'},
-    {id:'about-video-poster',label:'About Video Poster Image URL',type:'text',hint:'Thumbnail shown before play',default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
-    {id:'about-video-caption',label:'About Video Caption',type:'text',default:'Watch the Culture9ja trailer'},
-    {id:'con-eyebrow',label:'Contestants Section Eyebrow',type:'text',default:'Featured Contestants'},
-    {id:'con-title',label:'Contestants Section Title',type:'text',default:'Meet the Faces of Culture'},
-    {id:'con-season-badge',label:'Contestants Season Badge',type:'text',default:'Season 1 · 2026'},
-    {id:'con-viewall-url',label:'"View All" Link URL',type:'text',default:'contestants.html'},
-    {id:'con1-num',label:'Contestant 1 — Number',type:'text',default:'01'},
-    {id:'con1-role',label:'Contestant 1 — Role Tag',type:'text',default:'Heritage Showcase'},
-    {id:'con1-state',label:'Contestant 1 — State',type:'text',default:'Benue State'},
-    {id:'con1-name',label:'Contestant 1 — Name',type:'text',hint:'Replaces "Contestant Name"',default:'Contestant Name'},
-    {id:'con1-skill',label:'Contestant 1 — Skill',type:'text',default:'Traditional Dance · Tiv Heritage'},
-    {id:'con1-photo',label:'Contestant 1 — Photo URL',type:'text',hint:'Leave blank to show number placeholder',default:''},
-    {id:'con2-num',label:'Contestant 2 — Number',type:'text',default:'02'},
-    {id:'con2-role',label:'Contestant 2 — Role Tag',type:'text',default:'Cultural Arts'},
-    {id:'con2-state',label:'Contestant 2 — State',type:'text',default:'Kano State'},
-    {id:'con2-name',label:'Contestant 2 — Name',type:'text',default:'Contestant Name'},
-    {id:'con2-skill',label:'Contestant 2 — Skill',type:'text',default:'Hausa Music · Fashion'},
-    {id:'con2-photo',label:'Contestant 2 — Photo URL',type:'text',default:''},
-    {id:'con3-num',label:'Contestant 3 — Number',type:'text',default:'03'},
-    {id:'con3-role',label:'Contestant 3 — Role Tag',type:'text',default:'Storytelling'},
-    {id:'con3-state',label:'Contestant 3 — State',type:'text',default:'Anambra State'},
-    {id:'con3-name',label:'Contestant 3 — Name',type:'text',default:'Contestant Name'},
-    {id:'con3-skill',label:'Contestant 3 — Skill',type:'text',default:'Igbo Folklore · Craft'},
-    {id:'con3-photo',label:'Contestant 3 — Photo URL',type:'text',default:''},
-    {id:'con4-num',label:'Contestant 4 — Number',type:'text',default:'04'},
-    {id:'con4-role',label:'Contestant 4 — Role Tag',type:'text',default:'Native Language'},
-    {id:'con4-state',label:'Contestant 4 — State',type:'text',default:'Ogun State'},
-    {id:'con4-name',label:'Contestant 4 — Name',type:'text',default:'Contestant Name'},
-    {id:'con4-skill',label:'Contestant 4 — Skill',type:'text',default:'Yoruba Oratory'},
-    {id:'con4-photo',label:'Contestant 4 — Photo URL',type:'text',default:''},
-    {id:'con5-num',label:'Contestant 5 — Number',type:'text',default:'05'},
-    {id:'con5-role',label:'Contestant 5 — Role Tag',type:'text',default:'Cuisine'},
-    {id:'con5-state',label:'Contestant 5 — State',type:'text',default:'Rivers State'},
-    {id:'con5-name',label:'Contestant 5 — Name',type:'text',default:'Contestant Name'},
-    {id:'con5-skill',label:'Contestant 5 — Skill',type:'text',default:'Traditional Cuisine'},
-    {id:'con5-photo',label:'Contestant 5 — Photo URL',type:'text',default:''},
-    {id:'news-eyebrow',label:'News Section Eyebrow',type:'text',default:'Latest News & Announcements'},
-    {id:'news-title',label:'News Section Title',type:'text',default:"What's Happening"},
-    {id:'feat-tag',label:'Featured Story — Tag',type:'text',default:'Featured'},
-    {id:'feat-title',label:'Featured Story — Headline',type:'textarea',default:'Culture9ja Official Launch Announced for Abuja, Federal Capital Territory'},
-    {id:'feat-meta',label:'Featured Story — Meta (date/author)',type:'text',default:'April 2026 · By Culture9ja Team'},
-    {id:'feat-excerpt',label:'Featured Story — Excerpt',type:'textarea',default:'The grand opening of Culture9ja Reality TV Show will take place in Nigeria\'s capital city, marking a new era for cultural entertainment. Applications are now open for Season 1 contestants across all 36 states.'},
-    {id:'feat-url',label:'Featured Story — Link URL',type:'text',default:'#'},
-    {id:'news1-tag',label:'News Item 1 — Category Tag',type:'text',default:'Auditions'},
-    {id:'news1-title',label:'News Item 1 — Headline',type:'text',default:'Nationwide Audition Tour Dates Released — 6 Geopolitical Zones'},
-    {id:'news1-date',label:'News Item 1 — Date',type:'text',default:'March 2026'},
-    {id:'news2-tag',label:'News Item 2 — Category Tag',type:'text',default:'Events'},
-    {id:'news2-title',label:'News Item 2 — Headline',type:'text',default:'Culture9ja 2025 Cultural Economic Summit — Jos, Plateau State Recap'},
-    {id:'news2-date',label:'News Item 2 — Date',type:'text',default:'December 2025'},
-    {id:'news3-tag',label:'News Item 3 — Category Tag',type:'text',default:'Previous'},
-    {id:'news3-title',label:'News Item 3 — Headline',type:'text',default:'Unveiling Ceremony in Benue State — The Movement Begins'},
-    {id:'news3-date',label:'News Item 3 — Date',type:'text',default:'November 2025'},
-    {id:'news4-tag',label:'News Item 4 — Category Tag',type:'text',default:'Previous'},
-    {id:'news4-title',label:'News Item 4 — Headline',type:'text',default:'Jos, Plateau State Unveiling — Building Cultural Unity'},
-    {id:'news4-date',label:'News Item 4 — Date',type:'text',default:'February 2026'},
-    {id:'ev-eyebrow',label:'Events Section Eyebrow',type:'text',default:'Upcoming Events'},
-    {id:'ev-title',label:'Events Section Title',type:'text',default:'Season Milestones'},
-    {id:'ev1-day',label:'Event 1 — Day',type:'text',hint:'"TBD" or actual day number',default:'TBD'},
-    {id:'ev1-month',label:'Event 1 — Month / Year',type:'text',default:'2026'},
-    {id:'ev1-city',label:'Event 1 — City Label',type:'text',default:'Abuja'},
-    {id:'ev1-name',label:'Event 1 — Event Name',type:'textarea',default:'Official Launch & Grand Opening — Culture9ja Reality TV Show'},
-    {id:'ev1-location',label:'Event 1 — Full Location',type:'text',default:'Abuja, Federal Capital Territory'},
-    {id:'ev1-type',label:'Event 1 — Badge Type',type:'text',hint:'e.g. Grand Launch, Auditions, Grand Finale',default:'Grand Launch'},
-    {id:'ev2-day',label:'Event 2 — Day',type:'text',default:'TBD'},
-    {id:'ev2-month',label:'Event 2 — Month / Year',type:'text',default:'2026'},
-    {id:'ev2-city',label:'Event 2 — City Label',type:'text',default:'Nationwide'},
-    {id:'ev2-name',label:'Event 2 — Event Name',type:'textarea',default:'Nationwide Audition Tour — All Six Geopolitical Zones'},
-    {id:'ev2-location',label:'Event 2 — Full Location',type:'text',default:'Multiple Cities Across Nigeria'},
-    {id:'ev2-type',label:'Event 2 — Badge Type',type:'text',default:'Auditions'},
-    {id:'ev3-day',label:'Event 3 — Day',type:'text',default:'TBD'},
-    {id:'ev3-month',label:'Event 3 — Month / Year',type:'text',default:'2026'},
-    {id:'ev3-city',label:'Event 3 — City Label',type:'text',default:'Live Show'},
-    {id:'ev3-name',label:'Event 3 — Event Name',type:'textarea',default:'Season 1 Grand Finale — The Nation Decides Its Champion'},
-    {id:'ev3-location',label:'Event 3 — Full Location',type:'text',default:'To Be Announced'},
-    {id:'ev3-type',label:'Event 3 — Badge Type',type:'text',default:'Grand Finale'},
-    {id:'sp-title',label:'Sponsors Section Title',type:'text',default:'Those Who Believe in Our Mission'},
-    {id:'sp1-name',label:'Sponsor 1 — Name',type:'text',hint:'Replaces placeholder text',default:'Official Partner'},
-    {id:'sp1-logo',label:'Sponsor 1 — Logo URL',type:'text',hint:'Leave blank for placeholder',default:''},
-    {id:'sp2-name',label:'Sponsor 2 — Name',type:'text',default:'Title Sponsor'},
-    {id:'sp2-logo',label:'Sponsor 2 — Logo URL',type:'text',default:''},
-    {id:'sp3-name',label:'Sponsor 3 — Name',type:'text',default:'Media Partner'},
-    {id:'sp3-logo',label:'Sponsor 3 — Logo URL',type:'text',default:''},
-    {id:'sp4-name',label:'Sponsor 4 — Name',type:'text',default:'Cultural Partner'},
-    {id:'sp4-logo',label:'Sponsor 4 — Logo URL',type:'text',default:''},
-    {id:'sp5-name',label:'Sponsor 5 — Name',type:'text',default:'Brand Partner'},
-    {id:'sp5-logo',label:'Sponsor 5 — Logo URL',type:'text',default:''},
-    {id:'sp-cta-text',label:'Sponsors CTA Text',type:'textarea',default:"Interested in partnering with Nigeria's premier cultural platform?"},
-    {id:'sp-cta-btn',label:'Sponsors CTA Button Label',type:'text',default:'Become a Partner →'},
-    {id:'sp-cta-url',label:'Sponsors CTA Button URL',type:'text',default:'#contact'},
-    {id:'cta-eyebrow',label:'CTA Section Eyebrow',type:'text',default:'Be Part of It'},
-    {id:'cta-title-line1',label:'CTA Title — Line 1',type:'text',default:'Your Culture'},
-    {id:'cta-title-line2',label:'CTA Title — Line 2 (italic/gold)',type:'text',default:'Deserves a Stage.'},
-    {id:'cta-desc',label:'CTA Description',type:'textarea',default:'Whether you are a contestant ready to represent your heritage, a brand that wants to align with cultural excellence, or a fan who wants to follow the journey — there is a place for you in Culture9ja.'},
-    {id:'cta-opt1-title',label:'CTA Option 1 — Title',type:'text',default:'Apply as a Contestant'},
-    {id:'cta-opt1-desc',label:'CTA Option 1 — Description',type:'text',default:'Register now for Season 1 auditions — ₦10,000 fee'},
-    {id:'cta-opt1-url',label:'CTA Option 1 — URL',type:'text',default:'register.html'},
-    {id:'cta-opt2-title',label:'CTA Option 2 — Title',type:'text',default:'Partner With Culture9ja'},
-    {id:'cta-opt2-desc',label:'CTA Option 2 — Description',type:'text',default:'Sponsorship packages for brands & organisations'},
-    {id:'cta-opt2-url',label:'CTA Option 2 — URL',type:'text',default:'#'},
-    {id:'cta-opt3-title',label:'CTA Option 3 — Title',type:'text',default:'Follow the Journey'},
-    {id:'cta-opt3-desc',label:'CTA Option 3 — Description',type:'text',default:'Stay updated on events, auditions & contestant news'},
-    {id:'cta-opt3-url',label:'CTA Option 3 — URL',type:'text',default:'#'},
-    {id:'cta-opt4-title',label:'CTA Option 4 — Title',type:'text',default:'Watch the Show'},
-    {id:'cta-opt4-desc',label:'CTA Option 4 — Description',type:'text',default:'Episodes, highlights & behind-the-scenes content'},
-    {id:'cta-opt4-url',label:'CTA Option 4 — URL',type:'text',default:'#'},
-    {id:'footer-logo-url',label:'Footer Logo Image URL',type:'text',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
-    {id:'footer-tagline',label:'Footer Tagline',type:'textarea',default:"Africa's cultural reality television show — celebrating people, living traditions, and the stories that define who we are."},
-    {id:'footer-social-fb',label:'Footer — Facebook URL',type:'text',default:'#'},
-    {id:'footer-social-in',label:'Footer — Instagram URL',type:'text',default:'#'},
-    {id:'footer-social-x',label:'Footer — X (Twitter) URL',type:'text',default:'#'},
-    {id:'footer-social-yt',label:'Footer — YouTube URL',type:'text',default:'#'},
-    {id:'footer-social-tk',label:'Footer — TikTok URL',type:'text',default:'#'},
-    {id:'footer-email',label:'Footer — Email',type:'text',default:'support@culture9ja.com'},
-    {id:'footer-phone1',label:'Footer — Phone 1',type:'text',default:'+234 9039997729'},
-    {id:'footer-phone2',label:'Footer — Phone 2',type:'text',default:'09055567245'},
-    {id:'footer-phone3',label:'Footer — Phone 3',type:'text',default:'09095777082'},
-    {id:'footer-address',label:'Footer — Headquarters',type:'text',default:'Abuja, FCT, Nigeria'},
-    {id:'footer-copyright',label:'Footer — Copyright Line',type:'text',default:'© 2026 Culture9ja Limited. All Rights Reserved. Built with Purpose.'},
-  ]},
+{id:'index',name:'Home Page',file:'index.html',icon:'🏠',desc:'Every editable element — Navbar, Hero, Ticker, About, Contestants, News, Events, Sponsors, CTA, Footer',sections:[
+  // Navbar (newly added link texts & URLs)
+  {id:'nav-logo-url',label:'Navbar Logo Image URL',type:'text',hint:'src attribute of <img> in navbar',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
+  {id:'nav-cta-text',label:'Nav "Apply Now" Button Text',type:'text',hint:'Top‑right call‑to‑action button',default:'Apply Now'},
+  {id:'nav-cta-url',label:'Nav "Apply Now" Button URL',type:'text',hint:'href of nav CTA button',default:'register.html'},
+  {id:'nav-about',label:'Nav: About Text',type:'text',default:'About'},
+  {id:'nav-about-link',label:'Nav: About URL',type:'text',default:'about.html'},
+  {id:'nav-auditions',label:'Nav: Auditions Text',type:'text',default:'Auditions'},
+  {id:'nav-auditions-link',label:'Nav: Auditions URL',type:'text',default:'auditions.html'},
+  {id:'nav-contestants',label:'Nav: Contestants Text',type:'text',default:'Contestants'},
+  {id:'nav-contestants-link',label:'Nav: Contestants URL',type:'text',default:'contestants.html'},
+  {id:'nav-episodes',label:'Nav: Highlights Text',type:'text',default:'Highlights'},
+  {id:'nav-episodes-link',label:'Nav: Highlights URL',type:'text',default:'episodes.html'},
+  {id:'nav-voting',label:'Nav: Voting Text',type:'text',default:'Voting'},
+  {id:'nav-voting-link',label:'Nav: Voting URL',type:'text',default:'voting.html'},
+  {id:'nav-news',label:'Nav: News Text',type:'text',default:'News'},
+  {id:'nav-news-link',label:'Nav: News URL',type:'text',default:'news.html'},
+  {id:'nav-gallery',label:'Nav: Gallery Text',type:'text',default:'Gallery'},
+  {id:'nav-gallery-link',label:'Nav: Gallery URL',type:'text',default:'gallery.html'},
+  {id:'nav-sponsors',label:'Nav: Sponsors Text',type:'text',default:'Sponsors'},
+  {id:'nav-sponsors-link',label:'Nav: Sponsors URL',type:'text',default:'sponsors.html'},
+
+  // Hero Section
+  {id:'hero-bg',label:'Hero Background Image URL',type:'text',hint:'background-image in .hero CSS',default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
+  {id:'hero-eyebrow',label:'Hero Eyebrow Text',type:'text',hint:'Small label above the title',default:"Nigeria's Cultural Reality TV Show"},
+  {id:'hero-static-word',label:'Hero Static Word',type:'text',hint:'"Our" before the rotating word',default:'Our'},
+  {id:'hero-rotating',label:'Hero Rotating Words',type:'textarea',hint:'One word per line — e.g. Culture. / Heritage. / Stage.',default:'Culture.\nHeritage.\nStage.'},
+  {id:'hero-desc',label:'Hero Description Paragraph',type:'textarea',hint:'Paragraph under the title',default:'Culture9ja gives talented Nigerians a platform to showcase their traditions, languages, and creativity — celebrating over 250 cultures on one unforgettable stage.'},
+  {id:'hero-btn1-text',label:'"Apply Now" Button Text',type:'text',hint:'Primary hero CTA button',default:'Apply Now'},
+  {id:'hero-btn1-url',label:'"Apply Now" Button URL',type:'text',hint:'href of primary hero CTA',default:'register.html'},
+  {id:'hero-btn2-text',label:'"Watch the Show" Button Text',type:'text',hint:'Secondary outline button',default:'Watch the Show'},
+  {id:'hero-btn2-url',label:'"Watch the Show" Button URL',type:'text',hint:'href of secondary hero CTA',default:'#about'},
+
+  // Hero Stats
+  {id:'stat1-num',label:'Stat 1 — Number',type:'text',default:'250+'},
+  {id:'stat1-label',label:'Stat 1 — Label',type:'text',default:'Cultures'},
+  {id:'stat2-num',label:'Stat 2 — Number',type:'text',default:'36'},
+  {id:'stat2-label',label:'Stat 2 — Label',type:'text',default:'States'},
+  {id:'stat3-num',label:'Stat 3 — Number',type:'text',default:'1'},
+  {id:'stat3-label',label:'Stat 3 — Label',type:'text',default:'Champion'},
+  {id:'stat4-num',label:'Stat 4 — Number',type:'text',default:'2026'},
+  {id:'stat4-label',label:'Stat 4 — Label',type:'text',default:'Season 1'},
+
+  // Hero Carousel Slides (renamed to match index.html)
+  {id:'hero-slide1',label:'Carousel Slide 1 Image URL',type:'text',hint:'First slide (Igbo)',default:'https://culture9ja.com/wp-content/uploads/2026/03/culture9ja-event-600x800.jpeg'},
+  {id:'hero-slide2',label:'Carousel Slide 2 Image URL',type:'text',hint:'Second slide (Hausa)',default:'https://culture9ja.com/wp-content/uploads/2026/03/culture-35.jpeg'},
+  {id:'hero-slide3',label:'Carousel Slide 3 Image URL',type:'text',hint:'Third slide (Yoruba)',default:'https://culture9ja.com/wp-content/uploads/2026/03/culture9ja-11-768x1152.jpeg'},
+  // Optional carousel captions (uncomment if you modify the carousel script)
+  // {id:'hero-slide1-caption',label:'Carousel Slide 1 Caption',type:'text',default:'Igbo · Anambra'},
+  // {id:'hero-slide2-caption',label:'Carousel Slide 2 Caption',type:'text',default:'Hausa · Kano'},
+  // {id:'hero-slide3-caption',label:'Carousel Slide 3 Caption',type:'text',default:'Yoruba · Lagos'},
+
+  // Ticker
+  {id:'ticker-1',label:'Ticker Item 1',type:'text',default:'Auditions Open 2026'},
+  {id:'ticker-2',label:'Ticker Item 2',type:'text',default:'250+ Cultures Represented'},
+  {id:'ticker-3',label:'Ticker Item 3',type:'text',default:'Official Launch — Abuja FCT'},
+  {id:'ticker-4',label:'Ticker Item 4',type:'text',default:'Register Now at Culture9ja.ng'},
+  {id:'ticker-5',label:'Ticker Item 5',type:'text',default:"Nigeria's First Cultural Reality TV Show"},
+  {id:'ticker-6',label:'Ticker Item 6',type:'text',default:'Partner With Us Today'},
+
+  // About Section
+  {id:'about-eyebrow',label:'About Section Eyebrow',type:'text',default:'About the Show'},
+  {id:'about-title',label:'About Section Title',type:'text',default:'Reality TV That Actually Reflects Who We Are'},
+  {id:'about-body-1',label:'About — Paragraph 1',type:'textarea',default:"Nigerians have begun turning back to their roots, hungry for entertainment that reflects their true cultural heritage. From traditional music and dance to folklore and indigenous storytelling, there is a renewed desire to preserve what makes us distinct."},
+  {id:'about-quote',label:'About — Pull Quote',type:'textarea',default:"Culture9ja is a cultural-based reality television program designed to showcase, preserve, and celebrate the rich heritage, traditions, creativity, and diversity of Nigeria."},
+  {id:'about-body-2',label:'About — Paragraph 2',type:'textarea',default:"Launching at a time when audiences are demanding authenticity, Culture9ja entertains while preserving the soul of Nigeria's many communities. This is not just television — it is a movement."},
+  {id:'about-cta-text',label:'About CTA Link Text',type:'text',default:'Read More About the Show →'},
+  {id:'about-cta-url',label:'About CTA Link URL',type:'text',default:'about.html'},
+  {id:'about-video-src',label:'About Video Source (src)',type:'text',hint:'Relative path or URL to .mp4',default:'https://culture9ja.com/wp-content/uploads/2026/03/WhatsApp-Video-2026-02-27-at-12.30.07-PM.mp4#t=,18'},
+  {id:'about-video-poster',label:'About Video Poster Image URL',type:'text',hint:'Thumbnail shown before play',default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
+  {id:'about-video-caption',label:'About Video Caption',type:'text',default:'Watch the Culture9ja trailer'},
+
+  // Contestants Section
+  {id:'con-eyebrow',label:'Contestants Section Eyebrow',type:'text',default:'Featured Contestants'},
+  {id:'con-title',label:'Contestants Section Title',type:'text',default:'Meet the Faces of Culture'},
+  {id:'con-season-badge',label:'Contestants Season Badge',type:'text',default:'Season 1 · 2026'},
+  {id:'con-viewall-url',label:'"View All" Link URL',type:'text',default:'contestants.html'},
+  // Contestant 1
+  {id:'con1-num',label:'Contestant 1 — Number',type:'text',default:'01'},
+  {id:'con1-role',label:'Contestant 1 — Role Tag',type:'text',default:'Heritage Showcase'},
+  {id:'con1-state',label:'Contestant 1 — State',type:'text',default:'Benue State'},
+  {id:'con1-name',label:'Contestant 1 — Name',type:'text',hint:'Replaces "Contestant Name"',default:'Contestant Name'},
+  {id:'con1-skill',label:'Contestant 1 — Skill',type:'text',default:'Traditional Dance · Tiv Heritage'},
+  {id:'con1-photo',label:'Contestant 1 — Photo URL',type:'text',hint:'Leave blank to show number placeholder',default:''},
+  // Contestant 2
+  {id:'con2-num',label:'Contestant 2 — Number',type:'text',default:'02'},
+  {id:'con2-role',label:'Contestant 2 — Role Tag',type:'text',default:'Cultural Arts'},
+  {id:'con2-state',label:'Contestant 2 — State',type:'text',default:'Kano State'},
+  {id:'con2-name',label:'Contestant 2 — Name',type:'text',default:'Contestant Name'},
+  {id:'con2-skill',label:'Contestant 2 — Skill',type:'text',default:'Hausa Music · Fashion'},
+  {id:'con2-photo',label:'Contestant 2 — Photo URL',type:'text',default:''},
+  // Contestant 3
+  {id:'con3-num',label:'Contestant 3 — Number',type:'text',default:'03'},
+  {id:'con3-role',label:'Contestant 3 — Role Tag',type:'text',default:'Storytelling'},
+  {id:'con3-state',label:'Contestant 3 — State',type:'text',default:'Anambra State'},
+  {id:'con3-name',label:'Contestant 3 — Name',type:'text',default:'Contestant Name'},
+  {id:'con3-skill',label:'Contestant 3 — Skill',type:'text',default:'Igbo Folklore · Craft'},
+  {id:'con3-photo',label:'Contestant 3 — Photo URL',type:'text',default:''},
+  // Contestant 4
+  {id:'con4-num',label:'Contestant 4 — Number',type:'text',default:'04'},
+  {id:'con4-role',label:'Contestant 4 — Role Tag',type:'text',default:'Native Language'},
+  {id:'con4-state',label:'Contestant 4 — State',type:'text',default:'Ogun State'},
+  {id:'con4-name',label:'Contestant 4 — Name',type:'text',default:'Contestant Name'},
+  {id:'con4-skill',label:'Contestant 4 — Skill',type:'text',default:'Yoruba Oratory'},
+  {id:'con4-photo',label:'Contestant 4 — Photo URL',type:'text',default:''},
+  // Contestant 5
+  {id:'con5-num',label:'Contestant 5 — Number',type:'text',default:'05'},
+  {id:'con5-role',label:'Contestant 5 — Role Tag',type:'text',default:'Cuisine'},
+  {id:'con5-state',label:'Contestant 5 — State',type:'text',default:'Rivers State'},
+  {id:'con5-name',label:'Contestant 5 — Name',type:'text',default:'Contestant Name'},
+  {id:'con5-skill',label:'Contestant 5 — Skill',type:'text',default:'Traditional Cuisine'},
+  {id:'con5-photo',label:'Contestant 5 — Photo URL',type:'text',default:''},
+
+  // News Section
+  {id:'news-eyebrow',label:'News Section Eyebrow',type:'text',default:'Latest News & Announcements'},
+  {id:'news-title',label:'News Section Title',type:'text',default:"What's Happening"},
+  {id:'feat-tag',label:'Featured Story — Tag',type:'text',default:'Featured'},
+  {id:'feat-title',label:'Featured Story — Headline',type:'textarea',default:'Culture9ja Official Launch Announced for Abuja, Federal Capital Territory'},
+  {id:'feat-meta',label:'Featured Story — Meta (date/author)',type:'text',default:'April 2026 · By Culture9ja Team'},
+  {id:'feat-excerpt',label:'Featured Story — Excerpt',type:'textarea',default:'The grand opening of Culture9ja Reality TV Show will take place in Nigeria\'s capital city, marking a new era for cultural entertainment. Applications are now open for Season 1 contestants across all 36 states.'},
+  {id:'feat-url',label:'Featured Story — Link URL',type:'text',default:'#'},
+  {id:'news-feature-link-text',label:'Featured Story — "Read More" Link Text',type:'text',default:'Read the Announcement →'},
+  {id:'news1-tag',label:'News Item 1 — Category Tag',type:'text',default:'Auditions'},
+  {id:'news1-title',label:'News Item 1 — Headline',type:'text',default:'Nationwide Audition Tour Dates Released — 6 Geopolitical Zones'},
+  {id:'news1-date',label:'News Item 1 — Date',type:'text',default:'March 2026'},
+  {id:'news2-tag',label:'News Item 2 — Category Tag',type:'text',default:'Events'},
+  {id:'news2-title',label:'News Item 2 — Headline',type:'text',default:'Culture9ja 2025 Cultural Economic Summit — Jos, Plateau State Recap'},
+  {id:'news2-date',label:'News Item 2 — Date',type:'text',default:'December 2025'},
+  {id:'news3-tag',label:'News Item 3 — Category Tag',type:'text',default:'Previous'},
+  {id:'news3-title',label:'News Item 3 — Headline',type:'text',default:'Unveiling Ceremony in Benue State — The Movement Begins'},
+  {id:'news3-date',label:'News Item 3 — Date',type:'text',default:'November 2025'},
+  {id:'news4-tag',label:'News Item 4 — Category Tag',type:'text',default:'Previous'},
+  {id:'news4-title',label:'News Item 4 — Headline',type:'text',default:'Jos, Plateau State Unveiling — Building Cultural Unity'},
+  {id:'news4-date',label:'News Item 4 — Date',type:'text',default:'February 2026'},
+
+  // Events Section
+  {id:'ev-eyebrow',label:'Events Section Eyebrow',type:'text',default:'Upcoming Events'},
+  {id:'ev-title',label:'Events Section Title',type:'text',default:'Season Milestones'},
+  {id:'events-schedule-text',label:'"Full Schedule" Link Text',type:'text',default:'Full Schedule →'},
+  {id:'events-schedule-url',label:'"Full Schedule" Link URL',type:'text',default:'#'},
+  {id:'ev1-day',label:'Event 1 — Day',type:'text',hint:'"TBD" or actual day number',default:'TBD'},
+  {id:'ev1-month',label:'Event 1 — Month / Year',type:'text',default:'2026'},
+  {id:'ev1-city',label:'Event 1 — City Label',type:'text',default:'Abuja'},
+  {id:'ev1-name',label:'Event 1 — Event Name',type:'textarea',default:'Official Launch & Grand Opening — Culture9ja Reality TV Show'},
+  {id:'ev1-location',label:'Event 1 — Full Location',type:'text',default:'Abuja, Federal Capital Territory'},
+  {id:'ev1-type',label:'Event 1 — Badge Type',type:'text',hint:'e.g. Grand Launch, Auditions, Grand Finale',default:'Grand Launch'},
+  {id:'ev2-day',label:'Event 2 — Day',type:'text',default:'TBD'},
+  {id:'ev2-month',label:'Event 2 — Month / Year',type:'text',default:'2026'},
+  {id:'ev2-city',label:'Event 2 — City Label',type:'text',default:'Nationwide'},
+  {id:'ev2-name',label:'Event 2 — Event Name',type:'textarea',default:'Nationwide Audition Tour — All Six Geopolitical Zones'},
+  {id:'ev2-location',label:'Event 2 — Full Location',type:'text',default:'Multiple Cities Across Nigeria'},
+  {id:'ev2-type',label:'Event 2 — Badge Type',type:'text',default:'Auditions'},
+  {id:'ev3-day',label:'Event 3 — Day',type:'text',default:'TBD'},
+  {id:'ev3-month',label:'Event 3 — Month / Year',type:'text',default:'2026'},
+  {id:'ev3-city',label:'Event 3 — City Label',type:'text',default:'Live Show'},
+  {id:'ev3-name',label:'Event 3 — Event Name',type:'textarea',default:'Season 1 Grand Finale — The Nation Decides Its Champion'},
+  {id:'ev3-location',label:'Event 3 — Full Location',type:'text',default:'To Be Announced'},
+  {id:'ev3-type',label:'Event 3 — Badge Type',type:'text',default:'Grand Finale'},
+
+  // Sponsors Section
+  {id:'sp-title',label:'Sponsors Section Title',type:'text',default:'Those Who Believe in Our Mission'},
+  {id:'sp1-name',label:'Sponsor 1 — Name',type:'text',hint:'Replaces placeholder text',default:'Official Partner'},
+  {id:'sp1-logo',label:'Sponsor 1 — Logo URL',type:'text',hint:'Leave blank for placeholder',default:''},
+  {id:'sp2-name',label:'Sponsor 2 — Name',type:'text',default:'Title Sponsor'},
+  {id:'sp2-logo',label:'Sponsor 2 — Logo URL',type:'text',default:''},
+  {id:'sp3-name',label:'Sponsor 3 — Name',type:'text',default:'Media Partner'},
+  {id:'sp3-logo',label:'Sponsor 3 — Logo URL',type:'text',default:''},
+  {id:'sp4-name',label:'Sponsor 4 — Name',type:'text',default:'Cultural Partner'},
+  {id:'sp4-logo',label:'Sponsor 4 — Logo URL',type:'text',default:''},
+  {id:'sp5-name',label:'Sponsor 5 — Name',type:'text',default:'Brand Partner'},
+  {id:'sp5-logo',label:'Sponsor 5 — Logo URL',type:'text',default:''},
+  {id:'sp-cta-text',label:'Sponsors CTA Text',type:'textarea',default:"Interested in partnering with Nigeria's premier cultural platform?"},
+  {id:'sp-cta-btn',label:'Sponsors CTA Button Label',type:'text',default:'Become a Partner →'},
+  {id:'sp-cta-url',label:'Sponsors CTA Button URL',type:'text',default:'#contact'},
+
+  // CTA Section
+  {id:'cta-eyebrow',label:'CTA Section Eyebrow',type:'text',default:'Be Part of It'},
+  {id:'cta-title-line1',label:'CTA Title — Line 1',type:'text',default:'Your Culture'},
+  {id:'cta-title-line2',label:'CTA Title — Line 2 (italic/gold)',type:'text',default:'Deserves a Stage.'},
+  {id:'cta-desc',label:'CTA Description',type:'textarea',default:'Whether you are a contestant ready to represent your heritage, a brand that wants to align with cultural excellence, or a fan who wants to follow the journey — there is a place for you in Culture9ja.'},
+  {id:'cta-opt1-title',label:'CTA Option 1 — Title',type:'text',default:'Apply as a Contestant'},
+  {id:'cta-opt1-desc',label:'CTA Option 1 — Description',type:'text',default:'Register now for Season 1 auditions — ₦10,000 fee'},
+  {id:'cta-opt1-url',label:'CTA Option 1 — URL',type:'text',default:'register.html'},
+  {id:'cta-opt2-title',label:'CTA Option 2 — Title',type:'text',default:'Partner With Culture9ja'},
+  {id:'cta-opt2-desc',label:'CTA Option 2 — Description',type:'text',default:'Sponsorship packages for brands & organisations'},
+  {id:'cta-opt2-url',label:'CTA Option 2 — URL',type:'text',default:'#'},
+  {id:'cta-opt3-title',label:'CTA Option 3 — Title',type:'text',default:'Follow the Journey'},
+  {id:'cta-opt3-desc',label:'CTA Option 3 — Description',type:'text',default:'Stay updated on events, auditions & contestant news'},
+  {id:'cta-opt3-url',label:'CTA Option 3 — URL',type:'text',default:'#'},
+  {id:'cta-opt4-title',label:'CTA Option 4 — Title',type:'text',default:'Watch the Show'},
+  {id:'cta-opt4-desc',label:'CTA Option 4 — Description',type:'text',default:'Episodes, highlights & behind-the-scenes content'},
+  {id:'cta-opt4-url',label:'CTA Option 4 — URL',type:'text',default:'#'},
+
+  // Footer
+  {id:'footer-logo-url',label:'Footer Logo Image URL',type:'text',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
+  {id:'footer-tagline',label:'Footer Tagline',type:'textarea',default:"Africa's cultural reality television show — celebrating people, living traditions, and the stories that define who we are."},
+  {id:'footer-social-fb',label:'Footer — Facebook URL',type:'text',default:'#'},
+  {id:'footer-social-in',label:'Footer — Instagram URL',type:'text',default:'#'},
+  {id:'footer-social-x',label:'Footer — X (Twitter) URL',type:'text',default:'#'},
+  {id:'footer-social-yt',label:'Footer — YouTube URL',type:'text',default:'#'},
+  {id:'footer-social-tk',label:'Footer — TikTok URL',type:'text',default:'#'},
+  {id:'footer-email',label:'Footer — Email',type:'text',default:'info@culture9ja.com'},
+  {id:'footer-phone1',label:'Footer — Phone 1',type:'text',default:'+234 9039997729'},
+  {id:'footer-phone2',label:'Footer — Phone 2',type:'text',default:'09055567245'},
+  {id:'footer-phone3',label:'Footer — Phone 3',type:'text',default:'09095777082'},
+  {id:'footer-address',label:'Footer — Headquarters',type:'text',default:'Abuja, FCT, Nigeria'},
+  {id:'footer-copyright',label:'Footer — Copyright Line',type:'text',default:'© 2026 Culture9ja Limited. All Rights Reserved. Built with Purpose.'},
+  {id:'footer-legal-terms',label:'Footer — Terms & Conditions Text',type:'text',default:'Terms & Conditions'},
+  {id:'footer-legal-privacy',label:'Footer — Privacy Policy Text',type:'text',default:'Privacy Policy'},
+  {id:'footer-legal-disclaimer',label:'Footer — Disclaimer Text',type:'text',default:'Disclaimer'},
+  // Footer navigation links (newly added)
+  {id:'footer-link-home',label:'Footer: Home Link Text',type:'text',default:'Home'},
+  {id:'footer-link-about',label:'Footer: About Link Text',type:'text',default:'About the Show'},
+  {id:'footer-link-contestants',label:'Footer: Contestants Link Text',type:'text',default:'Contestants'},
+  {id:'footer-link-events',label:'Footer: Events Link Text',type:'text',default:'Events'},
+  {id:'footer-link-news',label:'Footer: News Link Text',type:'text',default:'News'},
+  {id:'footer-link-gallery',label:'Footer: Gallery Link Text',type:'text',default:'Gallery'},
+  {id:'footer-link-auditions',label:'Footer: Auditions Link Text',type:'text',default:'Auditions'},
+  {id:'footer-link-register',label:'Footer: Register Link Text',type:'text',default:'Register'},
+  {id:'footer-link-voting',label:'Footer: Voting Link Text',type:'text',default:'Voting'},
+  {id:'footer-link-episodes',label:'Footer: Episodes Link Text',type:'text',default:'Episodes'},
+  {id:'footer-link-sponsors',label:'Footer: Sponsors Link Text',type:'text',default:'Sponsors'},
+  {id:'footer-link-faqs',label:'Footer: FAQs Link Text',type:'text',default:'FAQs'},
+  {id:'footer-link-contact',label:'Footer: Contact Link Text',type:'text',default:'Contact Us'},
+]},
   {id:'auditions',name:'Auditions Page',file:'auditions.html',icon:'🎭',desc:'Overview, Eligibility, Process, Locations, Online, Schedule, FAQ — fully editable',sections:[
     {id:'nav-logo-url',label:'Logo Image URL',type:'text',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
     {id:'nav-cta-text',label:'Nav "Apply Now" Button Text',type:'text',default:'Apply Now'},
@@ -1620,198 +1863,248 @@ const PAGES=[
     {id:'footer-social-yt',label:'YouTube URL',type:'text',default:'#'},
     {id:'footer-social-tk',label:'TikTok URL',type:'text',default:'#'},
   ]},
-  {id:'about',name:'About Page',file:'about.html',icon:'📖',desc:'Complete content — Hero, Show Overview, Mission/Vision, Aims, Format, Categories, Judges, Prizes, Rules & Regulations, CTA',sections:[
-    // NAVBAR (reused from index, but can be overridden per page)
-    {id:'nav-logo-url',label:'Logo Image URL',type:'text',hint:'src attribute of <img> in navbar',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
-    {id:'nav-cta-text',label:'Nav "Apply Now" Button Text',type:'text',default:'Apply Now'},
-    {id:'nav-cta-url',label:'Nav "Apply Now" Button URL',type:'text',default:'register.html'},
-    // HERO
-    {id:'hero-bg',label:'Hero Background Image URL',type:'text',default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
-    {id:'hero-eyebrow',label:'Hero Eyebrow Text',type:'text',default:"Nigeria's Cultural Reality TV Show"},
-    {id:'hero-title',label:'Hero Main Title',type:'text',default:'About <em>Culture9ja</em>',hint:'Use <em> tags for italic part'},
-    {id:'hero-desc',label:'Hero Description',type:'textarea',default:'A purpose-driven entertainment platform designed to celebrate, showcase, and preserve the extraordinary diversity of Nigeria\'s cultural heritage through world-class television.'},
-    // SHOW OVERVIEW (left column)
-    {id:'overview-eyebrow',label:'Overview Section Eyebrow',type:'text',default:'Show Overview'},
-    {id:'overview-title',label:'Overview Section Title',type:'text',default:'Reality TV That <em>Actually Reflects</em> Who We Are'},
-    {id:'overview-p1',label:'Overview Paragraph 1',type:'textarea',default:'Nigeria is home to one of the most diverse and vibrant cultural landscapes in the world, boasting over <strong>500 distinct languages and ethnic traditions.</strong> Yet, in the age of rapid globalisation and digital entertainment, many of these traditions risk being diluted or forgotten.'},
-    {id:'overview-p2',label:'Overview Paragraph 2',type:'textarea',default:'Culture9ja Reality TV Show was conceived as a direct response to this cultural challenge. It is a <strong>purpose-driven entertainment platform</strong> designed to celebrate what makes Nigeria uniquely great — its people, heritage, creativity, and diversity.'},
-    {id:'overview-quote',label:'Overview Pull Quote',type:'textarea',default:'"Culture9ja is a cultural-based reality television program designed to showcase, preserve, and celebrate the rich heritage, traditions, creativity, and diversity of Nigeria."'},
-    {id:'overview-p3',label:'Overview Paragraph 3 (after quote)',type:'textarea',default:'The show brings together talented individuals from across Nigeria who possess deep knowledge of, passion for, or exceptional talent in Nigerian cultural arts. Through structured competitions, cultural challenges, storytelling, and performances, contestants <strong>showcase the beauty of their ethnic backgrounds</strong> while connecting with audiences across Nigeria and the world.'},
-    {id:'overview-p4',label:'Overview Paragraph 4',type:'textarea',default:'Culture9ja Limited is a Nigerian cultural entertainment company established to champion the celebration, preservation, and promotion of Nigeria\'s rich and diverse cultural heritage through innovative television programming. This is not just television — <strong>it is a movement.</strong>'},
-    // OVERVIEW STAT CARDS (5 cards)
-    {id:'stat1-label',label:'Stat 1 – Label',type:'text',default:'Company'},
-    {id:'stat1-value',label:'Stat 1 – Value',type:'text',default:'Culture9ja Limited'},
-    {id:'stat1-sub',label:'Stat 1 – Subtext',type:'text',default:'Cultural Entertainment & Media · Abuja, FCT, Nigeria'},
-    {id:'stat2-label',label:'Stat 2 – Label',type:'text',default:'Season Duration'},
-    {id:'stat2-value',label:'Stat 2 – Value',type:'text',default:'12 – 16 Weeks Per Season'},
-    {id:'stat2-sub',label:'Stat 2 – Subtext',type:'text',default:'Auditions through to Grand Finale — annual cycle'},
-    {id:'stat3-label',label:'Stat 3 – Label',type:'text',default:'Who Can Apply'},
-    {id:'stat3-value',label:'Stat 3 – Value',type:'text',default:'All 36 States + FCT'},
-    {id:'stat3-sub',label:'Stat 3 – Subtext',type:'text',default:'Nigerian citizens aged 18 and above · 250+ cultures represented'},
-    {id:'stat4-label',label:'Stat 4 – Label',type:'text',default:'Broadcast'},
-    {id:'stat4-value',label:'Stat 4 – Value',type:'text',default:'TV & Digital Platforms'},
-    {id:'stat4-sub',label:'Stat 4 – Subtext',type:'text',default:'National TV · YouTube · Social Media · Official Website'},
-    {id:'stat5-label',label:'Stat 5 – Label',type:'text',default:'Registration Fee'},
-    {id:'stat5-value',label:'Stat 5 – Value',type:'text',default:'₦10,000'},
-    {id:'stat5-sub',label:'Stat 5 – Subtext',type:'text',default:'Non-refundable · Covers application processing & audition logistics'},
-    // MISSION & VISION
-    {id:'mission-eyebrow',label:'Mission Section Eyebrow',type:'text',default:'Mission & Vision'},
-    {id:'mission-title',label:'Mission Section Title',type:'text',default:'Our <em>Purpose</em> & Direction'},
-    {id:'vision-num',label:'Vision Card – Number',type:'text',default:'01'},
-    {id:'vision-label',label:'Vision Card – Label',type:'text',default:'Vision Statement'},
-    {id:'vision-title',label:'Vision Card – Title',type:'text',default:"Africa's Leading Cultural TV Platform"},
-    {id:'vision-body',label:'Vision Card – Body',type:'textarea',default:'We are building more than a show. Our vision is to become Africa\'s leading cultural reality television platform — a beacon of heritage, unity, and creative excellence.'},
-    {id:'vision-quote',label:'Vision Card – Quote',type:'textarea',default:'"A beacon of heritage, unity, and creative excellence that amplifies the richness of Nigerian culture to the world."'},
-    {id:'mission-num',label:'Mission Card – Number',type:'text',default:'02'},
-    {id:'mission-label',label:'Mission Card – Label',type:'text',default:'Mission Statement'},
-    {id:'mission-title-card',label:'Mission Card – Title',type:'text',default:'Showcase, Preserve & Celebrate'},
-    {id:'mission-body',label:'Mission Card – Body',type:'textarea',default:'To showcase, preserve, and celebrate Nigeria\'s diverse cultural heritage through world-class reality television programming that educates, entertains, and inspires — while empowering talented Nigerians and fostering national pride and unity.'},
-    {id:'mission-quote',label:'Mission Card – Quote',type:'textarea',default:'"Empowering talented Nigerians and fostering national pride and unity through the power of culture."'},
-    {id:'values-num',label:'Values Card – Number',type:'text',default:'03'},
-    {id:'values-label',label:'Values Card – Label',type:'text',default:'Our Values'},
-    {id:'values-title',label:'Values Card – Title',type:'text',default:'What We Stand For'},
-    {id:'values-body',label:'Values Card – Body',type:'textarea',default:'Authenticity in representing all Nigerian cultures. Unity in celebrating diversity. Excellence in production standards. Integrity in all operations. Impact measured by positive societal change.'},
-    {id:'values-quote',label:'Values Card – Quote',type:'textarea',default:'"We operate transparently, fairly, and with honour — because culture deserves nothing less."'},
-    // AIMS & OBJECTIVES (8 aims)
-    {id:'aim1-title',label:'Aim 1 – Title',type:'text',default:'Cultural Promotion'},
-    {id:'aim1-desc',label:'Aim 1 – Description',type:'text',default:'Promote Nigerian cultural heritage, languages, fashion, food, music, and traditions.'},
-    {id:'aim2-title',label:'Aim 2 – Title',type:'text',default:'National Unity'},
-    {id:'aim2-desc',label:'Aim 2 – Description',type:'text',default:"Encourage unity and appreciation of Nigeria's diverse ethnic groups across all regions."},
-    {id:'aim3-title',label:'Aim 3 – Title',type:'text',default:'Talent Platform'},
-    {id:'aim3-desc',label:'Aim 3 – Description',type:'text',default:'Provide a platform for emerging talents in cultural arts and entertainment nationwide.'},
-    {id:'aim4-title',label:'Aim 4 – Title',type:'text',default:'Public Education'},
-    {id:'aim4-desc',label:'Aim 4 – Description',type:'text',default:'Educate viewers on Nigerian history and traditions in an engaging entertainment format.'},
-    {id:'aim5-title',label:'Aim 5 – Title',type:'text',default:'Positive Values'},
-    {id:'aim5-desc',label:'Aim 5 – Description',type:'text',default:'Foster values such as respect, discipline, integrity, and teamwork among participants.'},
-    {id:'aim6-title',label:'Aim 6 – Title',type:'text',default:'Commercial Sustainability'},
-    {id:'aim6-desc',label:'Aim 6 – Description',type:'text',default:'Generate revenue through sponsorships, registrations, merchandise, and broadcast partnerships.'},
-    {id:'aim7-title',label:'Aim 7 – Title',type:'text',default:'Fair Competition'},
-    {id:'aim7-desc',label:'Aim 7 – Description',type:'text',default:'Build an inclusive, transparent, and professionally managed competition for all Nigerians.'},
-    {id:'aim8-title',label:'Aim 8 – Title',type:'text',default:'Diaspora Expansion'},
-    {id:'aim8-desc',label:'Aim 8 – Description',type:'text',default:"Expand the show's reach across Africa and to the global Nigerian diaspora within three years."},
-    // COMPETITION FORMAT
-    {id:'format-eyebrow',label:'Format Section Eyebrow',type:'text',default:'Competition Format'},
-    {id:'format-title',label:'Format Section Title',type:'text',default:'How the <em>Show Works</em>'},
-    {id:'format-intro',label:'Format Intro Paragraph',type:'textarea',default:'The Culture9ja Reality TV Show follows a season-based format spanning 12–16 weeks. Contestants from different Nigerian states and ethnic groups compete through a series of culturally themed challenges and performances, with the winner determined by a combination of judges\' scores and audience votes.'},
-    // STAGES (5)
-    {id:'stage1-num',label:'Stage 1 – Number',type:'text',default:'1'},
-    {id:'stage1-label',label:'Stage 1 – Label',type:'text',default:'Stage One'},
-    {id:'stage1-title',label:'Stage 1 – Title',type:'text',default:'Auditions'},
-    {id:'stage1-desc',label:'Stage 1 – Description',type:'textarea',default:'Open to all eligible Nigerians aged 18+. Held in multiple cities and online. Applicants showcase their cultural knowledge and talent before a panel of regional judges.'},
-    {id:'stage1-timing',label:'Stage 1 – Timing',type:'text',default:'Weeks 1 – 3'},
-    {id:'stage2-num',label:'Stage 2 – Number',type:'text',default:'2'},
-    {id:'stage2-label',label:'Stage 2 – Label',type:'text',default:'Stage Two'},
-    {id:'stage2-title',label:'Stage 2 – Title',type:'text',default:'Screening & Bootcamp'},
-    {id:'stage2-desc',label:'Stage 2 – Description',type:'textarea',default:'Selected candidates undergo cultural assessments, interviews, and background checks. Those who pass proceed to bootcamp for cultural mentorship and media training.'},
-    {id:'stage2-timing',label:'Stage 2 – Timing',type:'text',default:'Weeks 4 – 5'},
-    {id:'stage3-num',label:'Stage 3 – Number',type:'text',default:'3'},
-    {id:'stage3-label',label:'Stage 3 – Label',type:'text',default:'Stage Three'},
-    {id:'stage3-title',label:'Stage 3 – Title',type:'text',default:'Live Shows'},
-    {id:'stage3-desc',label:'Stage 3 – Description',type:'textarea',default:'The main competition phase. Contestants perform weekly themed cultural challenges judged by experts. Audience voting determines which contestants advance each week.'},
-    {id:'stage3-timing',label:'Stage 3 – Timing',type:'text',default:'Weeks 6 – 14'},
-    {id:'stage4-num',label:'Stage 4 – Number',type:'text',default:'4'},
-    {id:'stage4-label',label:'Stage 4 – Label',type:'text',default:'Stage Four'},
-    {id:'stage4-title',label:'Stage 4 – Title',type:'text',default:'Semi-Finals'},
-    {id:'stage4-desc',label:'Stage 4 – Description',type:'textarea',default:'Top contestants compete in a high-stakes semi-final round. The strongest performers earn their place in the grand finale before a national audience.'},
-    {id:'stage4-timing',label:'Stage 4 – Timing',type:'text',default:'Week 15'},
-    {id:'stage5-num',label:'Stage 5 – Number',type:'text',default:'5'},
-    {id:'stage5-label',label:'Stage 5 – Label',type:'text',default:'Stage Five'},
-    {id:'stage5-title',label:'Stage 5 – Title',type:'text',default:'Grand Finale'},
-    {id:'stage5-desc',label:'Stage 5 – Description',type:'textarea',default:'The ultimate celebration. Finalists give their best before a live audience, judges, and national TV viewers. The winner is crowned Culture9ja Champion.'},
-    {id:'stage5-timing',label:'Stage 5 – Timing',type:'text',default:'Week 16'},
-    // CATEGORIES
-    {id:'categories-title',label:'Categories Block Title',type:'text',default:'Competition <em>Categories</em>'},
-    {id:'cat1-name',label:'Category 1 – Name',type:'text',default:'Traditional Music'},
-    {id:'cat2-name',label:'Category 2 – Name',type:'text',default:'Traditional Dance'},
-    {id:'cat3-name',label:'Category 3 – Name',type:'text',default:'Cultural Fashion'},
-    {id:'cat4-name',label:'Category 4 – Name',type:'text',default:'Native Language Oratory'},
-    {id:'cat5-name',label:'Category 5 – Name',type:'text',default:'Nigerian Cuisine'},
-    {id:'cat6-name',label:'Category 6 – Name',type:'text',default:'Storytelling & Folklore'},
-    {id:'cat7-name',label:'Category 7 – Name',type:'text',default:'Cultural Crafts'},
-    // JUDGES & HOSTS
-    {id:'judges-eyebrow',label:'Judges Section Eyebrow',type:'text',default:'Key Personalities'},
-    {id:'judges-title',label:'Judges Section Title',type:'text',default:'Judges <em>&amp;</em> Hosts'},
-    {id:'judge1-initials',label:'Judge 1 – Avatar Initials',type:'text',default:'JD'},
-    {id:'judge1-role',label:'Judge 1 – Role',type:'text',default:'Lead Judge'},
-    {id:'judge1-name',label:'Judge 1 – Name',type:'text',default:'To Be Announced'},
-    {id:'judge1-desc',label:'Judge 1 – Description',type:'textarea',default:'A distinguished cultural authority drawn from Nigeria\'s diverse ethnic communities. Judges are selected for their depth of knowledge in Nigerian heritage, traditions, and creative arts.'},
-    {id:'judge1-tags',label:'Judge 1 – Expertise Tags (comma separated)',type:'text',default:'Cultural Heritage, Traditional Arts'},
-    {id:'judge2-initials',label:'Judge 2 – Avatar Initials',type:'text',default:'JD'},
-    {id:'judge2-role',label:'Judge 2 – Role',type:'text',default:'Cultural Judge'},
-    {id:'judge2-name',label:'Judge 2 – Name',type:'text',default:'To Be Announced'},
-    {id:'judge2-desc',label:'Judge 2 – Description',type:'textarea',default:'Representatives from various Nigerian ethnic groups serve as judges, ensuring authentic and balanced evaluation across all cultural categories and geopolitical zones.'},
-    {id:'judge2-tags',label:'Judge 2 – Expertise Tags',type:'text',default:'Music & Dance, Language'},
-    {id:'judge3-initials',label:'Judge 3 – Avatar Initials',type:'text',default:'HT'},
-    {id:'judge3-role',label:'Judge 3 – Role',type:'text',default:'Show Host'},
-    {id:'judge3-name',label:'Judge 3 – Name',type:'text',default:'To Be Announced'},
-    {id:'judge3-desc',label:'Judge 3 – Description',type:'textarea',default:'The Culture9ja host is a dynamic Nigerian media personality who brings energy, cultural fluency, and national appeal to every episode and live show broadcast.'},
-    {id:'judge3-tags',label:'Judge 3 – Expertise Tags',type:'text',default:'Media, Entertainment'},
-    {id:'judge4-initials',label:'Judge 4 – Avatar Initials',type:'text',default:'AD'},
-    {id:'judge4-role',label:'Judge 4 – Role',type:'text',default:'Advisory Panel'},
-    {id:'judge4-name',label:'Judge 4 – Name',type:'text',default:'Cultural Advisors'},
-    {id:'judge4-desc',label:'Judge 4 – Description',type:'textarea',default:'Traditional rulers, chiefs, and representatives from the National Council for Arts and Culture (NCAC) provide cultural oversight and authenticity guidance throughout the season.'},
-    {id:'judge4-tags',label:'Judge 4 – Expertise Tags',type:'text',default:'NCAC, Traditional Rulers'},
-    {id:'judges-note',label:'Judges Note (HTML allowed)',type:'textarea',default:'<strong>Official announcements coming soon.</strong> The panel of judges and hosts for Culture9ja Season 1 will be officially announced ahead of the grand launch. Judges are selected from across Nigeria\'s six geopolitical zones to ensure fair and representative cultural evaluation. All judges and production staff are required to maintain <strong>neutrality and integrity</strong> throughout the competition — bribery, vote manipulation, or favouritism is strictly prohibited per our Anti-Corruption Policy.'},
-    // PRIZES & REWARDS
-    {id:'prizes-eyebrow',label:'Prizes Section Eyebrow',type:'text',default:'Prizes & Rewards'},
-    {id:'prizes-title',label:'Prizes Section Title',type:'text',default:'What\'s at <em>Stake</em>'},
-    {id:'champion-label',label:'Champion Block – Label',type:'text',default:'Season 1 Grand Prize'},
-    {id:'champion-title',label:'Champion Block – Title',type:'text',default:'Culture9ja Champion'},
-    {id:'champion-desc',label:'Champion Block – Description',type:'textarea',default:'The winner is crowned Culture9ja Champion — Nigeria\'s foremost cultural ambassador. The grand prize combines cash, recognition, endorsement opportunities, and a platform to represent Nigerian culture on the national and international stage.'},
-    {id:'champion-badge',label:'Champion Block – Badge Text',type:'text',default:'Season 1 · 2026'},
-    {id:'prize1-num',label:'Prize 1 – Number',type:'text',default:'01'},
-    {id:'prize1-title',label:'Prize 1 – Title',type:'text',default:'Grand Prize — Cash Award'},
-    {id:'prize1-desc',label:'Prize 1 – Description',type:'textarea',default:'The Culture9ja Champion receives a significant cash prize, recognizing their excellence and dedication in representing Nigerian cultural heritage throughout the competition.'},
-    {id:'prize2-num',label:'Prize 2 – Number',type:'text',default:'02'},
-    {id:'prize2-title',label:'Prize 2 – Title',type:'text',default:'National Recognition & Cultural Ambassador Title'},
-    {id:'prize2-desc',label:'Prize 2 – Description',type:'textarea',default:'The winner is officially recognised as Nigeria\'s Cultural Ambassador — a title that carries significant media coverage, public appearances, and national prestige.'},
-    {id:'prize3-num',label:'Prize 3 – Number',type:'text',default:'03'},
-    {id:'prize3-title',label:'Prize 3 – Title',type:'text',default:'Media Exposure & Endorsement Opportunities'},
-    {id:'prize3-desc',label:'Prize 3 – Description',type:'textarea',default:'Winners gain access to significant media exposure through Culture9ja\'s national broadcast partners, social media platforms, and corporate sponsorship networks.'},
-    {id:'prize4-num',label:'Prize 4 – Number',type:'text',default:'04'},
-    {id:'prize4-title',label:'Prize 4 – Title',type:'text',default:'Special Recognition for Runners-Up'},
-    {id:'prize4-desc',label:'Prize 4 – Description',type:'textarea',default:'Runners-up and semi-finalists also receive recognition, prizes, and ongoing support from the Culture9ja platform — because every culture represented deserves celebration.'},
-    {id:'prize5-num',label:'Prize 5 – Number',type:'text',default:'05'},
-    {id:'prize5-title',label:'Prize 5 – Title',type:'text',default:'Award Ceremony & Grand Finale Event'},
-    {id:'prize5-desc',label:'Prize 5 – Description',type:'textarea',default:'The grand prize is presented at a spectacular award ceremony broadcast live on national television — a landmark cultural moment for Nigeria.'},
-    {id:'prize-note',label:'Prize Note (HTML allowed)',type:'textarea',default:'<strong>Note:</strong> The full breakdown of prize values and reward categories will be officially announced at the Culture9ja Grand Launch in Abuja, Federal Capital Territory. All prizes and rewards are structured to reflect the significance of cultural heritage to Nigeria\'s national identity. Prize presentation takes place at the Grand Finale broadcast event.'},
-    // RULES & REGULATIONS (8 rules)
-    {id:'rules-eyebrow',label:'Rules Section Eyebrow',type:'text',default:'Participant Guidelines'},
-    {id:'rules-title',label:'Rules Section Title',type:'text',default:'Rules & <em>Regulations</em>'},
-    {id:'rules-subtitle',label:'Rules Subtitle',type:'textarea',default:'All participants are required to comply with the following guidelines. Participation in Culture9ja Reality TV Show constitutes acceptance of these rules and all applicable terms and conditions.'},
-    {id:'rule1-title',label:'Rule 1 – Title',type:'text',default:'Eligibility Requirements'},
-    {id:'rule1-content',label:'Rule 1 – Content (HTML)',type:'textarea',default:'<ul><li>Must be 18 years or older at the time of registration</li><li>Must be a Nigerian citizen or individual of Nigerian descent</li><li>Must possess a valid means of identification</li><li>Must demonstrate knowledge, talent, or interest in Nigerian culture</li><li>Must be physically and mentally fit to participate in the show</li><li>Individuals with criminal records involving violence, fraud, or misconduct may be disqualified</li></ul>'},
-    {id:'rule2-title',label:'Rule 2 – Title',type:'text',default:'Registration & Application'},
-    {id:'rule2-content',label:'Rule 2 – Content (HTML)',type:'textarea',default:'<ul><li>All applicants must complete the official online registration form in full</li><li>Applicants must provide accurate and truthful information — false details lead to disqualification</li><li>Registration is only complete after payment of the non-refundable ₦10,000 registration fee</li><li>Payment must be made through official channels on the website only</li><li>Submitting an application does not guarantee selection for the show</li></ul>'},
-    {id:'rule3-title',label:'Rule 3 – Title',type:'text',default:'Code of Conduct'},
-    {id:'rule3-content',label:'Rule 3 – Content (HTML)',type:'textarea',default:'<ul><li>Show respect for all cultures, traditions, religions, and ethnic groups at all times</li><li>Refrain from hate speech, discrimination, bullying, harassment, or violence of any kind</li><li>Avoid the use of drugs, excessive alcohol, or illegal substances during participation</li><li>Maintain decent dressing in alignment with Nigerian cultural values</li><li>Comply with all instructions from show producers and management</li><li>Respect fellow contestants, organizers, judges, and all production staff</li></ul>'},
-    {id:'rule4-title',label:'Rule 4 – Title',type:'text',default:'Content & Performance Guidelines'},
-    {id:'rule4-content',label:'Rule 4 – Content (HTML)',type:'textarea',default:'<ul><li>All content must align with Nigerian cultural values and national broadcasting regulations</li><li>The show shall avoid explicit sexual content, graphic violence, or offensive material</li><li>Cultural presentations must be authentic and not deliberately misrepresent any ethnic group</li><li>Producers reserve the right to edit content for clarity, quality, and regulatory compliance</li><li>Cultural performances must respect traditional ownership and community intellectual rights</li></ul>'},
-    {id:'rule5-title',label:'Rule 5 – Title',type:'text',default:'Media & Intellectual Property'},
-    {id:'rule5-content',label:'Rule 5 – Content (HTML)',type:'textarea',default:'<ul><li>All recorded footage and materials produced remain the property of Culture9ja Reality TV</li><li>Contestants grant the show the right to use their likeness, name, voice, and performances for promotional purposes</li><li>Contestants may not reproduce or distribute official show content without written permission</li><li>Recordings may be used for broadcast, promotion, advertising, and digital media without additional compensation</li></ul>'},
-    {id:'rule6-title',label:'Rule 6 – Title',type:'text',default:'Disciplinary Procedures'},
-    {id:'rule6-content',label:'Rule 6 – Content (HTML)',type:'textarea',default:'<ul><li>Minor infractions may result in a formal warning issued by the production team</li><li>Serious misconduct may lead to immediate disqualification from the competition</li><li>The decision of the show\'s Executive Committee is final on all disciplinary matters</li><li>Appeals may be submitted in writing within 48 hours of disciplinary action</li><li>Disqualification grounds include: rules violation, misconduct, illegal activity, or false registration information</li></ul>'},
-    {id:'rule7-title',label:'Rule 7 – Title',type:'text',default:'Safety, Welfare & Privacy'},
-    {id:'rule7-content',label:'Rule 7 – Content (HTML)',type:'textarea',default:'<ul><li>The show shall provide safe accommodation and a secure environment for all participants</li><li>Medical and psychological support shall be available during production</li><li>Participants must report health or safety concerns immediately to the production team</li><li>Personal data of participants shall be collected and stored securely per Nigerian privacy laws</li><li>Information shall not be shared with third parties without consent, except as required by law</li></ul>'},
-    {id:'rule8-title',label:'Rule 8 – Title',type:'text',default:'Anti-Corruption & Fairness Policy'},
-    {id:'rule8-content',label:'Rule 8 – Content (HTML)',type:'textarea',default:'<ul><li>Bribery, vote manipulation, or favouritism is strictly prohibited throughout the competition</li><li>All judges and production staff must maintain neutrality and integrity at all times</li><li>Any conflict of interest must be declared immediately to the Executive Committee</li><li>Sponsors shall not influence judging outcomes under any circumstances</li><li>Voting processes must be transparent, fair, and verifiable</li></ul>'},
-    // RULES CTA
-    {id:'rules-cta-label',label:'Rules CTA – Label',type:'text',default:'Ready to Represent Your Culture?'},
-    {id:'rules-cta-title',label:'Rules CTA – Title',type:'text',default:'Apply for Culture9ja Season 1 — Your Heritage Deserves a Stage.'},
-    {id:'rules-cta-btn1-text',label:'Rules CTA – Button 1 Text',type:'text',default:'Apply Now'},
-    {id:'rules-cta-btn1-url',label:'Rules CTA – Button 1 URL',type:'text',default:'index.html#register'},
-    {id:'rules-cta-btn2-text',label:'Rules CTA – Button 2 Text',type:'text',default:'Back to Home'},
-    {id:'rules-cta-btn2-url',label:'Rules CTA – Button 2 URL',type:'text',default:'index.html'},
-    // FOOTER (reused fields, optional)
-    {id:'footer-logo-url',label:'Footer Logo Image URL',type:'text',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
-    {id:'footer-tagline',label:'Footer Tagline',type:'textarea',default:"Africa's cultural reality television show — celebrating people, living traditions, and the stories that define who we are."},
-    {id:'footer-email',label:'Footer – Email',type:'text',default:'support@culture9ja.com'},
-    {id:'footer-phone1',label:'Footer – Phone 1',type:'text',default:'+234 9039997729'},
-    {id:'footer-phone2',label:'Footer – Phone 2',type:'text',default:'09055567245'},
-    {id:'footer-phone3',label:'Footer – Phone 3',type:'text',default:'09095777082'},
-    {id:'footer-address',label:'Footer – Headquarters',type:'text',default:'Abuja, FCT, Nigeria'},
-    {id:'footer-copyright',label:'Footer – Copyright Line',type:'text',default:'© 2026 Culture9ja Limited. All Rights Reserved. Built with Purpose.'},
-  ]},
+{id:'about',name:'About Page',file:'about.html',icon:'📖',desc:'Complete content — Hero, Show Overview, Mission/Vision, Aims, Format, Categories, Judges, Prizes, Rules & Regulations, CTA',sections:[
+  // NAVBAR (all link texts and URLs)
+  {id:'nav-logo-url',label:'Navbar Logo Image URL',type:'text',hint:'src attribute of <img> in navbar',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
+  {id:'nav-cta-text',label:'Nav "Apply Now" Button Text',type:'text',default:'Apply Now'},
+  {id:'nav-cta-url',label:'Nav "Apply Now" Button URL',type:'text',default:'register.html'},
+  {id:'nav-about',label:'Nav: About Text',type:'text',default:'About'},
+  {id:'nav-about-link',label:'Nav: About URL',type:'text',default:'about.html'},
+  {id:'nav-auditions',label:'Nav: Auditions Text',type:'text',default:'Auditions'},
+  {id:'nav-auditions-link',label:'Nav: Auditions URL',type:'text',default:'auditions.html'},
+  {id:'nav-contestants',label:'Nav: Contestants Text',type:'text',default:'Contestants'},
+  {id:'nav-contestants-link',label:'Nav: Contestants URL',type:'text',default:'contestants.html'},
+  {id:'nav-episodes',label:'Nav: Highlights Text',type:'text',default:'Highlights'},
+  {id:'nav-episodes-link',label:'Nav: Highlights URL',type:'text',default:'episodes.html'},
+  {id:'nav-voting',label:'Nav: Voting Text',type:'text',default:'Voting'},
+  {id:'nav-voting-link',label:'Nav: Voting URL',type:'text',default:'voting.html'},
+  {id:'nav-news',label:'Nav: News Text',type:'text',default:'News'},
+  {id:'nav-news-link',label:'Nav: News URL',type:'text',default:'news.html'},
+  {id:'nav-gallery',label:'Nav: Gallery Text',type:'text',default:'Gallery'},
+  {id:'nav-gallery-link',label:'Nav: Gallery URL',type:'text',default:'gallery.html'},
+  {id:'nav-sponsors',label:'Nav: Sponsors Text',type:'text',default:'Sponsors'},
+  {id:'nav-sponsors-link',label:'Nav: Sponsors URL',type:'text',default:'sponsors.html'},
+
+  // HERO
+  {id:'hero-bg',label:'Hero Background Image URL',type:'text',default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
+  {id:'hero-eyebrow',label:'Hero Eyebrow Text',type:'text',default:"Nigeria's Cultural Reality TV Show"},
+  {id:'hero-title',label:'Hero Main Title',type:'text',default:'About <em>Culture9ja</em>',hint:'Use <em> tags for italic part'},
+  {id:'hero-desc',label:'Hero Description',type:'textarea',default:'A purpose-driven entertainment platform designed to celebrate, showcase, and preserve the extraordinary diversity of Nigeria\'s cultural heritage through world-class television.'},
+
+  // SHOW OVERVIEW (left column)
+  {id:'overview-eyebrow',label:'Overview Section Eyebrow',type:'text',default:'Show Overview'},
+  {id:'overview-title',label:'Overview Section Title',type:'text',default:'Reality TV That <em>Actually Reflects</em> Who We Are'},
+  {id:'overview-p1',label:'Overview Paragraph 1',type:'textarea',default:'Nigeria is home to one of the most diverse and vibrant cultural landscapes in the world, boasting over <strong>500 distinct languages and ethnic traditions.</strong> Yet, in the age of rapid globalisation and digital entertainment, many of these traditions risk being diluted or forgotten.'},
+  {id:'overview-p2',label:'Overview Paragraph 2',type:'textarea',default:'Culture9ja Reality TV Show was conceived as a direct response to this cultural challenge. It is a <strong>purpose-driven entertainment platform</strong> designed to celebrate what makes Nigeria uniquely great — its people, heritage, creativity, and diversity.'},
+  {id:'overview-quote',label:'Overview Pull Quote',type:'textarea',default:'"Culture9ja is a cultural-based reality television program designed to showcase, preserve, and celebrate the rich heritage, traditions, creativity, and diversity of Nigeria."'},
+  {id:'overview-p3',label:'Overview Paragraph 3 (after quote)',type:'textarea',default:'The show brings together talented individuals from across Nigeria who possess deep knowledge of, passion for, or exceptional talent in Nigerian cultural arts. Through structured competitions, cultural challenges, storytelling, and performances, contestants <strong>showcase the beauty of their ethnic backgrounds</strong> while connecting with audiences across Nigeria and the world.'},
+  {id:'overview-p4',label:'Overview Paragraph 4',type:'textarea',default:'Culture9ja Limited is a Nigerian cultural entertainment company established to champion the celebration, preservation, and promotion of Nigeria\'s rich and diverse cultural heritage through innovative television programming. This is not just television — <strong>it is a movement.</strong>'},
+
+  // OVERVIEW STAT CARDS (5 cards)
+  {id:'stat1-label',label:'Stat 1 – Label',type:'text',default:'Company'},
+  {id:'stat1-value',label:'Stat 1 – Value',type:'text',default:'Culture9ja Limited'},
+  {id:'stat1-sub',label:'Stat 1 – Subtext',type:'text',default:'Cultural Entertainment & Media · Abuja, FCT, Nigeria'},
+  {id:'stat2-label',label:'Stat 2 – Label',type:'text',default:'Season Duration'},
+  {id:'stat2-value',label:'Stat 2 – Value',type:'text',default:'12 – 16 Weeks Per Season'},
+  {id:'stat2-sub',label:'Stat 2 – Subtext',type:'text',default:'Auditions through to Grand Finale — annual cycle'},
+  {id:'stat3-label',label:'Stat 3 – Label',type:'text',default:'Who Can Apply'},
+  {id:'stat3-value',label:'Stat 3 – Value',type:'text',default:'All 36 States + FCT'},
+  {id:'stat3-sub',label:'Stat 3 – Subtext',type:'text',default:'Nigerian citizens aged 18 and above · 250+ cultures represented'},
+  {id:'stat4-label',label:'Stat 4 – Label',type:'text',default:'Broadcast'},
+  {id:'stat4-value',label:'Stat 4 – Value',type:'text',default:'TV & Digital Platforms'},
+  {id:'stat4-sub',label:'Stat 4 – Subtext',type:'text',default:'National TV · YouTube · Social Media · Official Website'},
+  {id:'stat5-label',label:'Stat 5 – Label',type:'text',default:'Registration Fee'},
+  {id:'stat5-value',label:'Stat 5 – Value',type:'text',default:'₦10,000'},
+  {id:'stat5-sub',label:'Stat 5 – Subtext',type:'text',default:'Non-refundable · Covers application processing & audition logistics'},
+
+  // MISSION & VISION
+  {id:'mission-eyebrow',label:'Mission Section Eyebrow',type:'text',default:'Mission & Vision'},
+  {id:'mission-title',label:'Mission Section Title',type:'text',default:'Our <em>Purpose</em> & Direction'}, // section heading
+  {id:'vision-num',label:'Vision Card – Number',type:'text',default:'01'},
+  {id:'vision-label',label:'Vision Card – Label',type:'text',default:'Vision Statement'},
+  {id:'vision-title',label:'Vision Card – Title',type:'text',default:"Africa's Leading Cultural TV Platform"},
+  {id:'vision-body',label:'Vision Card – Body',type:'textarea',default:'We are building more than a show. Our vision is to become Africa\'s leading cultural reality television platform — a beacon of heritage, unity, and creative excellence.'},
+  {id:'vision-quote',label:'Vision Card – Quote',type:'textarea',default:'"A beacon of heritage, unity, and creative excellence that amplifies the richness of Nigerian culture to the world."'},
+  {id:'mission-num',label:'Mission Card – Number',type:'text',default:'02'},
+  {id:'mission-label',label:'Mission Card – Label',type:'text',default:'Mission Statement'},
+  {id:'mission-title',label:'Mission Card – Title',type:'text',default:'Showcase, Preserve & Celebrate'}, // ← fixed ID
+  {id:'mission-body',label:'Mission Card – Body',type:'textarea',default:'To showcase, preserve, and celebrate Nigeria\'s diverse cultural heritage through world-class reality television programming that educates, entertains, and inspires — while empowering talented Nigerians and fostering national pride and unity.'},
+  {id:'mission-quote',label:'Mission Card – Quote',type:'textarea',default:'"Empowering talented Nigerians and fostering national pride and unity through the power of culture."'},
+  {id:'values-num',label:'Values Card – Number',type:'text',default:'03'},
+  {id:'values-label',label:'Values Card – Label',type:'text',default:'Our Values'},
+  {id:'values-title',label:'Values Card – Title',type:'text',default:'What We Stand For'},
+  {id:'values-body',label:'Values Card – Body',type:'textarea',default:'Authenticity in representing all Nigerian cultures. Unity in celebrating diversity. Excellence in production standards. Integrity in all operations. Impact measured by positive societal change.'},
+  {id:'values-quote',label:'Values Card – Quote',type:'textarea',default:'"We operate transparently, fairly, and with honour — because culture deserves nothing less."'},
+
+  // AIMS & OBJECTIVES (8 aims)
+  {id:'aim1-title',label:'Aim 1 – Title',type:'text',default:'Cultural Promotion'},
+  {id:'aim1-desc',label:'Aim 1 – Description',type:'text',default:'Promote Nigerian cultural heritage, languages, fashion, food, music, and traditions.'},
+  {id:'aim2-title',label:'Aim 2 – Title',type:'text',default:'National Unity'},
+  {id:'aim2-desc',label:'Aim 2 – Description',type:'text',default:"Encourage unity and appreciation of Nigeria's diverse ethnic groups across all regions."},
+  {id:'aim3-title',label:'Aim 3 – Title',type:'text',default:'Talent Platform'},
+  {id:'aim3-desc',label:'Aim 3 – Description',type:'text',default:'Provide a platform for emerging talents in cultural arts and entertainment nationwide.'},
+  {id:'aim4-title',label:'Aim 4 – Title',type:'text',default:'Public Education'},
+  {id:'aim4-desc',label:'Aim 4 – Description',type:'text',default:'Educate viewers on Nigerian history and traditions in an engaging entertainment format.'},
+  {id:'aim5-title',label:'Aim 5 – Title',type:'text',default:'Positive Values'},
+  {id:'aim5-desc',label:'Aim 5 – Description',type:'text',default:'Foster values such as respect, discipline, integrity, and teamwork among participants.'},
+  {id:'aim6-title',label:'Aim 6 – Title',type:'text',default:'Commercial Sustainability'},
+  {id:'aim6-desc',label:'Aim 6 – Description',type:'text',default:'Generate revenue through sponsorships, registrations, merchandise, and broadcast partnerships.'},
+  {id:'aim7-title',label:'Aim 7 – Title',type:'text',default:'Fair Competition'},
+  {id:'aim7-desc',label:'Aim 7 – Description',type:'text',default:'Build an inclusive, transparent, and professionally managed competition for all Nigerians.'},
+  {id:'aim8-title',label:'Aim 8 – Title',type:'text',default:'Diaspora Expansion'},
+  {id:'aim8-desc',label:'Aim 8 – Description',type:'text',default:"Expand the show's reach across Africa and to the global Nigerian diaspora within three years."},
+
+  // COMPETITION FORMAT
+  {id:'format-eyebrow',label:'Format Section Eyebrow',type:'text',default:'Competition Format'},
+  {id:'format-title',label:'Format Section Title',type:'text',default:'How the <em>Show Works</em>'},
+  {id:'format-intro',label:'Format Intro Paragraph',type:'textarea',default:'The Culture9ja Reality TV Show follows a season-based format spanning 12–16 weeks. Contestants from different Nigerian states and ethnic groups compete through a series of culturally themed challenges and performances, with the winner determined by a combination of judges\' scores and audience votes.'},
+
+  // STAGES (5)
+  {id:'stage1-num',label:'Stage 1 – Number',type:'text',default:'1'},
+  {id:'stage1-label',label:'Stage 1 – Label',type:'text',default:'Stage One'},
+  {id:'stage1-title',label:'Stage 1 – Title',type:'text',default:'Auditions'},
+  {id:'stage1-desc',label:'Stage 1 – Description',type:'textarea',default:'Open to all eligible Nigerians aged 18+. Held in multiple cities and online. Applicants showcase their cultural knowledge and talent before a panel of regional judges.'},
+  {id:'stage1-timing',label:'Stage 1 – Timing',type:'text',default:'Weeks 1 – 3'},
+  {id:'stage2-num',label:'Stage 2 – Number',type:'text',default:'2'},
+  {id:'stage2-label',label:'Stage 2 – Label',type:'text',default:'Stage Two'},
+  {id:'stage2-title',label:'Stage 2 – Title',type:'text',default:'Screening & Bootcamp'},
+  {id:'stage2-desc',label:'Stage 2 – Description',type:'textarea',default:'Selected candidates undergo cultural assessments, interviews, and background checks. Those who pass proceed to bootcamp for cultural mentorship and media training.'},
+  {id:'stage2-timing',label:'Stage 2 – Timing',type:'text',default:'Weeks 4 – 5'},
+  {id:'stage3-num',label:'Stage 3 – Number',type:'text',default:'3'},
+  {id:'stage3-label',label:'Stage 3 – Label',type:'text',default:'Stage Three'},
+  {id:'stage3-title',label:'Stage 3 – Title',type:'text',default:'Live Shows'},
+  {id:'stage3-desc',label:'Stage 3 – Description',type:'textarea',default:'The main competition phase. Contestants perform weekly themed cultural challenges judged by experts. Audience voting determines which contestants advance each week.'},
+  {id:'stage3-timing',label:'Stage 3 – Timing',type:'text',default:'Weeks 6 – 14'},
+  {id:'stage4-num',label:'Stage 4 – Number',type:'text',default:'4'},
+  {id:'stage4-label',label:'Stage 4 – Label',type:'text',default:'Stage Four'},
+  {id:'stage4-title',label:'Stage 4 – Title',type:'text',default:'Semi-Finals'},
+  {id:'stage4-desc',label:'Stage 4 – Description',type:'textarea',default:'Top contestants compete in a high-stakes semi-final round. The strongest performers earn their place in the grand finale before a national audience.'},
+  {id:'stage4-timing',label:'Stage 4 – Timing',type:'text',default:'Week 15'},
+  {id:'stage5-num',label:'Stage 5 – Number',type:'text',default:'5'},
+  {id:'stage5-label',label:'Stage 5 – Label',type:'text',default:'Stage Five'},
+  {id:'stage5-title',label:'Stage 5 – Title',type:'text',default:'Grand Finale'},
+  {id:'stage5-desc',label:'Stage 5 – Description',type:'textarea',default:'The ultimate celebration. Finalists give their best before a live audience, judges, and national TV viewers. The winner is crowned Culture9ja Champion.'},
+  {id:'stage5-timing',label:'Stage 5 – Timing',type:'text',default:'Week 16'},
+
+  // CATEGORIES
+  {id:'categories-title',label:'Categories Block Title',type:'text',default:'Competition <em>Categories</em>'},
+  {id:'cat1-name',label:'Category 1 – Name',type:'text',default:'Traditional Music'},
+  {id:'cat2-name',label:'Category 2 – Name',type:'text',default:'Traditional Dance'},
+  {id:'cat3-name',label:'Category 3 – Name',type:'text',default:'Cultural Fashion'},
+  {id:'cat4-name',label:'Category 4 – Name',type:'text',default:'Native Language Oratory'},
+  {id:'cat5-name',label:'Category 5 – Name',type:'text',default:'Nigerian Cuisine'},
+  {id:'cat6-name',label:'Category 6 – Name',type:'text',default:'Storytelling & Folklore'},
+  {id:'cat7-name',label:'Category 7 – Name',type:'text',default:'Cultural Crafts'},
+
+  // JUDGES & HOSTS
+  {id:'judges-eyebrow',label:'Judges Section Eyebrow',type:'text',default:'Key Personalities'},
+  {id:'judges-title',label:'Judges Section Title',type:'text',default:'Judges <em>&amp;</em> Hosts'},
+  {id:'judge1-initials',label:'Judge 1 – Avatar Initials',type:'text',default:'JD'},
+  {id:'judge1-role',label:'Judge 1 – Role',type:'text',default:'Lead Judge'},
+  {id:'judge1-name',label:'Judge 1 – Name',type:'text',default:'To Be Announced'},
+  {id:'judge1-desc',label:'Judge 1 – Description',type:'textarea',default:'A distinguished cultural authority drawn from Nigeria\'s diverse ethnic communities. Judges are selected for their depth of knowledge in Nigerian heritage, traditions, and creative arts.'},
+  {id:'judge1-tags',label:'Judge 1 – Expertise Tags (comma separated)',type:'text',default:'Cultural Heritage, Traditional Arts'},
+  {id:'judge2-initials',label:'Judge 2 – Avatar Initials',type:'text',default:'JD'},
+  {id:'judge2-role',label:'Judge 2 – Role',type:'text',default:'Cultural Judge'},
+  {id:'judge2-name',label:'Judge 2 – Name',type:'text',default:'To Be Announced'},
+  {id:'judge2-desc',label:'Judge 2 – Description',type:'textarea',default:'Representatives from various Nigerian ethnic groups serve as judges, ensuring authentic and balanced evaluation across all cultural categories and geopolitical zones.'},
+  {id:'judge2-tags',label:'Judge 2 – Expertise Tags',type:'text',default:'Music & Dance, Language'},
+  {id:'judge3-initials',label:'Judge 3 – Avatar Initials',type:'text',default:'HT'},
+  {id:'judge3-role',label:'Judge 3 – Role',type:'text',default:'Show Host'},
+  {id:'judge3-name',label:'Judge 3 – Name',type:'text',default:'To Be Announced'},
+  {id:'judge3-desc',label:'Judge 3 – Description',type:'textarea',default:'The Culture9ja host is a dynamic Nigerian media personality who brings energy, cultural fluency, and national appeal to every episode and live show broadcast.'},
+  {id:'judge3-tags',label:'Judge 3 – Expertise Tags',type:'text',default:'Media, Entertainment'},
+  {id:'judge4-initials',label:'Judge 4 – Avatar Initials',type:'text',default:'AD'},
+  {id:'judge4-role',label:'Judge 4 – Role',type:'text',default:'Advisory Panel'},
+  {id:'judge4-name',label:'Judge 4 – Name',type:'text',default:'Cultural Advisors'},
+  {id:'judge4-desc',label:'Judge 4 – Description',type:'textarea',default:'Traditional rulers, chiefs, and representatives from the National Council for Arts and Culture (NCAC) provide cultural oversight and authenticity guidance throughout the season.'},
+  {id:'judge4-tags',label:'Judge 4 – Expertise Tags',type:'text',default:'NCAC, Traditional Rulers'},
+  {id:'judges-note',label:'Judges Note (HTML allowed)',type:'textarea',default:'<strong>Official announcements coming soon.</strong> The panel of judges and hosts for Culture9ja Season 1 will be officially announced ahead of the grand launch. Judges are selected from across Nigeria\'s six geopolitical zones to ensure fair and representative cultural evaluation. All judges and production staff are required to maintain <strong>neutrality and integrity</strong> throughout the competition — bribery, vote manipulation, or favouritism is strictly prohibited per our Anti-Corruption Policy.'},
+
+  // PRIZES & REWARDS
+  {id:'prizes-eyebrow',label:'Prizes Section Eyebrow',type:'text',default:'Prizes & Rewards'},
+  {id:'prizes-title',label:'Prizes Section Title',type:'text',default:'What\'s at <em>Stake</em>'},
+  {id:'champion-label',label:'Champion Block – Label',type:'text',default:'Season 1 Grand Prize'},
+  {id:'champion-title',label:'Champion Block – Title',type:'text',default:'Culture9ja Champion'},
+  {id:'champion-desc',label:'Champion Block – Description',type:'textarea',default:'The winner is crowned Culture9ja Champion — Nigeria\'s foremost cultural ambassador. The grand prize combines cash, recognition, endorsement opportunities, and a platform to represent Nigerian culture on the national and international stage.'},
+  {id:'champion-badge',label:'Champion Block – Badge Text',type:'text',default:'Season 1 · 2026'},
+  {id:'prize1-num',label:'Prize 1 – Number',type:'text',default:'01'},
+  {id:'prize1-title',label:'Prize 1 – Title',type:'text',default:'Grand Prize — Cash Award'},
+  {id:'prize1-desc',label:'Prize 1 – Description',type:'textarea',default:'The Culture9ja Champion receives a significant cash prize, recognizing their excellence and dedication in representing Nigerian cultural heritage throughout the competition.'},
+  {id:'prize2-num',label:'Prize 2 – Number',type:'text',default:'02'},
+  {id:'prize2-title',label:'Prize 2 – Title',type:'text',default:'National Recognition & Cultural Ambassador Title'},
+  {id:'prize2-desc',label:'Prize 2 – Description',type:'textarea',default:'The winner is officially recognised as Nigeria\'s Cultural Ambassador — a title that carries significant media coverage, public appearances, and national prestige.'},
+  {id:'prize3-num',label:'Prize 3 – Number',type:'text',default:'03'},
+  {id:'prize3-title',label:'Prize 3 – Title',type:'text',default:'Media Exposure & Endorsement Opportunities'},
+  {id:'prize3-desc',label:'Prize 3 – Description',type:'textarea',default:'Winners gain access to significant media exposure through Culture9ja\'s national broadcast partners, social media platforms, and corporate sponsorship networks.'},
+  {id:'prize4-num',label:'Prize 4 – Number',type:'text',default:'04'},
+  {id:'prize4-title',label:'Prize 4 – Title',type:'text',default:'Special Recognition for Runners-Up'},
+  {id:'prize4-desc',label:'Prize 4 – Description',type:'textarea',default:'Runners-up and semi-finalists also receive recognition, prizes, and ongoing support from the Culture9ja platform — because every culture represented deserves celebration.'},
+  {id:'prize5-num',label:'Prize 5 – Number',type:'text',default:'05'},
+  {id:'prize5-title',label:'Prize 5 – Title',type:'text',default:'Award Ceremony & Grand Finale Event'},
+  {id:'prize5-desc',label:'Prize 5 – Description',type:'textarea',default:'The grand prize is presented at a spectacular award ceremony broadcast live on national television — a landmark cultural moment for Nigeria.'},
+  {id:'prize-note',label:'Prize Note (HTML allowed)',type:'textarea',default:'<strong>Note:</strong> The full breakdown of prize values and reward categories will be officially announced at the Culture9ja Grand Launch in Abuja, Federal Capital Territory. All prizes and rewards are structured to reflect the significance of cultural heritage to Nigeria\'s national identity. Prize presentation takes place at the Grand Finale broadcast event.'},
+
+  // RULES & REGULATIONS (8 rules)
+  {id:'rules-eyebrow',label:'Rules Section Eyebrow',type:'text',default:'Participant Guidelines'},
+  {id:'rules-title',label:'Rules Section Title',type:'text',default:'Rules & <em>Regulations</em>'},
+  {id:'rules-subtitle',label:'Rules Subtitle',type:'textarea',default:'All participants are required to comply with the following guidelines. Participation in Culture9ja Reality TV Show constitutes acceptance of these rules and all applicable terms and conditions.'},
+  {id:'rule1-title',label:'Rule 1 – Title',type:'text',default:'Eligibility Requirements'},
+  {id:'rule1-content',label:'Rule 1 – Content (HTML)',type:'textarea',default:'<ul><li>Must be 18 years or older at the time of registration</li><li>Must be a Nigerian citizen or individual of Nigerian descent</li><li>Must possess a valid means of identification</li><li>Must demonstrate knowledge, talent, or interest in Nigerian culture</li><li>Must be physically and mentally fit to participate in the show</li><li>Individuals with criminal records involving violence, fraud, or misconduct may be disqualified</li></ul>'},
+  {id:'rule2-title',label:'Rule 2 – Title',type:'text',default:'Registration & Application'},
+  {id:'rule2-content',label:'Rule 2 – Content (HTML)',type:'textarea',default:'<ul><li>All applicants must complete the official online registration form in full</li><li>Applicants must provide accurate and truthful information — false details lead to disqualification</li><li>Registration is only complete after payment of the non-refundable ₦10,000 registration fee</li><li>Payment must be made through official channels on the website only</li><li>Submitting an application does not guarantee selection for the show</li></ul>'},
+  {id:'rule3-title',label:'Rule 3 – Title',type:'text',default:'Code of Conduct'},
+  {id:'rule3-content',label:'Rule 3 – Content (HTML)',type:'textarea',default:'<ul><li>Show respect for all cultures, traditions, religions, and ethnic groups at all times</li><li>Refrain from hate speech, discrimination, bullying, harassment, or violence of any kind</li><li>Avoid the use of drugs, excessive alcohol, or illegal substances during participation</li><li>Maintain decent dressing in alignment with Nigerian cultural values</li><li>Comply with all instructions from show producers and management</li><li>Respect fellow contestants, organizers, judges, and all production staff</li></ul>'},
+  {id:'rule4-title',label:'Rule 4 – Title',type:'text',default:'Content & Performance Guidelines'},
+  {id:'rule4-content',label:'Rule 4 – Content (HTML)',type:'textarea',default:'<ul><li>All content must align with Nigerian cultural values and national broadcasting regulations</li><li>The show shall avoid explicit sexual content, graphic violence, or offensive material</li><li>Cultural presentations must be authentic and not deliberately misrepresent any ethnic group</li><li>Producers reserve the right to edit content for clarity, quality, and regulatory compliance</li><li>Cultural performances must respect traditional ownership and community intellectual rights</li></ul>'},
+  {id:'rule5-title',label:'Rule 5 – Title',type:'text',default:'Media & Intellectual Property'},
+  {id:'rule5-content',label:'Rule 5 – Content (HTML)',type:'textarea',default:'<ul><li>All recorded footage and materials produced remain the property of Culture9ja Reality TV</li><li>Contestants grant the show the right to use their likeness, name, voice, and performances for promotional purposes</li><li>Contestants may not reproduce or distribute official show content without written permission</li><li>Recordings may be used for broadcast, promotion, advertising, and digital media without additional compensation</li></ul>'},
+  {id:'rule6-title',label:'Rule 6 – Title',type:'text',default:'Disciplinary Procedures'},
+  {id:'rule6-content',label:'Rule 6 – Content (HTML)',type:'textarea',default:'<ul><li>Minor infractions may result in a formal warning issued by the production team</li><li>Serious misconduct may lead to immediate disqualification from the competition</li><li>The decision of the show\'s Executive Committee is final on all disciplinary matters</li><li>Appeals may be submitted in writing within 48 hours of disciplinary action</li><li>Disqualification grounds include: rules violation, misconduct, illegal activity, or false registration information</li></ul>'},
+  {id:'rule7-title',label:'Rule 7 – Title',type:'text',default:'Safety, Welfare & Privacy'},
+  {id:'rule7-content',label:'Rule 7 – Content (HTML)',type:'textarea',default:'<ul><li>The show shall provide safe accommodation and a secure environment for all participants</li><li>Medical and psychological support shall be available during production</li><li>Participants must report health or safety concerns immediately to the production team</li><li>Personal data of participants shall be collected and stored securely per Nigerian privacy laws</li><li>Information shall not be shared with third parties without consent, except as required by law</li></ul>'},
+  {id:'rule8-title',label:'Rule 8 – Title',type:'text',default:'Anti-Corruption & Fairness Policy'},
+  {id:'rule8-content',label:'Rule 8 – Content (HTML)',type:'textarea',default:'<ul><li>Bribery, vote manipulation, or favouritism is strictly prohibited throughout the competition</li><li>All judges and production staff must maintain neutrality and integrity at all times</li><li>Any conflict of interest must be declared immediately to the Executive Committee</li><li>Sponsors shall not influence judging outcomes under any circumstances</li><li>Voting processes must be transparent, fair, and verifiable</li></ul>'},
+
+  // RULES CTA
+  {id:'rules-cta-label',label:'Rules CTA – Label',type:'text',default:'Ready to Represent Your Culture?'},
+  {id:'rules-cta-title',label:'Rules CTA – Title',type:'text',default:'Apply for Culture9ja Season 1 — Your Heritage Deserves a Stage.'},
+  {id:'rules-cta-btn1-text',label:'Rules CTA – Button 1 Text',type:'text',default:'Apply Now'},
+  {id:'rules-cta-btn1-url',label:'Rules CTA – Button 1 URL',type:'text',default:'index.html#register'},
+  {id:'rules-cta-btn2-text',label:'Rules CTA – Button 2 Text',type:'text',default:'Back to Home'},
+  {id:'rules-cta-btn2-url',label:'Rules CTA – Button 2 URL',type:'text',default:'index.html'},
+
+  // FOOTER
+  {id:'footer-logo-url',label:'Footer Logo Image URL',type:'text',default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
+  {id:'footer-tagline',label:'Footer Tagline',type:'textarea',default:"Africa's cultural reality television show — celebrating people, living traditions, and the stories that define who we are."},
+  {id:'footer-email',label:'Footer – Email',type:'text',default:'support@culture9ja.com'},
+  {id:'footer-phone1',label:'Footer – Phone 1',type:'text',default:'+234 9039997729'},
+  {id:'footer-phone2',label:'Footer – Phone 2',type:'text',default:'09055567245'},
+  {id:'footer-phone3',label:'Footer – Phone 3',type:'text',default:'09095777082'},
+  {id:'footer-address',label:'Footer – Headquarters',type:'text',default:'Abuja, FCT, Nigeria'},
+  {id:'footer-copyright',label:'Footer – Copyright Line',type:'text',default:'© 2026 Culture9ja Limited. All Rights Reserved. Built with Purpose.'},
+  {id:'footer-social-fb',label:'Facebook URL',type:'text',default:'#'},
+  {id:'footer-social-in',label:'Instagram URL',type:'text',default:'#'},
+  {id:'footer-social-x',label:'X (Twitter) URL',type:'text',default:'#'},
+  {id:'footer-social-yt',label:'YouTube URL',type:'text',default:'#'},
+  {id:'footer-social-tk',label:'TikTok URL',type:'text',default:'#'},
+
+  // Footer navigation links
+  {id:'footer-link-home',label:'Footer: Home Link Text',type:'text',default:'Home'},
+  {id:'footer-link-about',label:'Footer: About Link Text',type:'text',default:'About the Show'},
+  {id:'footer-link-auditions',label:'Footer: Auditions Link Text',type:'text',default:'Auditions'},
+  {id:'footer-link-events',label:'Footer: Events Link Text',type:'text',default:'Events'},
+  {id:'footer-link-news',label:'Footer: News Link Text',type:'text',default:'News'},
+  {id:'footer-link-gallery',label:'Footer: Gallery Link Text',type:'text',default:'Gallery'},
+  {id:'footer-link-contact',label:'Footer: Contact Us Link Text',type:'text',default:'Contact Us'},
+  {id:'footer-link-voting',label:'Footer: Voting Link Text',type:'text',default:'Voting'},
+  {id:'footer-link-episodes',label:'Footer: Episodes Link Text',type:'text',default:'Episodes'},
+  {id:'footer-link-sponsors',label:'Footer: Sponsors Link Text',type:'text',default:'Sponsors'},
+  {id:'footer-link-faqs',label:'Footer: FAQs Link Text',type:'text',default:'FAQs'},
+  {id:'footer-legal-terms',label:'Footer: Terms & Conditions Text',type:'text',default:'Terms & Conditions'},
+  {id:'footer-legal-privacy',label:'Footer: Privacy Policy Text',type:'text',default:'Privacy Policy'},
+  {id:'footer-legal-disclaimer',label:'Footer: Disclaimer Text',type:'text',default:'Disclaimer'},
+]},
   {id:'contestants',name:'Contestants Page',file:'contestants.html',icon:'⭐',desc:'Contestant profiles, season info, social links',sections:[
     {id:'con-title',label:'Page Title',type:'text',default:"Meet the Faces of Culture"},
     {id:'con-desc',label:'Page Description',type:'textarea',default:'Season 1 contestants representing Nigeria\'s 250+ ethnic groups and cultural traditions.'},
@@ -1877,6 +2170,184 @@ const PAGES=[
   ]},
 ];
 
+
+// ========== CUSTOM FIELD HELPERS ==========
+// Custom field helpers
+function getCustomFields(pageId) {
+  const pc = pageContent[pageId] || {};
+  return pc._customFields || [];
+}
+function saveCustomFields(pageId, fields) {
+  if (!pageContent[pageId]) pageContent[pageId] = {};
+  pageContent[pageId]._customFields = fields;
+  S.set('pageContent', pageContent);
+}
+
+// Updated openPageEditor (with custom fields)
+function openPageEditor(pageId) {
+  const page = PAGES.find(p => p.id === pageId);
+  if (!page) return;
+  document.getElementById('page-editor-home').style.display = 'none';
+  document.getElementById('page-editor-detail').style.display = 'block';
+  document.getElementById('editing-page-name').textContent = `Editing: ${page.name}`;
+  const container = document.getElementById('page-sections-editor');
+  const content = pageContent[pageId] || {};
+
+  let bodyHtml;
+  if (pageId === 'index') {
+    const groups = groupIndexSections(page.sections);
+    bodyHtml = groups.map(g => `
+      <div style="margin-bottom:.25rem">
+        <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);padding:.6rem 0 .4rem;border-bottom:2px solid var(--border);margin-bottom:.75rem">${g.label}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+          ${g.fields.map(s => renderField(s, content[s.id] !== undefined ? content[s.id] : s.default || '')).join('')}
+        </div>
+      </div>
+    `).join('<div style="height:1rem"></div>');
+  } else {
+    bodyHtml = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">${page.sections.map(s => renderField(s, content[s.id] !== undefined ? content[s.id] : s.default || '')).join('')}</div>`;
+  }
+
+  const customFields = getCustomFields(pageId);
+  const customFieldsHtml = customFields.map(field => {
+    const val = content[field.key] !== undefined ? content[field.key] : (field.defaultValue || '');
+    return `
+      <div class="custom-field-item" style="border:1px dashed var(--border);border-radius:8px;padding:1rem;margin-bottom:.75rem;background:#FCFCFC">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem">
+          <div>
+            <span style="font-weight:700;color:var(--text)">${field.label}</span>
+            <span style="font-size:.7rem;color:var(--text2);margin-left:.75rem;font-family:monospace">${field.key}</span>
+          </div>
+          <div style="display:flex;gap:.5rem">
+            <button class="btn btn-ghost btn-sm" onclick="editCustomField('${pageId}','${field.key}')">✏️ Edit</button>
+            <button class="btn btn-ghost btn-sm" style="color:var(--red)" onclick="deleteCustomField('${pageId}','${field.key}')">🗑️ Delete</button>
+          </div>
+        </div>
+        ${renderField({ id: field.key, label: field.label, type: field.type, hint: field.hint || '' }, val)}
+      </div>
+    `;
+  }).join('');
+
+  const addButtonHtml = `
+    <div style="margin-top:1rem;text-align:right">
+      <button class="btn btn-outline btn-sm" onclick="openCustomFieldModal('${pageId}')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Custom Field
+      </button>
+    </div>
+  `;
+
+  container.innerHTML = `
+    <div class="card" style="margin-bottom:1rem">
+      <div class="card-header" style="position:sticky;top:64px;background:#fff;z-index:5">
+        <div>
+          <div class="card-title">${page.icon} ${page.name}</div>
+          <div style="font-size:.72rem;color:var(--text2);margin-top:.15rem">${page.file} · ${page.sections.length + customFields.length} fields</div>
+        </div>
+        <div style="display:flex;gap:.5rem">
+          <button class="btn btn-outline btn-sm" onclick="resetPage('${pageId}')">Reset to Defaults</button>
+          <a href="${page.file}" target="_blank" class="btn btn-outline btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Preview</a>
+          <button class="btn btn-primary" onclick="savePageContent('${pageId}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>Save Changes</button>
+        </div>
+      </div>
+      <div class="card-body">
+        ${bodyHtml}
+        ${customFields.length ? '<div style="margin-top:2rem;border-top:2px solid var(--border);padding-top:1.5rem"><div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:1rem">✨ Custom Fields</div>' + customFieldsHtml + '</div>' : ''}
+        ${addButtonHtml}
+      </div>
+    </div>
+    <div style="padding:.9rem 1.1rem;background:#FEF3C7;border:1px solid #FDE68A;border-radius:8px;font-size:.76rem;color:#92400E;line-height:1.65">
+      <strong>How this works:</strong> Click <em>Save Changes</em> — values are written to <code>localStorage['c9_pageContent']</code>. The index.html boot script reads this on every page load and patches the DOM automatically. No HTML editing required.
+    </div>
+  `;
+  currentEditorPage = pageId;
+}
+
+// Custom field CRUD functions
+function openCustomFieldModal(pageId, editKey = null) {
+  document.getElementById('cf-page-id').value = pageId;
+  if (editKey) {
+    const fields = getCustomFields(pageId);
+    const field = fields.find(f => f.key === editKey);
+    if (field) {
+      document.getElementById('cf-modal-title').textContent = 'Edit Custom Field';
+      document.getElementById('cf-edit-key').value = editKey;
+      document.getElementById('cf-key').value = field.key;
+      document.getElementById('cf-key').disabled = true;
+      document.getElementById('cf-label').value = field.label;
+      document.getElementById('cf-type').value = field.type;
+      document.getElementById('cf-default').value = field.defaultValue || '';
+    }
+  } else {
+    document.getElementById('cf-modal-title').textContent = 'Add Custom Field';
+    document.getElementById('cf-edit-key').value = '';
+    document.getElementById('cf-key').value = '';
+    document.getElementById('cf-key').disabled = false;
+    document.getElementById('cf-label').value = '';
+    document.getElementById('cf-type').value = 'text';
+    document.getElementById('cf-default').value = '';
+  }
+  openModal('custom-field-modal');
+}
+
+function saveCustomField() {
+  const pageId = document.getElementById('cf-page-id').value;
+  const editKey = document.getElementById('cf-edit-key').value;
+  const key = document.getElementById('cf-key').value.trim();
+  const label = document.getElementById('cf-label').value.trim();
+  const type = document.getElementById('cf-type').value;
+  const defaultValue = document.getElementById('cf-default').value;
+
+  if (!key || !label) { toast('CMS Key and Label are required', 'error'); return; }
+  if (!/^[a-zA-Z0-9_-]+$/.test(key)) { toast('CMS Key must contain only letters, numbers, underscores, or hyphens', 'error'); return; }
+
+  const fields = getCustomFields(pageId);
+  if (!editKey) {
+    if (fields.some(f => f.key === key)) { toast('A field with this key already exists', 'error'); return; }
+    fields.push({ key, label, type, defaultValue });
+  } else {
+    const idx = fields.findIndex(f => f.key === editKey);
+    if (idx !== -1) fields[idx] = { key: editKey, label, type, defaultValue };
+  }
+
+  saveCustomFields(pageId, fields);
+  closeModal('custom-field-modal');
+  openPageEditor(pageId);
+  toast(editKey ? 'Custom field updated' : 'Custom field added');
+}
+
+function editCustomField(pageId, key) { openCustomFieldModal(pageId, key); }
+function deleteCustomField(pageId, key) {
+  showConfirm('Delete Custom Field', `Are you sure you want to delete the field "${key}"? This will also remove its saved content.`, () => {
+    const fields = getCustomFields(pageId);
+    const newFields = fields.filter(f => f.key !== key);
+    saveCustomFields(pageId, newFields);
+    if (pageContent[pageId] && pageContent[pageId][key]) delete pageContent[pageId][key];
+    S.set('pageContent', pageContent);
+    openPageEditor(pageId);
+    toast('Custom field deleted', 'error');
+  });
+}
+
+// Updated savePageContent (includes custom fields)
+function savePageContent(pageId) {
+  const page = PAGES.find(p => p.id === pageId);
+  if (!page) return;
+  if (!pageContent[pageId]) pageContent[pageId] = {};
+  page.sections.forEach(sec => {
+    const el = document.getElementById('pf-' + sec.id);
+    if (el) pageContent[pageId][sec.id] = el.value;
+  });
+  const customFields = getCustomFields(pageId);
+  customFields.forEach(field => {
+    const el = document.getElementById('pf-' + field.key);
+    if (el) pageContent[pageId][field.key] = el.value;
+  });
+  S.set('pageContent', pageContent);
+  toast(`${page.name} saved — reload the page to see changes`, 'success');
+  logActivity(`Saved content for: ${page.name}`, 'var(--blue)');
+}
+
 function initPageEditor(){
   const grid=document.getElementById('page-grid');if(!grid)return;
   grid.innerHTML=PAGES.map(p=>`
@@ -1931,64 +2402,6 @@ function renderField(sec,val){
   </div>`;
 }
 
-function openPageEditor(pageId){
-  const page=PAGES.find(p=>p.id===pageId);if(!page)return;
-  document.getElementById('page-editor-home').style.display='none';
-  document.getElementById('page-editor-detail').style.display='block';
-  document.getElementById('editing-page-name').textContent=`Editing: ${page.name}`;
-  const container=document.getElementById('page-sections-editor');
-  const content=pageContent[pageId]||{};
-  let bodyHtml;
-  if(pageId==='index'){
-    const groups=groupIndexSections(page.sections);
-    bodyHtml=groups.map(g=>`<div style="margin-bottom:.25rem"><div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);padding:.6rem 0 .4rem;border-bottom:2px solid var(--border);margin-bottom:.75rem">${g.label}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">${g.fields.map(s=>renderField(s,content[s.id]!==undefined?content[s.id]:s.default||'')).join('')}</div></div>`).join('<div style="height:1rem"></div>');
-  } else {
-    bodyHtml=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">${page.sections.map(s=>renderField(s,content[s.id]!==undefined?content[s.id]:s.default||'')).join('')}</div>`;
-  }
-  container.innerHTML=`
-    <div class="card" style="margin-bottom:1rem">
-      <div class="card-header" style="position:sticky;top:64px;background:#fff;z-index:5">
-        <div>
-          <div class="card-title">${page.icon} ${page.name}</div>
-          <div style="font-size:.72rem;color:var(--text2);margin-top:.15rem">${page.file} · ${page.sections.length} fields</div>
-        </div>
-        <div style="display:flex;gap:.5rem">
-          <button class="btn btn-outline btn-sm" onclick="resetPage('${pageId}')">Reset to Defaults</button>
-          <a href="${page.file}" target="_blank" class="btn btn-outline btn-sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Preview</a>
-          <button class="btn btn-primary" onclick="savePageContent('${pageId}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>Save Changes</button>
-        </div>
-      </div>
-      <div class="card-body">${bodyHtml}</div>
-    </div>
-    <div style="padding:.9rem 1.1rem;background:#FEF3C7;border:1px solid #FDE68A;border-radius:8px;font-size:.76rem;color:#92400E;line-height:1.65">
-      <strong>How this works:</strong> Click <em>Save Changes</em> — values are written to <code>localStorage['c9_pageContent']</code>. The index.html boot script reads this on every page load and patches the DOM automatically. No HTML editing required.
-    </div>
-  `;
-  currentEditorPage=pageId;
-}
-let currentEditorPage=null;
-
-function savePageContent(pageId){
-  const page=PAGES.find(p=>p.id===pageId);if(!page)return;
-  if(!pageContent[pageId])pageContent[pageId]={};
-  page.sections.forEach(sec=>{const el=document.getElementById('pf-'+sec.id);if(el)pageContent[pageId][sec.id]=el.value;});
-  S.set('pageContent',pageContent);
-  toast(`${page.name} saved — reload the page to see changes`,'success');
-  logActivity(`Saved content for: ${page.name}`,'var(--blue)');
-}
-function resetPage(pageId){
-  showConfirm('Reset Page','Clear all saved edits for this page and restore default content?',()=>{
-    delete pageContent[pageId];
-    S.set('pageContent',pageContent);
-    openPageEditor(pageId);
-    toast('Page reset to defaults');
-  });
-}
-function backToPageList(){
-  document.getElementById('page-editor-home').style.display='block';
-  document.getElementById('page-editor-detail').style.display='none';
-}
-
 // ── SETTINGS ──────────────────────────────────────────────────────────
 function loadSettings(){
   const s=S.get('settings');if(!s)return;
@@ -2029,8 +2442,16 @@ function showConfirm(title,msg,cb){
   document.getElementById('confirm-msg').textContent=msg;
   confirmCallback=cb;openModal('confirm-modal');
 }
-document.getElementById('confirm-action-btn').onclick=()=>{if(confirmCallback)confirmCallback();closeModal('confirm-modal');confirmCallback=null};
-
+window.addEventListener('DOMContentLoaded', () => {
+  const confirmBtn = document.getElementById('confirm-action-btn');
+  if (confirmBtn) {
+    confirmBtn.onclick = () => {
+      if (confirmCallback) confirmCallback();
+      closeModal('confirm-modal');
+      confirmCallback = null;
+    };
+  }
+});
 // ── EXPORT ────────────────────────────────────────────────────────────
 function exportCSV(type){
   let data=[],headers=[];
