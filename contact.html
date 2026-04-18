@@ -1,0 +1,714 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us — Culture9ja Reality TV Show</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<style>
+/* ----- UNIFIED VARIABLES & RESET (matches about.html) ----- */
+:root {
+  --green: #1A6B3C;
+  --green-deep: #0F4526;
+  --green-bright: #22913A;
+  --gold: #C8960C;
+  --gold-light: #E8B020;
+  --gold-pale: #FDF3D8;
+  --bg-dark: #0A2F1F;
+  --bg-dark-2: #072416;
+  --bg-dark-3: #0D3B26;
+  --cream: #F8F4EC;
+  --off-white: #FAF8F4;
+  --white: #FFFFFF;
+  --text-muted: #6B7A65;
+  --dark: #1A0505;
+  --text-light-primary: #fefaf5;
+  --text-dark-primary: #1a2a1a;
+  --text-dark-secondary: #2a3a2a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Times New Roman', Times, Georgia, serif;
+  background:var(--bg-dark);
+  color:var(--text-light-primary);
+  overflow-x:hidden;
+  font-size:18px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  font-weight:400;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+  opacity:.6;
+}
+
+/* ========== UNIFIED NAVBAR ========== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3vw;
+  height: 80px;
+  background: rgba(10,47,31,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200,150,12,0.25);
+  transition: all 0.4s cubic-bezier(0.2,0.9,0.4,1.1);
+  gap: 1rem;
+}
+nav.scrolled {
+  height: 66px;
+  background: rgba(7,36,22,0.96);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.logo { display: flex; align-items: center; text-decoration: none; line-height: 0; flex-shrink: 0; }
+.logo img { display: block; height: 48px; width: auto; object-fit: contain; transition: transform 0.3s; }
+.logo:hover img { transform: scale(1.02); }
+.nav-links { display: flex; align-items: center; gap: 0.2rem; list-style: none; flex-wrap: nowrap; }
+.nav-links a {
+  font-size: 0.78rem; font-weight: 600; color: rgba(248,244,236,0.92);
+  text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
+  transition: all 0.25s; position: relative;
+  padding: 0.4rem 0.65rem; white-space: nowrap;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0px; left: 0.65rem;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width 0.35s cubic-bezier(0.2,0.9,0.4,1.1); border-radius: 2px;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: calc(100% - 1.3rem); }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: calc(100% - 1.3rem); background: var(--gold); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--bg-dark) !important;
+  padding: 0.5rem 1.2rem !important;
+  font-size: 0.75rem !important; letter-spacing: 0.06em !important;
+  font-weight: 700 !important; transition: all 0.3s !important;
+  border-radius: 60px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  white-space: nowrap; flex-shrink: 0;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover {
+  background: linear-gradient(135deg,var(--gold-light),var(--gold));
+  transform: translateY(-2px); box-shadow: 0 8px 20px rgba(200,150,12,0.3);
+  color: var(--bg-dark) !important;
+}
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1001; flex-shrink: 0; }
+.hamburger span { width: 26px; height: 2px; background: var(--cream); display: block; transition: all 0.3s ease; border-radius: 2px; }
+
+/* ========== PAGE HERO (ENHANCED) ========== */
+.page-hero {
+  position: relative;
+  padding-top: 80px;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center 30%;
+  isolation: isolate;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(7,36,22,0.92) 0%, rgba(10,47,31,0.8) 50%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 40%, rgba(200,150,12,0.2) 0%, transparent 70%);
+  z-index: 1;
+}
+.page-hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 10 L50 20 L60 10 L70 20 L60 30 L50 20 L40 30 L30 20 L20 30 L10 20 L20 10 L30 20 Z' fill='none' stroke='%23C8960C' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='40' cy='40' r='8' fill='none' stroke='%23C8960C' stroke-width='0.6' opacity='0.2'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  opacity: 0.3;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+.hero-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+.page-hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 3rem 6vw 5rem;
+  width: 100%;
+}
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(200,150,12,0.85);
+  font-family: 'Times New Roman', Times, serif;
+  margin-bottom: 1.8rem;
+}
+.breadcrumb a { color: rgba(200,150,12,0.85); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span { color: var(--gold); }
+.page-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+.eyebrow-line { width: 60px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
+.eyebrow-text {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-family: 'Times New Roman', Times, serif;
+}
+.page-hero-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(3.2rem, 5.5vw, 5rem); font-weight: 700; line-height: 1.05;
+  color: var(--white); text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.page-hero-title em {
+  color: var(--gold); font-style: italic;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  background-clip: text; -webkit-background-clip: text; color: transparent; text-shadow: none;
+}
+.page-hero-desc {
+  max-width: 680px; font-size: 1.2rem; color: rgba(248,244,236,0.95);
+  line-height: 1.7; margin-top: 1.2rem; font-weight: 400;
+  backdrop-filter: blur(2px);
+}
+
+/* ========== CONTACT MAIN (PREMIUM LIGHT SECTION) ========== */
+.contact-main {
+  background: #FFFCF5;
+  padding: 5rem 6vw;
+  position: relative;
+  z-index: 1;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ----- INFO CARDS (PREMIUM) ----- */
+.info-section { color: var(--text-dark-primary); }
+.section-eyebrow {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;
+}
+.section-eyebrow-line { width: 40px; height: 2px; background: var(--green); }
+.section-eyebrow-text {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--green); font-family: 'Times New Roman', Times, serif;
+}
+.contact-cards { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-card {
+  background: #FDF8F0;
+  padding: 1.8rem;
+  border-radius: 28px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+  border: 1px solid rgba(200,150,12,0.08);
+}
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -8px rgba(0,0,0,0.1);
+  border-color: rgba(200,150,12,0.25);
+}
+.cc-icon {
+  width: 56px; height: 56px; background: linear-gradient(135deg, rgba(26,107,60,0.08), rgba(26,107,60,0.02));
+  border-radius: 18px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; border: 1px solid rgba(26,107,60,0.12);
+  transition: all 0.3s;
+}
+.contact-card:hover .cc-icon {
+  background: var(--green);
+  border-color: var(--green);
+}
+.contact-card:hover .cc-icon svg { stroke: var(--white); }
+.cc-icon svg { width: 26px; height: 26px; stroke: var(--green); transition: stroke 0.3s; }
+.cc-content { flex: 1; }
+.cc-label {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.cc-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.3rem; font-weight: 700; color: var(--text-dark-primary);
+  line-height: 1.2; margin-bottom: 0.25rem;
+}
+.cc-detail {
+  font-size: 1rem; color: var(--text-dark-secondary); line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+.cc-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--green); text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  transition: gap 0.2s;
+}
+.cc-link:hover { gap: 0.8rem; color: var(--green-deep); }
+.cc-link svg { width: 14px; height: 14px; stroke: var(--green); }
+
+/* Social Links (Premium) */
+.social-block { margin-top: 2.5rem; }
+.social-header {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+}
+.social-header-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--green), transparent); }
+.social-header-text {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--green); font-family: 'Times New Roman', Times, serif;
+}
+.social-icons {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.social-icon-link {
+  width: 52px; height: 52px; background: var(--white);
+  border-radius: 16px; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  border: 1px solid rgba(26,107,60,0.1);
+  transition: all 0.3s cubic-bezier(0.2,0.9,0.4,1.1);
+  text-decoration: none;
+}
+.social-icon-link:hover {
+  transform: translateY(-4px);
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 12px 20px -8px rgba(26,107,60,0.3);
+}
+.social-icon-link svg { width: 22px; height: 22px; stroke: var(--green); transition: stroke 0.3s; }
+.social-icon-link:hover svg { stroke: var(--white); }
+
+/* Map Embed (Premium) */
+.map-wrapper {
+  margin-top: 3rem;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  border: 1px solid rgba(26,107,60,0.1);
+}
+.map-iframe {
+  width: 100%; height: 260px; border: 0; display: block;
+  filter: grayscale(0.2) contrast(1.1);
+}
+.map-caption {
+  background: var(--white); padding: 1rem 1.8rem;
+  display: flex; align-items: center; gap: 1rem;
+  border-top: 1px solid rgba(26,107,60,0.08);
+}
+.map-caption-icon {
+  width: 32px; height: 32px; background: rgba(26,107,60,0.08);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+}
+.map-caption-icon svg { width: 16px; height: 16px; stroke: var(--green); }
+.map-caption-text { font-size: 0.9rem; color: var(--text-dark-secondary); }
+.map-caption-text strong { color: var(--text-dark-primary); font-weight: 700; }
+
+/* ----- FORM SECTION (PREMIUM) ----- */
+.form-wrapper {
+  background: var(--white);
+  border-radius: 28px;
+  padding: 2.8rem 2.5rem;
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+  border: 1px solid rgba(26,107,60,0.08);
+}
+.form-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(26,107,60,0.06); padding: 0.3rem 1rem;
+  border-radius: 40px; margin-bottom: 1.5rem;
+}
+.form-eyebrow-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+.form-eyebrow-text {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--green); font-family: 'Times New Roman', Times, serif;
+}
+.form-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2.2rem; font-weight: 700; color: var(--text-dark-primary);
+  line-height: 1.15; margin-bottom: 0.75rem;
+}
+.form-title em { color: var(--green); font-style: italic; }
+.form-desc {
+  font-size: 1rem; color: var(--text-dark-secondary);
+  line-height: 1.7; margin-bottom: 2rem;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group.full { grid-column: 1/-1; }
+.form-label {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-dark-primary); display: flex; align-items: center; gap: 0.3rem;
+}
+.form-label .req { color: var(--green); font-size: 1rem; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; background: #FAFAF8; border: 1.5px solid rgba(26,107,60,0.15);
+  color: var(--text-dark-primary); font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem; padding: 0.9rem 1.2rem; outline: none;
+  transition: all 0.25s; border-radius: 16px;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--green); background: var(--white);
+  box-shadow: 0 0 0 4px rgba(26,107,60,0.08);
+}
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%231A6B3C' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 1.2rem center;
+  cursor: pointer; appearance: none;
+}
+.form-textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
+.form-submit {
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  background: var(--green); color: var(--white);
+  padding: 1rem 2.5rem; font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+  font-family: 'Times New Roman', Times, serif; border: none;
+  transition: all 0.3s cubic-bezier(0.2,0.9,0.4,1.1);
+  border-radius: 60px; margin-top: 2rem;
+  box-shadow: 0 6px 16px rgba(26,107,60,0.2);
+}
+.form-submit:hover {
+  background: var(--green-bright); transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(26,107,60,0.25);
+}
+.success-msg {
+  display: none; padding: 1.5rem; background: rgba(26,107,60,0.05);
+  border: 1px solid rgba(26,107,60,0.2); border-radius: 20px;
+  margin-top: 2rem; text-align: center;
+}
+.success-msg.show { display: block; }
+.success-msg p { font-size: 1rem; color: var(--text-dark-primary); line-height: 1.6; }
+.success-msg strong { color: var(--green); }
+
+/* Reveal Animations */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.2,0.9,0.4,1.1), transform 0.8s cubic-bezier(0.2,0.9,0.4,1.1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+
+/* ========== FOOTER (PREMIUM) ========== */
+footer {
+  background: var(--bg-dark);
+  padding: 4rem 6vw 2rem;
+  border-top: 1px solid rgba(200,150,12,0.15);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand p { font-size: 0.95rem; color: rgba(248,244,236,0.55); line-height: 1.65; margin-top: 1.2rem; }
+.footer-social { display: flex; gap: 0.8rem; margin-top: 1.5rem; }
+.social-btn {
+  width: 42px; height: 42px; border: 1px solid rgba(200,150,12,0.3);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: all 0.25s; text-decoration: none; color: rgba(248,244,236,0.5);
+  font-size: 0.9rem; font-weight: 600; font-family: 'Times New Roman', Times, serif;
+  border-radius: 60px;
+}
+.social-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--bg-dark); transform: translateY(-3px); }
+.footer-col h4 {
+  font-family: 'Times New Roman', Times, serif; font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-links a {
+  font-size: 0.9rem; color: rgba(248,244,236,0.55); text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--cream); }
+.footer-contact-item { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 1rem; }
+.footer-contact-label {
+  font-size: 0.7rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase;
+  font-family: 'Times New Roman', Times, serif; font-weight: 700;
+}
+.footer-contact-val { font-size: 0.9rem; color: rgba(248,244,236,0.65); }
+.footer-bottom {
+  border-top: 1px solid rgba(248,244,236,0.06); padding-top: 1.8rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy { font-size: 0.8rem; color: rgba(248,244,236,0.35); font-family: 'Times New Roman', Times, serif; }
+.footer-legal { display: flex; gap: 2rem; list-style: none; }
+.footer-legal a {
+  font-size: 0.75rem; color: rgba(248,244,236,0.35); text-decoration: none;
+  font-family: 'Times New Roman', Times, serif; transition: color 0.2s;
+}
+.footer-legal a:hover { color: rgba(248,244,236,0.6); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    position: fixed; top: 80px; left: 0; width: 100%; height: calc(100vh - 80px);
+    background: rgba(7,36,22,0.98); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: flex-start;
+    padding: 2rem 0; gap: 1.5rem; transform: translateX(100%);
+    transition: transform 0.3s; z-index: 999; display: flex !important; overflow-y: auto;
+  }
+  .nav-links.nav-active { transform: translateX(0); }
+  .nav-links li { width: 100%; text-align: center; }
+  .nav-links a { display: inline-block; padding: 0.8rem 1rem; color: #F8F4EC; font-size: 1rem; }
+  .hamburger.toggle span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.toggle span:nth-child(2) { opacity: 0; }
+  .hamburger.toggle span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+  body.menu-open { overflow: hidden; }
+  .form-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .contact-card { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+<a class="logo" href="index.html">
+<img alt="Culture9ja Logo" data-cms-src="nav-logo-url" src="https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png" style="height:80px;"/>
+</a>
+<ul class="nav-links">
+<li><a data-cms-href="nav-about-link" data-cms-text="nav-about" href="about.html">About</a></li>
+<li><a data-cms-href="nav-auditions-link" data-cms-text="nav-auditions" href="auditions.html">Auditions</a></li>
+<li><a data-cms-href="nav-contestants-link" data-cms-text="nav-contestants" href="contestants.html">Contestants</a></li>
+<li><a data-cms-href="nav-episodes-link" data-cms-text="nav-episodes" href="episodes.html">Highlights</a></li>
+<li><a data-cms-href="nav-voting-link" data-cms-text="nav-voting" href="voting.html">Voting</a></li>
+<li><a data-cms-href="nav-news-link" data-cms-text="nav-news" href="news.html">News</a></li>
+<li><a data-cms-href="nav-gallery-link" data-cms-text="nav-gallery" href="gallery.html">Gallery</a></li>
+<li><a data-cms-href="nav-sponsors-link" data-cms-text="nav-sponsors" href="sponsors.html">Sponsors</a></li>
+<li><a data-cms-href="nav-contact-link" data-cms-text="nav-contact" href="contact.html" class="active">Contact</a></li>
+<li><a class="nav-cta" data-cms-href="nav-cta-url" data-cms-text="nav-cta-text" href="register.html">Apply Now</a></li>
+</ul>
+<div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero" data-cms-bg="hero-bg">
+<div class="page-hero-bg-pattern"></div>
+<div class="hero-texture"></div>
+<div class="page-hero-content">
+<div class="breadcrumb"><a href="index.html" data-cms-text="breadcrumb-home">Home</a><span>›</span><span data-cms-text="breadcrumb-current">Contact Us</span></div>
+<div class="page-hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text" data-cms-text="hero-eyebrow">Get in Touch</span></div>
+<h1 class="page-hero-title"><span data-cms-html="hero-title">Let's <em>Connect</em></span></h1>
+<p class="page-hero-desc" data-cms-text="hero-desc">Whether you're a future contestant, potential partner, or cultural enthusiast — we're here to listen. Reach out and let's create something extraordinary together.</p>
+</div>
+</div>
+
+<!-- MAIN CONTACT SECTION -->
+<div class="contact-main">
+  <div class="contact-grid">
+    <!-- LEFT: INFO & MAP -->
+    <div class="info-section reveal">
+      <div class="section-eyebrow">
+        <div class="section-eyebrow-line"></div>
+        <span class="section-eyebrow-text" data-cms-text="info-eyebrow">Contact Information</span>
+      </div>
+
+      <div class="contact-cards">
+        <!-- Email Card -->
+        <div class="contact-card">
+          <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="cc-content">
+            <div class="cc-label" data-cms-text="card-email-label">Email Us</div>
+            <div class="cc-title" data-cms-text="card-email-title">General Enquiries</div>
+            <div class="cc-detail" data-cms-text="card-email-val">support@culture9ja.com</div>
+            <a href="mailto:support@culture9ja.com" class="cc-link" data-cms-text="card-email-link">Send a Message <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </div>
+        <!-- Phone Card -->
+        <div class="contact-card">
+          <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.99 1.18 2 2 0 012.98 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 7.91a16 16 0 006.12 6.12l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="cc-content">
+            <div class="cc-label" data-cms-text="card-phone-label">Call Us</div>
+            <div class="cc-title" data-cms-text="card-phone-title">Speak Directly</div>
+            <div class="cc-detail" data-cms-text="card-phone-val">+234 903 999 7729</div>
+            <div class="cc-detail" style="margin-top:-0.25rem;font-size:0.9rem;" data-cms-text="card-phone-secondary">0905 556 7245 · 0909 577 7082</div>
+            <a href="tel:+2349039997729" class="cc-link" data-cms-text="card-phone-link">Call Now <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </div>
+        <!-- Office Card -->
+        <div class="contact-card">
+          <div class="cc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="cc-content">
+            <div class="cc-label" data-cms-text="card-office-label">Headquarters</div>
+            <div class="cc-title" data-cms-text="card-office-title">Visit Us</div>
+            <div class="cc-detail" data-cms-text="card-office-val">Culture9ja Limited<br>Abuja, Federal Capital Territory<br>Federal Republic of Nigeria</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Links -->
+      <div class="social-block">
+        <div class="social-header">
+          <span class="social-header-text" data-cms-text="social-title">Follow Our Journey</span>
+          <div class="social-header-line"></div>
+        </div>
+        <div class="social-icons">
+          <a href="#" class="social-icon-link" data-cms-href="social-instagram" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="18" y1="6" x2="18.01" y2="6"/></svg></a>
+          <a href="#" class="social-icon-link" data-cms-href="social-facebook" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" class="social-icon-link" data-cms-href="social-youtube" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+          <a href="#" class="social-icon-link" data-cms-href="social-tiktok" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5.523-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0s10 4.477 10 10z"/><path d="M17 12v-1c-1 0-2-.5-2.5-1.5"/></svg></a>
+          <a href="#" class="social-icon-link" data-cms-href="social-x" target="_blank" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l7 7m0 0l7 7m-7-7l7-7m-7 7l-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="map-wrapper">
+        <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.685279123456!2d7.495079!3d9.05785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b0b0b0b0b0b%3A0x0!2zOcKwMDMnMjguMyJOIDfCsDI5JzQyLjMiRQ!5e0!3m2!1sen!2sng!4v1713000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-caption">
+          <div class="map-caption-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <span class="map-caption-text"><strong data-cms-text="map-title">Culture9ja Headquarters</strong> — <span data-cms-text="map-address">Abuja, FCT, Nigeria</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: CONTACT FORM -->
+    <div class="form-wrapper reveal reveal-delay-1">
+      <div class="form-eyebrow">
+        <span class="form-eyebrow-dot"></span>
+        <span class="form-eyebrow-text" data-cms-text="form-eyebrow">Send a Message</span>
+      </div>
+      <div class="form-title"><span data-cms-html="form-title">How Can We <em>Help?</em></span></div>
+      <p class="form-desc" data-cms-text="form-desc">Fill out the form below and a member of our team will get back to you within 2–3 business days.</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label"><span data-cms-text="form-fname-label">First Name</span> <span class="req">*</span></label>
+          <input class="form-input" type="text" placeholder="Your first name" id="cf-fname">
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-cms-text="form-lname-label">Last Name</span> <span class="req">*</span></label>
+          <input class="form-input" type="text" placeholder="Your last name" id="cf-lname">
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-cms-text="form-email-label">Email Address</span> <span class="req">*</span></label>
+          <input class="form-input" type="email" placeholder="you@example.com" id="cf-email">
+        </div>
+        <div class="form-group">
+          <label class="form-label"><span data-cms-text="form-phone-label">Phone Number</span></label>
+          <input class="form-input" type="tel" placeholder="+234 800 000 0000">
+        </div>
+        <div class="form-group full">
+          <label class="form-label"><span data-cms-text="form-type-label">I Am Contacting As</span> <span class="req">*</span></label>
+          <select class="form-select" id="cf-type">
+            <option value="">Select enquiry type</option>
+            <option>Prospective Contestant</option>
+            <option>Sponsor / Brand Partner</option>
+            <option>Media Partner</option>
+            <option>Government / Cultural Organisation</option>
+            <option>Traditional Institution</option>
+            <option>General Public / Fan</option>
+            <option>Press / Journalist</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label"><span data-cms-text="form-subject-label">Subject</span> <span class="req">*</span></label>
+          <input class="form-input" type="text" placeholder="e.g. Sponsorship enquiry for Season 1" id="cf-subject">
+        </div>
+        <div class="form-group full">
+          <label class="form-label"><span data-cms-text="form-message-label">Message</span> <span class="req">*</span></label>
+          <textarea class="form-textarea" placeholder="Tell us how we can help you..." id="cf-message"></textarea>
+        </div>
+      </div>
+      <button class="form-submit" onclick="submitContact()"><span data-cms-text="form-submit-btn">Send Message</span> <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <div class="success-msg" id="cf-success">
+        <p><strong data-cms-text="success-title">Thank you for reaching out!</strong><br><span data-cms-text="success-text">Your message has been received. A member of our team will respond within 2–3 business days.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-grid">
+<div class="footer-brand"><a class="logo" href="index.html"><img alt="Culture9ja Logo" data-cms-src="footer-logo-url" src="https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png" style="height:70px"/></a><p data-cms-text="footer-tagline">Africa's cultural reality television show — celebrating people, living traditions, and the stories that define who we are.</p><div class="footer-social"><a class="social-btn" data-cms-href="footer-social-fb" href="#">f</a><a class="social-btn" data-cms-href="footer-social-in" href="#">in</a><a class="social-btn" data-cms-href="footer-social-x" href="#">𝕏</a><a class="social-btn" data-cms-href="footer-social-yt" href="#">▶</a><a class="social-btn" data-cms-href="footer-social-tk" href="#">tk</a></div></div>
+<div class="footer-col"><h4>Navigate</h4><ul class="footer-links"><li><a href="index.html" data-cms-text="footer-link-home">Home</a></li><li><a href="about.html" data-cms-text="footer-link-about">About</a></li><li><a href="auditions.html" data-cms-text="footer-link-auditions">Auditions</a></li><li><a href="index.html#events" data-cms-text="footer-link-events">Events</a></li><li><a href="news.html" data-cms-text="footer-link-news">News</a></li></ul></div>
+<div class="footer-col"><h4>Support</h4><ul class="footer-links"><li><a href="contact.html" data-cms-text="footer-link-contact">Contact Us</a></li><li><a href="faq.html" data-cms-text="footer-link-faq">FAQs</a></li><li><a href="legal.html" data-cms-text="footer-link-terms">Terms</a></li><li><a href="legal.html" data-cms-text="footer-link-privacy">Privacy</a></li></ul></div>
+<div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><span class="footer-contact-label">Email</span><span class="footer-contact-val" data-cms-text="footer-email">support@culture9ja.com</span></div><div class="footer-contact-item"><span class="footer-contact-label">Phone</span><span class="footer-contact-val" data-cms-text="footer-phone1">+234 903 999 7729</span></div></div>
+</div>
+<div class="footer-bottom"><p class="footer-copy" data-cms-text="footer-copyright">© 2026 Culture9ja Limited. All Rights Reserved.</p><ul class="footer-legal"><li><a href="legal.html" data-cms-text="footer-legal-terms">Terms</a></li><li><a href="legal.html" data-cms-text="footer-legal-privacy">Privacy</a></li></ul></div>
+</footer>
+
+<script>
+// ========== CMS BOOT SCRIPT ==========
+(function() {
+  function getPageData() {
+    try { const raw = localStorage.getItem('c9_pageContent'); return raw ? (JSON.parse(raw).contact || {}) : {}; }
+    catch(e) { return {}; }
+  }
+  function applyCMS() {
+    const data = getPageData();
+    document.querySelectorAll('[data-cms-text]').forEach(el => { const key = el.getAttribute('data-cms-text'); if (data[key]) el.innerText = data[key]; });
+    document.querySelectorAll('[data-cms-html]').forEach(el => { const key = el.getAttribute('data-cms-html'); if (data[key]) el.innerHTML = data[key]; });
+    document.querySelectorAll('[data-cms-href]').forEach(el => { const key = el.getAttribute('data-cms-href'); if (data[key]) el.href = data[key]; });
+    document.querySelectorAll('[data-cms-src]').forEach(el => { const key = el.getAttribute('data-cms-src'); if (data[key]) el.src = data[key]; });
+    document.querySelectorAll('[data-cms-bg]').forEach(el => { const key = el.getAttribute('data-cms-bg'); if (data[key]) el.style.backgroundImage = `url('${data[key]}')`; });
+  }
+  applyCMS();
+})();
+
+// Navbar scroll
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>60));
+
+// Reveal animations
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.1});
+reveals.forEach(r=>obs.observe(r));
+
+// Contact form submission
+function submitContact(){
+  const fname=document.getElementById('cf-fname').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const type=document.getElementById('cf-type').value;
+  const subject=document.getElementById('cf-subject').value.trim();
+  const msg=document.getElementById('cf-message').value.trim();
+  if(!fname||!email||!type||!subject||!msg){alert('Please fill in all required fields.');return;}
+  document.getElementById('cf-success').classList.add('show');
+  document.querySelector('.form-submit').style.display='none';
+}
+
+// Hamburger menu
+(function(){
+  const hamburger=document.querySelector('.hamburger'),navLinks=document.querySelector('.nav-links'),body=document.body;
+  if(!hamburger||!navLinks)return;
+  function close(){navLinks.classList.remove('nav-active');hamburger.classList.remove('toggle');body.classList.remove('menu-open');}
+  function open(){navLinks.classList.add('nav-active');hamburger.classList.add('toggle');body.classList.add('menu-open');}
+  hamburger.addEventListener('click',e=>{e.stopPropagation();navLinks.classList.contains('nav-active')?close():open();});
+  document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click',close));
+  window.addEventListener('resize',()=>{if(window.innerWidth>768)close();});
+})();
+</script>
+</body>
+</html>

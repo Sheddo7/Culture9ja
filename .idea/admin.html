@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture9ja — Admin Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#1A6B3C;--g2:#0F4526;--g3:#22913A;
+  --gold:#C8960C;--gold2:#E8B020;
+  --sidebar:#0A1A0F;--sidebar2:#0F2318;--sidebar3:#142B1C;
+  --bg:#F0F2F0;--card:#fff;--border:#E2E8E2;
+  --text:#1A2E1A;--text2:#4A6A4A;--text3:#7A9A7A;
+  --red:#DC2626;--amber:#D97706;--blue:#2563EB;--purple:#7C3AED;
+  --success:#16A34A;--info:#0284C7;
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px;scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+input,select,textarea,button{font-family:'Inter',sans-serif}
+
+/* LOGIN */
+#login-screen{position:fixed;inset:0;background:linear-gradient(135deg,#0A1A0F 0%,#0A2F1F 50%,#072416 100%);display:flex;align-items:center;justify-content:center;z-index:9999}
+.login-box{background:#fff;border-radius:12px;padding:2.5rem;width:100%;max-width:400px;box-shadow:0 25px 50px -12px rgba(0,0,0,.4)}
+.login-logo{text-align:center;margin-bottom:1.75rem}
+.login-logo img{height:56px;width:auto;object-fit:contain}
+.login-logo-fallback{width:56px;height:56px;background:var(--g);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--gold);margin:0 auto}
+.login-title{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--text);text-align:center;margin-bottom:.25rem}
+.login-sub{font-size:.8rem;color:var(--text2);text-align:center;margin-bottom:2rem}
+.login-field{margin-bottom:1.1rem}
+.login-field label{display:block;font-size:.78rem;font-weight:600;color:var(--text);margin-bottom:.4rem;letter-spacing:.02em}
+.login-field input{width:100%;padding:.7rem .9rem;border:1.5px solid var(--border);border-radius:8px;font-size:.88rem;color:var(--text);outline:none;transition:border .2s}
+.login-field input:focus{border-color:var(--g)}
+.login-btn{width:100%;padding:.8rem;background:var(--g);border:none;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:700;color:#fff;cursor:pointer;transition:background .2s;letter-spacing:.04em;text-transform:uppercase;margin-top:.5rem}
+.login-btn:hover{background:var(--g3)}
+.login-error{background:#FEE2E2;border:1px solid #FCA5A5;border-radius:8px;padding:.65rem 1rem;font-size:.78rem;color:#B91C1C;margin-bottom:1rem;display:none}
+.login-hint{font-size:.72rem;color:var(--text3);text-align:center;margin-top:1.25rem}
+.login-hint span{color:var(--g);font-weight:600}
+
+/* LAYOUT */
+#admin-app{display:none;height:100vh;overflow:hidden}
+.layout{display:flex;height:100vh}
+
+/* SIDEBAR */
+.sidebar{width:240px;min-width:240px;background:var(--sidebar);display:flex;flex-direction:column;height:100vh;overflow-y:auto;position:relative;z-index:10;transition:width .3s}
+.sidebar.collapsed{width:64px;min-width:64px}
+.sidebar-header{padding:1.25rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:.75rem;min-height:64px}
+.sb-logo{width:36px;height:36px;background:var(--g);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-logo img{height:28px;width:auto;object-fit:contain;filter:brightness(0) invert(1)}
+.sb-logo-text{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}
+.sb-logo-sub{font-size:.6rem;color:rgba(200,150,12,.7);letter-spacing:.08em;text-transform:uppercase;margin-top:1px}
+.sidebar-nav{flex:1;padding:.75rem .5rem;display:flex;flex-direction:column;gap:2px}
+.sb-section-label{font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:.5rem .5rem .25rem;white-space:nowrap;overflow:hidden}
+.nav-item{display:flex;align-items:center;gap:.7rem;padding:.65rem .75rem;border-radius:8px;cursor:pointer;transition:all .2s;white-space:nowrap;overflow:hidden;text-decoration:none;border:none;background:none;width:100%;text-align:left}
+.nav-item:hover{background:rgba(255,255,255,.07)}
+.nav-item.active{background:var(--g);box-shadow:0 4px 12px rgba(26,107,60,.4)}
+.nav-icon{width:18px;height:18px;flex-shrink:0;opacity:.7}
+.nav-item.active .nav-icon,.nav-item:hover .nav-icon{opacity:1}
+.nav-label{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.7);flex:1}
+.nav-item.active .nav-label,.nav-item:hover .nav-label{color:#fff}
+.nav-badge{background:var(--gold);color:var(--sidebar);border-radius:20px;font-size:.58rem;font-weight:700;padding:.15rem .45rem;min-width:18px;text-align:center;flex-shrink:0}
+.sidebar-footer{padding:1rem;border-top:1px solid rgba(255,255,255,.07)}
+.sb-user{display:flex;align-items:center;gap:.75rem}
+.sb-avatar{width:32px;height:32px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:var(--gold);flex-shrink:0}
+.sb-user-name{font-size:.78rem;font-weight:600;color:#fff;white-space:nowrap}
+.sb-user-role{font-size:.62rem;color:rgba(255,255,255,.4);white-space:nowrap}
+.logout-btn{background:none;border:none;cursor:pointer;padding:.25rem;color:rgba(255,255,255,.4);transition:color .2s;margin-left:auto;flex-shrink:0}
+.logout-btn:hover{color:#fff}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.topbar{height:64px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;gap:1rem;flex-shrink:0;box-shadow:var(--shadow)}
+.topbar-left{display:flex;align-items:center;gap:1rem}
+.toggle-sidebar{background:none;border:none;cursor:pointer;padding:.35rem;border-radius:6px;color:var(--text2);transition:all .2s}
+.toggle-sidebar:hover{background:var(--bg);color:var(--text)}
+.page-breadcrumb{display:flex;align-items:center;gap:.5rem}
+.breadcrumb-page{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;color:var(--text)}
+.topbar-right{display:flex;align-items:center;gap:.75rem}
+.topbar-time{font-size:.75rem;color:var(--text2);font-weight:500}
+.tb-btn{background:none;border:1px solid var(--border);cursor:pointer;padding:.4rem .75rem;border-radius:6px;font-size:.75rem;font-weight:600;color:var(--text2);transition:all .2s;display:flex;align-items:center;gap:.4rem}
+.tb-btn:hover{border-color:var(--g);color:var(--g)}
+.content-area{flex:1;overflow-y:auto;padding:1.5rem}
+
+/* SECTION */
+.section{display:none}
+.section.active{display:block}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.section-heading{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text)}
+.section-sub{font-size:.78rem;color:var(--text2);margin-top:.2rem;font-weight:400}
+
+/* STAT CARDS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat-card{background:var(--card);border-radius:10px;padding:1.25rem;border:1px solid var(--border);display:flex;flex-direction:column;gap:.75rem;box-shadow:var(--shadow);transition:all .2s}
+.stat-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.stat-top{display:flex;align-items:center;justify-content:space-between}
+.stat-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text2)}
+.stat-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.stat-icon.green{background:#D1FAE5}
+.stat-icon.gold{background:#FEF3C7}
+.stat-icon.blue{background:#DBEAFE}
+.stat-icon.red{background:#FEE2E2}
+.stat-icon.purple{background:#EDE9FE}
+.stat-icon svg{width:18px;height:18px}
+.stat-icon.green svg{color:#059669}
+.stat-icon.gold svg{color:#D97706}
+.stat-icon.blue svg{color:#2563EB}
+.stat-icon.red svg{color:#DC2626}
+.stat-icon.purple svg{color:#7C3AED}
+.stat-value{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--text);line-height:1}
+.stat-change{font-size:.72rem;color:var(--text2);display:flex;align-items:center;gap:.25rem}
+.stat-change.up{color:#059669}
+.stat-change.down{color:#DC2626}
+
+/* CARDS */
+.card{background:var(--card);border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.card-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.card-title{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;color:var(--text)}
+.card-body{padding:1.25rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+thead tr{background:#F8FAF8;border-bottom:1px solid var(--border)}
+th{padding:.75rem 1rem;text-align:left;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);white-space:nowrap}
+td{padding:.85rem 1rem;font-size:.82rem;color:var(--text);border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#F8FAF8}
+.td-name{font-weight:600;color:var(--text)}
+.td-id{font-size:.72rem;color:var(--text2);font-weight:500;font-family:'Space Grotesk',sans-serif}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .6rem;border-radius:20px;font-size:.68rem;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.badge-green{background:#D1FAE5;color:#065F46}
+.badge-gold{background:#FEF3C7;color:#92400E}
+.badge-red{background:#FEE2E2;color:#991B1B}
+.badge-blue{background:#DBEAFE;color:#1E40AF}
+.badge-gray{background:#F3F4F6;color:#374151}
+.badge-purple{background:#EDE9FE;color:#5B21B6}
+.badge-amber{background:#FEF3C7;color:#92400E}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1rem;border-radius:7px;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;border:none;white-space:nowrap;letter-spacing:.02em}
+.btn-primary{background:var(--g);color:#fff}
+.btn-primary:hover{background:var(--g3)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold2)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-danger:hover{background:#B91C1C}
+.btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text2)}
+.btn-outline:hover{border-color:var(--g);color:var(--g)}
+.btn-ghost{background:transparent;color:var(--text2);padding:.35rem .55rem}
+.btn-ghost:hover{background:var(--bg);color:var(--text)}
+.btn-sm{padding:.35rem .7rem;font-size:.72rem}
+.btn-icon{width:32px;height:32px;padding:0;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.btn svg{width:14px;height:14px}
+
+/* FORMS */
+.form-grid{display:grid;gap:1rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field label{font-size:.75rem;font-weight:600;color:var(--text);letter-spacing:.02em}
+.field label span{color:var(--red)}
+.field input,.field select,.field textarea{padding:.65rem .85rem;border:1.5px solid var(--border);border-radius:7px;font-size:.82rem;color:var(--text);outline:none;transition:border .2s;width:100%;background:#fff}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(26,107,60,.08)}
+.field textarea{resize:vertical;min-height:90px;line-height:1.5}
+.field-hint{font-size:.7rem;color:var(--text2)}
+.search-bar{display:flex;align-items:center;gap:.5rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.45rem .75rem;width:260px}
+.search-bar svg{width:16px;height:16px;color:var(--text3);flex-shrink:0}
+.search-bar input{border:none;outline:none;font-size:.82rem;color:var(--text);width:100%;background:transparent}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(3px)}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:12px;width:100%;max-width:640px;max-height:90vh;overflow-y:auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.4)}
+.modal-lg{max-width:860px}
+.modal-xl{max-width:1100px}
+.modal-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1;border-radius:12px 12px 0 0}
+.modal-title{font-family:'Space Grotesk',sans-serif;font-size:.95rem;font-weight:700;color:var(--text)}
+.modal-close{background:none;border:none;cursor:pointer;padding:.3rem;color:var(--text2);border-radius:6px;transition:all .2s}
+.modal-close:hover{background:var(--bg);color:var(--text)}
+.modal-close svg{width:18px;height:18px}
+.modal-body{padding:1.5rem}
+.modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:flex-end;gap:.75rem;background:#FAFAFA;border-radius:0 0 12px 12px}
+
+/* TOAST */
+.toast-container{position:fixed;top:1.25rem;right:1.25rem;z-index:10000;display:flex;flex-direction:column;gap:.5rem}
+.toast{background:#1F2937;color:#fff;border-radius:8px;padding:.75rem 1rem;font-size:.8rem;display:flex;align-items:center;gap:.65rem;box-shadow:var(--shadow-lg);max-width:320px;animation:slideIn .25s ease}
+.toast.success{background:#065F46;border-left:3px solid #10B981}
+.toast.error{background:#991B1B;border-left:3px solid #F87171}
+.toast.info{background:#1E40AF;border-left:3px solid #60A5FA}
+@keyframes slideIn{from{opacity:0;transform:translateX(1.5rem)}to{opacity:1;transform:translateX(0)}}
+
+/* CHARTS / ACTIVITY */
+.activity-list{display:flex;flex-direction:column;gap:0}
+.activity-item{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 0;border-bottom:1px solid var(--border)}
+.activity-item:last-child{border-bottom:none}
+.act-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.act-text{font-size:.8rem;color:var(--text);line-height:1.45;flex:1}
+.act-time{font-size:.7rem;color:var(--text3);white-space:nowrap;flex-shrink:0}
+.progress-bar{height:6px;background:#E5E7EB;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;transition:width .6s ease}
+
+/* AVATAR */
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;text-transform:uppercase}
+
+/* PAGE EDITOR */
+.page-list-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.page-card{background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:1.25rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:.75rem}
+.page-card:hover{border-color:var(--g);box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.pc-icon{width:42px;height:42px;background:#D1FAE5;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.pc-icon svg{width:20px;height:20px;color:var(--g)}
+.pc-name{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;color:var(--text)}
+.pc-desc{font-size:.75rem;color:var(--text2);line-height:1.45}
+.pc-sections{font-size:.7rem;color:var(--g);font-weight:600;letter-spacing:.04em}
+
+/* EDITOR */
+.editor-toolbar{display:flex;align-items:center;gap:.4rem;padding:.6rem .75rem;background:#F8FAF8;border:1px solid var(--border);border-bottom:none;border-radius:7px 7px 0 0;flex-wrap:wrap}
+.editor-btn{background:#fff;border:1px solid var(--border);border-radius:5px;padding:.3rem .5rem;font-size:.75rem;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:.3rem;color:var(--text2)}
+.editor-btn:hover,.editor-btn.active{background:var(--g);border-color:var(--g);color:#fff}
+.editor-btn svg{width:13px;height:13px}
+.editor-content{border:1px solid var(--border);border-radius:0 0 7px 7px;min-height:200px;padding:1rem;font-size:.85rem;line-height:1.65;color:var(--text);outline:none;background:#fff}
+.editor-content:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(26,107,60,.08)}
+
+/* VOTING CHARTS */
+.vote-bar-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem}
+.vote-bar-name{font-size:.78rem;font-weight:600;color:var(--text);min-width:120px}
+.vote-bar-track{flex:1;height:8px;background:#E5E7EB;border-radius:4px;overflow:hidden}
+.vote-bar-fill{height:100%;border-radius:4px;background:var(--g);transition:width .8s ease}
+.vote-bar-count{font-size:.75rem;font-weight:700;color:var(--g);min-width:40px;text-align:right}
+
+/* TABS */
+.tab-bar{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:1.25rem}
+.tab-btn{padding:.65rem 1.1rem;font-size:.78rem;font-weight:600;color:var(--text2);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap}
+.tab-btn.active{color:var(--g);border-bottom-color:var(--g)}
+.tab-btn:hover{color:var(--text)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* FILTER ROW */
+.filter-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.filter-select{padding:.45rem .75rem;border:1.5px solid var(--border);border-radius:7px;font-size:.78rem;color:var(--text);outline:none;background:#fff;cursor:pointer}
+.filter-select:focus{border-color:var(--g)}
+
+/* CONFIRM */
+.confirm-content{text-align:center;padding:1rem}
+.confirm-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.confirm-icon.danger{background:#FEE2E2}
+.confirm-icon.danger svg{width:26px;height:26px;color:var(--red)}
+.confirm-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.confirm-msg{font-size:.82rem;color:var(--text2);line-height:1.55}
+
+/* PAYMENT */
+.payment-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.25rem}
+.pay-sum{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.1rem;text-align:center}
+.pay-sum-val{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--text);line-height:1}
+.pay-sum-label{font-size:.7rem;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;margin-top:.35rem}
+
+/* ANNOUNCE */
+.announce-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:.85rem}
+.announce-card-header{padding:.85rem 1.1rem;background:#F8FAF8;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.announce-type{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;border-radius:20px}
+.announce-title{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;color:var(--text);flex:1}
+.announce-body{padding:1rem 1.1rem;font-size:.8rem;color:var(--text2);line-height:1.6}
+.announce-footer{padding:.65rem 1.1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.announce-meta{font-size:.68rem;color:var(--text3)}
+
+/* CMS FIELD TYPES */
+.cms-section-panel{display:none;animation:fadeIn .2s ease;}
+.cms-section-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.cms-field-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem;}
+.cms-field-header{padding:.75rem 1rem;background:#F8FAF8;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem;}
+.cms-field-type-pill{font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .45rem;border-radius:10px;flex-shrink:0;}
+.cms-ft-text{background:#DBEAFE;color:#1E40AF;}
+.cms-ft-textarea{background:#D1FAE5;color:#065F46;}
+.cms-ft-image{background:#EDE9FE;color:#5B21B6;}
+.cms-ft-url{background:#FEF3C7;color:#92400E;}
+.cms-ft-video{background:#FEE2E2;color:#991B1B;}
+.cms-ft-list{background:#F0FDF4;color:#166534;}
+.cms-ft-richtext{background:#FFF7ED;color:#9A3412;}
+.cms-field-label{font-size:.8rem;font-weight:700;color:var(--text);flex:1;}
+.cms-field-hint{font-size:.7rem;color:var(--text3);}
+.cms-field-body{padding:1rem;}
+.cms-input{width:100%;padding:.65rem .85rem;border:1.5px solid var(--border);border-radius:7px;font-size:.83rem;color:var(--text);outline:none;transition:border .2s;background:#fff;font-family:'Inter',sans-serif;}
+.cms-input:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(26,107,60,.08);}
+.cms-textarea{width:100%;padding:.65rem .85rem;border:1.5px solid var(--border);border-radius:7px;font-size:.83rem;color:var(--text);outline:none;transition:border .2s;background:#fff;resize:vertical;min-height:90px;line-height:1.55;font-family:'Inter',sans-serif;}
+.cms-textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(26,107,60,.08);}
+.cms-img-preview{margin-top:.6rem;border:1px solid var(--border);border-radius:6px;overflow:hidden;max-height:140px;display:none;}
+.cms-img-preview img{width:100%;height:140px;object-fit:cover;display:block;}
+.cms-img-preview.show{display:block;}
+.cms-url-row{display:flex;gap:.5rem;align-items:center;}
+.cms-url-row .cms-input{flex:1;}
+.cms-url-open{flex-shrink:0;}
+.cms-list-items{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.5rem;}
+.cms-list-item{display:flex;align-items:center;gap:.4rem;}
+.cms-list-item input{flex:1;padding:.5rem .7rem;border:1.5px solid var(--border);border-radius:6px;font-size:.8rem;color:var(--text);outline:none;background:#fff;}
+.cms-list-item input:focus{border-color:var(--g);}
+.cms-list-remove{width:26px;height:26px;border:none;background:#FEE2E2;color:var(--red);border-radius:5px;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s;}
+.cms-list-remove:hover{background:#FECACA;}
+.cms-list-add{font-size:.75rem;color:var(--g);background:none;border:1px dashed var(--g);padding:.35rem .75rem;border-radius:6px;cursor:pointer;transition:all .2s;font-weight:600;}
+.cms-list-add:hover{background:var(--g);color:#fff;}
+.cms-unsaved-dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block;margin-left:.4rem;vertical-align:middle;}
+.pc-badge{display:inline-flex;align-items:center;gap:.25rem;font-size:.6rem;font-weight:700;padding:.15rem .45rem;border-radius:10px;margin-top:.3rem;}
+.pc-badge-edited{background:#FEF3C7;color:#92400E;}
+.pc-badge-clean{background:#D1FAE5;color:#065F46;}
+/* RESPONSIVE */
+@media(max-width:1200px){.stats-row{grid-template-columns:repeat(2,1fr)}.page-list-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.two-col,.form-row,.form-row-3,.three-col{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}.page-list-grid{grid-template-columns:1fr}.payment-summary{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png" alt="Culture9ja" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="login-logo-fallback" style="display:none">C9</div>
+    </div>
+    <div class="login-title">Admin Dashboard</div>
+    <div class="login-sub">Culture9ja Reality TV Show — Management System</div>
+    <div class="login-error" id="login-error">Invalid credentials. Please try again.</div>
+    <div class="login-field">
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="Enter username" autocomplete="username">
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="Enter password" autocomplete="current-password">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In to Dashboard</button>
+    <div class="login-hint">Demo: username <span>admin</span> / password <span>culture9ja2026</span></div>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div id="admin-app">
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sb-logo">
+      <img src="https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png" alt="" onerror="this.outerHTML='<span style=\'font-family:Space Grotesk,sans-serif;font-size:.9rem;font-weight:700;color:#C8960C\'>C9</span>'">
+    </div>
+    <div class="sb-logo-text" id="sb-text">
+      <div>Culture9ja</div>
+      <div class="sb-logo-sub">Admin Panel</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sb-section-label" id="lbl-main">MAIN</div>
+    <button class="nav-item active" onclick="showSection('dashboard',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span class="nav-label">Dashboard</span>
+    </button>
+    <div class="sb-section-label" id="lbl-manage">MANAGE</div>
+    <button class="nav-item" onclick="showSection('registrations',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      <span class="nav-label">Registrations</span>
+      <span class="nav-badge" id="nb-reg">0</span>
+    </button>
+    <button class="nav-item" onclick="showSection('applications',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <span class="nav-label">Applications</span>
+      <span class="nav-badge" id="nb-app" style="background:#DC2626;color:#fff">0</span>
+    </button>
+    <button class="nav-item" onclick="showSection('contestants',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span class="nav-label">Contestants</span>
+    </button>
+    <button class="nav-item" onclick="showSection('media',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82V15.18a1 1 0 01-1.447.89L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+      <span class="nav-label">Media & Episodes</span>
+    </button>
+    <button class="nav-item" onclick="showSection('voting',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      <span class="nav-label">Voting Monitor</span>
+    </button>
+    <button class="nav-item" onclick="showSection('payments',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+      <span class="nav-label">Payments</span>
+    </button>
+    <div class="sb-section-label" id="lbl-content">CONTENT</div>
+    <button class="nav-item" onclick="showSection('announcements',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+      <span class="nav-label">Announcements</span>
+    </button>
+    <button class="nav-item" onclick="showSection('page-editor',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      <span class="nav-label">Page Editor</span>
+    </button>
+    <div class="sb-section-label" id="lbl-settings">SYSTEM</div>
+    <button class="nav-item" onclick="showSection('settings',this)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+      <span class="nav-label">Settings</span>
+    </button>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sb-user">
+      <div class="sb-avatar">AD</div>
+      <div id="sb-user-info">
+        <div class="sb-user-name">Administrator</div>
+        <div class="sb-user-role">Super Admin</div>
+      </div>
+      <button class="logout-btn" onclick="doLogout()" title="Logout">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+      </button>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <button class="toggle-sidebar" onclick="toggleSidebar()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="page-breadcrumb">
+        <span style="font-size:.75rem;color:var(--text2)">Culture9ja</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text3)"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="breadcrumb-page" id="current-page-label">Dashboard</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-time" id="clock"></span>
+      <a href="index.html" target="_blank" class="tb-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View Site
+      </a>
+    </div>
+  </div>
+
+  <div class="content-area">
+    <!-- DASHBOARD -->
+    <div class="section active" id="sec-dashboard">
+      <div class="section-header">
+        <div><div class="section-heading">Dashboard Overview</div><div class="section-sub">Welcome back, Administrator. Here is what's happening with Culture9ja.</div></div>
+        <div style="display:flex;gap:.5rem">
+          <button class="btn btn-outline btn-sm" onclick="exportReport()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export Report</button>
+          <button class="btn btn-primary btn-sm" onclick="refreshDashboard()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>Refresh</button>
+        </div>
+      </div>
+
+      <div class="stats-row" id="dash-stats">
+        <div class="stat-card">
+          <div class="stat-top"><span class="stat-label">Total Registrations</span><div class="stat-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div></div>
+          <div class="stat-value" id="ds-total">0</div>
+          <div class="stat-change up">↑ All time</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top"><span class="stat-label">Pending Review</span><div class="stat-icon gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div></div>
+          <div class="stat-value" id="ds-pending">0</div>
+          <div class="stat-change" style="color:var(--amber)">Awaiting action</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top"><span class="stat-label">Total Revenue</span><div class="stat-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg></div></div>
+          <div class="stat-value" id="ds-revenue">₦0</div>
+          <div class="stat-change up">↑ ₦10,000 per reg.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-top"><span class="stat-label">Approved</span><div class="stat-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div></div>
+          <div class="stat-value" id="ds-approved">0</div>
+          <div class="stat-change up">Contestant approved</div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-bottom:1rem">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Recent Registrations</span>
+            <button class="btn btn-ghost btn-sm" onclick="showSection('registrations',document.querySelector('[onclick*=registrations]'))">View All →</button>
+          </div>
+          <div class="card-body" style="padding:0">
+            <table style="width:100%;border-collapse:collapse">
+              <thead><tr style="background:#F8FAF8;border-bottom:1px solid var(--border)">
+                <th style="padding:.65rem 1rem;font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--text2);text-align:left">Name</th>
+                <th style="padding:.65rem 1rem;font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--text2);text-align:left">State</th>
+                <th style="padding:.65rem 1rem;font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--text2);text-align:left">Status</th>
+                <th style="padding:.65rem 1rem;font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--text2);text-align:left">Date</th>
+              </tr></thead>
+              <tbody id="dash-recent-regs"><tr><td colspan="4" style="padding:2rem;text-align:center;color:var(--text2);font-size:.82rem">No registrations yet</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Recent Activity</span></div>
+          <div class="card-body" style="padding:.75rem 1.25rem">
+            <div class="activity-list" id="activity-feed">
+              <div class="activity-item">
+                <div class="act-dot" style="background:var(--g)"></div>
+                <div class="act-text">Admin dashboard initialized</div>
+                <div class="act-time">Now</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Applications by Status</span></div>
+          <div class="card-body">
+            <div class="vote-bar-row"><div class="vote-bar-name">Pending</div><div class="vote-bar-track"><div class="vote-bar-fill" id="bar-pending" style="width:0%;background:var(--amber)"></div></div><div class="vote-bar-count" id="cnt-pending">0</div></div>
+            <div class="vote-bar-row"><div class="vote-bar-name">Approved</div><div class="vote-bar-track"><div class="vote-bar-fill" id="bar-approved" style="width:0%;background:var(--g)"></div></div><div class="vote-bar-count" id="cnt-approved">0</div></div>
+            <div class="vote-bar-row"><div class="vote-bar-name">Rejected</div><div class="vote-bar-track"><div class="vote-bar-fill" id="bar-rejected" style="width:0%;background:var(--red)"></div></div><div class="vote-bar-count" id="cnt-rejected">0</div></div>
+            <div class="vote-bar-row"><div class="vote-bar-name">Shortlisted</div><div class="vote-bar-track"><div class="vote-bar-fill" id="bar-shortlisted" style="width:0%;background:var(--blue)"></div></div><div class="vote-bar-count" id="cnt-shortlisted">0</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Quick Actions</span></div>
+          <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+            <button class="btn btn-primary" onclick="openModal('reg-modal');document.getElementById('reg-modal-title').textContent='Add Registration'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>Add Registration</button>
+            <button class="btn btn-gold" onclick="showSection('applications',document.querySelector('[onclick*=applications]'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/></svg>Review Apps</button>
+            <button class="btn btn-outline" onclick="showSection('announcements',document.querySelector('[onclick*=announcements]'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>Post Announcement</button>
+            <button class="btn btn-outline" onclick="showSection('media',document.querySelector('[onclick*=media]'))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>Upload Media</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REGISTRATIONS -->
+    <div class="section" id="sec-registrations">
+      <div class="section-header">
+        <div><div class="section-heading">Participant Registrations</div><div class="section-sub">Manage all contestant registrations — view, edit, and delete records.</div></div>
+        <button class="btn btn-primary" onclick="openModal('reg-modal');document.getElementById('reg-modal-title').textContent='New Registration';document.getElementById('reg-form').reset();currentEditId=null"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Registration</button>
+      </div>
+      <div class="card" style="margin-bottom:1rem">
+        <div class="card-body" style="padding:.85rem 1.25rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap">
+          <div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search by name, email, state..." id="reg-search" oninput="filterRegs()"></div>
+          <select class="filter-select" id="reg-status-filter" onchange="filterRegs()">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+            <option value="shortlisted">Shortlisted</option>
+          </select>
+          <select class="filter-select" id="reg-state-filter" onchange="filterRegs()">
+            <option value="">All States</option>
+            <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option><option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option><option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+          </select>
+          <button class="btn btn-outline btn-sm" onclick="exportCSV('regs')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export CSV</button>
+          <span style="font-size:.75rem;color:var(--text2);margin-left:auto" id="reg-count-label">0 records</span>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th><input type="checkbox" id="reg-select-all" onchange="selectAllRegs(this)"></th>
+            <th>Applicant</th><th>Phone</th><th>State</th><th>Talent</th>
+            <th>Payment</th><th>Status</th><th>Date</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="regs-tbody"><tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--text2)">No registrations. Click "Add Registration" to get started.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- APPLICATIONS -->
+    <div class="section" id="sec-applications">
+      <div class="section-header">
+        <div><div class="section-heading">Application Review</div><div class="section-sub">Review and approve or reject contestant applications.</div></div>
+        <div style="display:flex;gap:.5rem">
+          <button class="btn btn-outline btn-sm" onclick="bulkAction('approve')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Bulk Approve</button>
+          <button class="btn btn-danger btn-sm" onclick="bulkAction('reject')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Bulk Reject</button>
+        </div>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchAppTab('pending',this)">Pending <span id="tab-pending-cnt" class="badge badge-gold" style="margin-left:.4rem">0</span></button>
+        <button class="tab-btn" onclick="switchAppTab('shortlisted',this)">Shortlisted <span id="tab-short-cnt" class="badge badge-blue" style="margin-left:.4rem">0</span></button>
+        <button class="tab-btn" onclick="switchAppTab('approved',this)">Approved <span id="tab-approved-cnt" class="badge badge-green" style="margin-left:.4rem">0</span></button>
+        <button class="tab-btn" onclick="switchAppTab('rejected',this)">Rejected <span id="tab-rejected-cnt" class="badge badge-red" style="margin-left:.4rem">0</span></button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th><input type="checkbox" id="app-select-all" onchange="selectAllApps(this)"></th>
+            <th>Applicant</th><th>State</th><th>Talent</th><th>Payment</th><th>Applied</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="apps-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CONTESTANTS -->
+    <div class="section" id="sec-contestants">
+      <div class="section-header">
+        <div><div class="section-heading">Contestant Profiles</div><div class="section-sub">Manage approved contestants — profiles, photos, skills, and show status.</div></div>
+        <button class="btn btn-primary" onclick="openModal('contestant-modal');currentEditContestant=null;document.getElementById('con-form').reset();document.getElementById('con-modal-title').textContent='Add Contestant'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Contestant</button>
+      </div>
+      <div class="card" style="margin-bottom:1rem">
+        <div class="card-body" style="padding:.85rem 1.25rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center">
+          <div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" placeholder="Search contestants..." id="con-search" oninput="filterContestants()"></div>
+          <select class="filter-select" id="con-status-filter" onchange="filterContestants()"><option value="">All Status</option><option>Active</option><option>Eliminated</option><option>Winner</option></select>
+          <select class="filter-select" id="con-cat-filter" onchange="filterContestants()"><option value="">All Categories</option><option>Traditional Dance</option><option>Cultural Fashion</option><option>Native Language</option><option>Traditional Music</option><option>Nigerian Cuisine</option><option>Storytelling</option><option>Cultural Crafts</option></select>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Contestant</th><th>State</th><th>Category</th><th>Votes</th><th>Status</th><th>Episode</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="contestants-tbody"><tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No contestants yet. Approve applications to create contestant profiles.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MEDIA -->
+    <div class="section" id="sec-media">
+      <div class="section-header">
+        <div><div class="section-heading">Media & Episodes</div><div class="section-sub">Upload and manage episodes, highlights, photos, and videos.</div></div>
+        <button class="btn btn-primary" onclick="openModal('media-modal');currentEditMedia=null;document.getElementById('media-form').reset();document.getElementById('media-modal-title').textContent='Upload Media'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>Upload Media</button>
+      </div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchMediaTab('episodes',this)">Episodes</button>
+        <button class="tab-btn" onclick="switchMediaTab('highlights',this)">Highlights</button>
+        <button class="tab-btn" onclick="switchMediaTab('bts',this)">Behind the Scenes</button>
+        <button class="tab-btn" onclick="switchMediaTab('photos',this)">Photos</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Title</th><th>Type</th><th>Season</th><th>Duration</th><th>Status</th><th>Uploaded</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="media-tbody"><tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No media uploaded yet.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VOTING -->
+    <div class="section" id="sec-voting">
+      <div class="section-header">
+        <div><div class="section-heading">Voting Activity Monitor</div><div class="section-sub">Real-time voting data, trends, and integrity monitoring.</div></div>
+        <div style="display:flex;gap:.5rem">
+          <button class="btn btn-outline btn-sm" id="voting-toggle" onclick="toggleVoting()">Open Voting</button>
+          <button class="btn btn-outline btn-sm" onclick="exportCSV('votes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export</button>
+        </div>
+      </div>
+      <div class="payment-summary">
+        <div class="pay-sum"><div class="pay-sum-val" id="vt-total">0</div><div class="pay-sum-label">Total Votes Cast</div></div>
+        <div class="pay-sum"><div class="pay-sum-val" id="vt-voters">0</div><div class="pay-sum-label">Unique Voters</div></div>
+        <div class="pay-sum"><div class="pay-sum-val" id="vt-status" style="color:var(--red)">Closed</div><div class="pay-sum-label">Voting Status</div></div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Votes by Contestant</span></div>
+          <div class="card-body" id="vote-bars-container">
+            <div style="text-align:center;color:var(--text2);font-size:.82rem;padding:1rem">No vote data yet. Voting must be open and contestants added.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Recent Votes</span></div>
+          <div class="card-body" style="padding:0">
+            <table style="width:100%;border-collapse:collapse">
+              <thead><tr style="background:#F8FAF8;border-bottom:1px solid var(--border)"><th style="padding:.6rem 1rem;font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--text2);text-align:left">Voter</th><th style="padding:.6rem 1rem;font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--text2);text-align:left">Voted For</th><th style="padding:.6rem 1rem;font-size:.68rem;font-weight:700;text-transform:uppercase;color:var(--text2);text-align:left">Time</th></tr></thead>
+              <tbody id="votes-tbody"><tr><td colspan="3" style="padding:2rem;text-align:center;color:var(--text2);font-size:.82rem">No votes recorded yet</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAYMENTS -->
+    <div class="section" id="sec-payments">
+      <div class="section-header">
+        <div><div class="section-heading">Payment Tracking</div><div class="section-sub">Monitor all registration fees, payment status, and revenue.</div></div>
+        <button class="btn btn-outline btn-sm" onclick="exportCSV('payments')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Export CSV</button>
+      </div>
+      <div class="payment-summary">
+        <div class="pay-sum"><div class="pay-sum-val" id="pay-total">₦0</div><div class="pay-sum-label">Total Revenue</div></div>
+        <div class="pay-sum"><div class="pay-sum-val" id="pay-confirmed">0</div><div class="pay-sum-label">Confirmed Payments</div></div>
+        <div class="pay-sum"><div class="pay-sum-val" id="pay-pending">0</div><div class="pay-sum-label">Pending Payments</div></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Applicant</th><th>Amount</th><th>Reference</th><th>Method</th><th>Status</th><th>Date</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="payments-tbody"><tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No payment records yet.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ANNOUNCEMENTS -->
+    <div class="section" id="sec-announcements">
+      <div class="section-header">
+        <div><div class="section-heading">Announcements</div><div class="section-sub">Create and manage website announcements, news, and updates.</div></div>
+        <button class="btn btn-primary" onclick="openModal('announce-modal');currentEditAnnounce=null;document.getElementById('announce-form').reset();document.getElementById('announce-modal-title').textContent='New Announcement'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>New Announcement</button>
+      </div>
+      <div id="announcements-list">
+        <div style="text-align:center;padding:3rem;color:var(--text2)">No announcements yet. Click "New Announcement" to create one.</div>
+      </div>
+    </div>
+
+    <!-- PAGE EDITOR (CMS) -->
+    <div class="section" id="sec-page-editor">
+
+      <!-- HOME: page grid -->
+      <div id="pe-home">
+        <div class="section-header">
+          <div>
+            <div class="section-heading">Content Management</div>
+            <div class="section-sub">Edit every editable field on every page — text, images, videos, links, and contact details. Changes are saved to local storage and can be exported as a JSON patch for your developer.</div>
+          </div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+            <button class="btn btn-outline btn-sm" onclick="exportPageContent()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Export JSON
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="saveAllPageContent()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+              Save All
+            </button>
+          </div>
+        </div>
+
+        <!-- Summary bar -->
+        <div class="card" style="margin-bottom:1.25rem;">
+          <div class="card-body" style="padding:.85rem 1.25rem;display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:.5rem;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--success);"></div>
+              <span style="font-size:.78rem;color:var(--text2);" id="cms-saved-count">0 pages with saved edits</span>
+            </div>
+            <div style="font-size:.78rem;color:var(--text2);"><strong id="cms-field-count">0</strong> total editable fields across all pages</div>
+            <div class="search-bar" style="margin-left:auto;width:220px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" placeholder="Search pages…" oninput="filterPageGrid(this.value)">
+            </div>
+          </div>
+        </div>
+
+        <div class="page-list-grid" id="page-grid"></div>
+      </div>
+
+      <!-- DETAIL: editing a specific page -->
+      <div id="pe-detail" style="display:none;">
+        <!-- Top bar -->
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+          <button class="btn btn-outline btn-sm" onclick="backToPageList()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            All Pages
+          </button>
+          <div style="flex:1;">
+            <div class="section-heading" id="pe-page-title">Editing: Home</div>
+            <div style="font-size:.75rem;color:var(--text2);margin-top:.1rem;" id="pe-page-sub"></div>
+          </div>
+          <div style="display:flex;gap:.5rem;flex-shrink:0;">
+            <a href="#" target="_blank" class="btn btn-outline btn-sm" id="pe-view-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Preview Page
+            </a>
+            <button class="btn btn-outline btn-sm" onclick="resetPageToDefaults()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+              Reset
+            </button>
+            <button class="btn btn-primary" onclick="saveCurrentPage()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+              Save Changes
+            </button>
+          </div>
+        </div>
+
+        <!-- Section tabs -->
+        <div class="tab-bar" id="pe-section-tabs" style="margin-bottom:1.25rem;"></div>
+
+        <!-- Field panels per section -->
+        <div id="pe-field-panels"></div>
+
+        <div style="padding:.9rem 1.1rem;background:#FEF3C7;border:1px solid #FDE68A;border-radius:8px;font-size:.76rem;color:#92400E;margin-top:1rem;line-height:1.6;">
+          <strong>How edits work:</strong> Changes are saved to your browser's local storage instantly. To apply edits to the live HTML files, click <strong>Export JSON</strong> from the page grid, then give the exported file to your developer — or use a backend CMS integration that reads from this data store.
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="section" id="sec-settings">
+      <div class="section-header">
+        <div><div class="section-heading">System Settings</div><div class="section-sub">Configure admin credentials, show settings, and system preferences.</div></div>
+        <button class="btn btn-primary" onclick="saveSettings()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>Save Settings</button>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Admin Credentials</span></div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="field"><label>Admin Username</label><input type="text" id="set-username" value="admin"></div>
+              <div class="field"><label>Current Password</label><input type="password" placeholder="Current password"></div>
+              <div class="field"><label>New Password</label><input type="password" id="set-newpass" placeholder="New password"></div>
+              <div class="field"><label>Confirm Password</label><input type="password" id="set-confpass" placeholder="Confirm new password"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Show Settings</span></div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="field"><label>Season Number</label><input type="number" id="set-season" value="1" min="1"></div>
+              <div class="field"><label>Registration Fee (₦)</label><input type="number" id="set-fee" value="10000"></div>
+              <div class="field"><label>Votes Per User Per Day</label><input type="number" id="set-votes" value="3" min="1"></div>
+              <div class="field"><label>Show Status</label>
+                <select id="set-show-status">
+                  <option>Pre-Launch</option><option>Auditions</option><option>Bootcamp</option><option>Live Show</option><option>Finale</option><option>Completed</option>
+                </select>
+              </div>
+              <div class="field"><label>Registration Status</label>
+                <select id="set-reg-status">
+                  <option value="open">Open</option><option value="closed">Closed</option>
+                </select>
+              </div>
+              <div class="field"><label>Voting Status</label>
+                <select id="set-voting-status">
+                  <option value="closed">Closed</option><option value="open">Open</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <div class="card-header"><span class="card-title">Contact Information</span></div>
+        <div class="card-body">
+          <div class="form-row-3">
+            <div class="field"><label>Support Email</label><input type="email" id="set-email" value="support@culture9ja.com"></div>
+            <div class="field"><label>Phone 1</label><input type="tel" id="set-phone1" value="+234 9039997729"></div>
+            <div class="field"><label>Phone 2</label><input type="tel" id="set-phone2" value="09055567245"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <div class="card-header"><span class="card-title">Danger Zone</span></div>
+        <div class="card-body" style="display:flex;gap:1rem;flex-wrap:wrap">
+          <button class="btn btn-danger btn-sm" onclick="clearAllData()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>Clear All Data</button>
+          <button class="btn btn-outline btn-sm" onclick="seedDemoData()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Load Demo Data</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+<!-- MODALS -->
+<!-- Registration Modal -->
+<div class="modal-overlay" id="reg-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <span class="modal-title" id="reg-modal-title">Add Registration</span>
+      <button class="modal-close" onclick="closeModal('reg-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <form id="reg-form" onsubmit="return false">
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Full Name <span>*</span></label><input type="text" id="r-name" required placeholder="Full legal name"></div>
+          <div class="field"><label>Email <span>*</span></label><input type="email" id="r-email" required placeholder="email@example.com"></div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Phone Number <span>*</span></label><input type="tel" id="r-phone" required placeholder="+234 XXXXXXXXXX"></div>
+          <div class="field"><label>Date of Birth <span>*</span></label><input type="date" id="r-dob" required></div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Gender</label>
+            <select id="r-gender"><option>Male</option><option>Female</option><option>Prefer not to say</option></select>
+          </div>
+          <div class="field"><label>State of Origin <span>*</span></label>
+            <select id="r-state" required>
+              <option value="">-- Select State --</option>
+              <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option><option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option><option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Current Location</label><input type="text" id="r-location" placeholder="City, State"></div>
+          <div class="field"><label>Occupation</label><input type="text" id="r-occupation" placeholder="Occupation"></div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Cultural Category <span>*</span></label>
+            <select id="r-category" required>
+              <option value="">-- Select Category --</option>
+              <option>Traditional Dance</option><option>Cultural Fashion</option><option>Native Language Oratory</option><option>Traditional Music</option><option>Nigerian Cuisine</option><option>Storytelling & Folklore</option><option>Cultural Crafts</option>
+            </select>
+          </div>
+          <div class="field"><label>Ethnic Group / Tribe</label><input type="text" id="r-tribe" placeholder="e.g. Yoruba, Igbo, Hausa..."></div>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Short Bio / Talent Description <span>*</span></label>
+          <textarea id="r-bio" required placeholder="Describe the applicant's cultural talent and background..."></textarea>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Social Media Handle</label><input type="text" id="r-social" placeholder="@handle"></div>
+          <div class="field"><label>Application Status</label>
+            <select id="r-status">
+              <option value="pending">Pending</option>
+              <option value="shortlisted">Shortlisted</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Payment Status</label>
+            <select id="r-payment">
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="failed">Failed</option>
+            </select>
+          </div>
+          <div class="field"><label>Payment Reference</label><input type="text" id="r-payref" placeholder="C9JA-2026-XXXXXX"></div>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Admin Notes</label>
+          <textarea id="r-notes" placeholder="Internal notes (not visible to applicant)..." style="min-height:60px"></textarea>
+        </div>
+        <!-- Next of Kin -->
+        <div style="background:#F8FAF8;border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:1rem">
+          <div style="font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:.75rem;letter-spacing:.02em">NEXT OF KIN</div>
+          <div class="form-row">
+            <div class="field"><label>Full Name</label><input type="text" id="r-kin-name" placeholder="Next of kin name"></div>
+            <div class="field"><label>Relationship</label><input type="text" id="r-kin-rel" placeholder="e.g. Mother, Father"></div>
+          </div>
+          <div class="form-row" style="margin-top:.75rem">
+            <div class="field"><label>Phone</label><input type="tel" id="r-kin-phone" placeholder="+234 XXXXXXXXXX"></div>
+            <div class="field"><label>Address</label><input type="text" id="r-kin-addr" placeholder="Address"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('reg-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveReg()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>Save Registration</button>
+    </div>
+  </div>
+</div>
+
+<!-- View Application Modal -->
+<div class="modal-overlay" id="view-app-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <span class="modal-title">Application Details</span>
+      <button class="modal-close" onclick="closeModal('view-app-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body" id="view-app-body">Loading...</div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('view-app-modal')">Close</button>
+      <button class="btn btn-danger" id="view-reject-btn">Reject</button>
+      <button class="btn btn-gold" id="view-shortlist-btn">Shortlist</button>
+      <button class="btn btn-primary" id="view-approve-btn">Approve</button>
+    </div>
+  </div>
+</div>
+
+<!-- Contestant Modal -->
+<div class="modal-overlay" id="contestant-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="con-modal-title">Add Contestant</span>
+      <button class="modal-close" onclick="closeModal('contestant-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <form id="con-form" onsubmit="return false">
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Full Name <span>*</span></label><input type="text" id="c-name" required></div>
+          <div class="field"><label>Stage Name</label><input type="text" id="c-stagename" placeholder="Optional"></div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>State of Origin <span>*</span></label>
+            <select id="c-state" required>
+              <option value="">-- State --</option>
+              <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option><option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option><option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option><option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+            </select>
+          </div>
+          <div class="field"><label>Category <span>*</span></label>
+            <select id="c-cat" required>
+              <option value="">-- Category --</option>
+              <option>Traditional Dance</option><option>Cultural Fashion</option><option>Native Language Oratory</option><option>Traditional Music</option><option>Nigerian Cuisine</option><option>Storytelling & Folklore</option><option>Cultural Crafts</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Ethnic Group</label><input type="text" id="c-tribe"></div>
+          <div class="field"><label>Contestant Number</label><input type="number" id="c-num" min="1" placeholder="e.g. 1"></div>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Profile Bio</label>
+          <textarea id="c-bio" placeholder="Contestant bio for public profile..."></textarea>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Photo URL</label><input type="url" id="c-photo" placeholder="https://..."></div>
+          <div class="field"><label>Instagram Handle</label><input type="text" id="c-insta" placeholder="@handle"></div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Current Episode</label><input type="number" id="c-episode" value="1" min="1"></div>
+          <div class="field"><label>Status</label>
+            <select id="c-status">
+              <option value="Active">Active</option>
+              <option value="Eliminated">Eliminated</option>
+              <option value="Winner">Winner</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('contestant-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveContestant()">Save Contestant</button>
+    </div>
+  </div>
+</div>
+
+<!-- Media Modal -->
+<div class="modal-overlay" id="media-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="media-modal-title">Upload Media</span>
+      <button class="modal-close" onclick="closeModal('media-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <form id="media-form" onsubmit="return false">
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Title <span>*</span></label><input type="text" id="m-title" required placeholder="Media title"></div>
+          <div class="field"><label>Type <span>*</span></label>
+            <select id="m-type" required>
+              <option value="">-- Type --</option>
+              <option value="episodes">Episode</option>
+              <option value="highlights">Highlight</option>
+              <option value="bts">Behind the Scenes</option>
+              <option value="photos">Photo</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Season</label><input type="number" id="m-season" value="1" min="1"></div>
+          <div class="field"><label>Episode Number</label><input type="number" id="m-ep-num" placeholder="e.g. 1" min="1"></div>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Media URL / Embed Link</label>
+          <input type="url" id="m-url" placeholder="https://youtube.com/embed/... or direct file URL">
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Thumbnail URL</label>
+          <input type="url" id="m-thumb" placeholder="https://...">
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Duration</label><input type="text" id="m-duration" placeholder="e.g. 45:30"></div>
+          <div class="field"><label>Status</label>
+            <select id="m-status">
+              <option value="Draft">Draft</option>
+              <option value="Published">Published</option>
+              <option value="Scheduled">Scheduled</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Description</label>
+          <textarea id="m-desc" placeholder="Brief description of this media content..."></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('media-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveMedia()">Save Media</button>
+    </div>
+  </div>
+</div>
+
+<!-- Announcement Modal -->
+<div class="modal-overlay" id="announce-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="announce-modal-title">New Announcement</span>
+      <button class="modal-close" onclick="closeModal('announce-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <form id="announce-form" onsubmit="return false">
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Title <span>*</span></label><input type="text" id="an-title" required placeholder="Announcement title"></div>
+          <div class="field"><label>Type</label>
+            <select id="an-type">
+              <option value="Announcement">Announcement</option>
+              <option value="Auditions">Auditions</option>
+              <option value="Events">Events</option>
+              <option value="Contestant">Contestant</option>
+              <option value="Press Release">Press Release</option>
+            </select>
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:1rem">
+          <label>Content <span>*</span></label>
+          <textarea id="an-content" required style="min-height:140px" placeholder="Announcement content..."></textarea>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem">
+          <div class="field"><label>Publish Date</label><input type="date" id="an-date"></div>
+          <div class="field"><label>Status</label>
+            <select id="an-status">
+              <option value="Published">Published</option>
+              <option value="Draft">Draft</option>
+              <option value="Scheduled">Scheduled</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Link URL (optional)</label>
+          <input type="url" id="an-link" placeholder="https://...">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('announce-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveAnnouncement()">Publish Announcement</button>
+    </div>
+  </div>
+</div>
+
+<!-- Page Section Editor Modal -->
+<div class="modal-overlay" id="section-editor-modal">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <span class="modal-title" id="sec-editor-title">Edit Section</span>
+      <button class="modal-close" onclick="closeModal('section-editor-modal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div id="sec-editor-fields"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('section-editor-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveSectionEdit()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Modal -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-body" style="padding:2rem">
+      <div class="confirm-content">
+        <div class="confirm-icon danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="confirm-title" id="confirm-title">Are you sure?</div>
+        <div class="confirm-msg" id="confirm-msg">This action cannot be undone.</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('confirm-modal')">Cancel</button>
+      <button class="btn btn-danger" id="confirm-action-btn">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+// ── STORAGE ──────────────────────────────────────────────────────────
+const S={
+  get:(k)=>{try{return JSON.parse(localStorage.getItem('c9_'+k)||'null')}catch{return null}},
+  set:(k,v)=>{try{localStorage.setItem('c9_'+k,JSON.stringify(v))}catch{}},
+  del:(k)=>{localStorage.removeItem('c9_'+k)}
+};
+
+// ── DATA STORES ───────────────────────────────────────────────────────
+let regs=S.get('regs')||[];
+let contestants=S.get('contestants')||[];
+let media=S.get('media')||[];
+let announcements=S.get('announcements')||[];
+let votes=S.get('votes')||[];
+let pageContent=S.get('pageContent')||{};
+let settings=S.get('settings')||{season:1,fee:10000,vpd:3,showStatus:'Pre-Launch',regStatus:'open',votingStatus:'closed',email:'support@culture9ja.com',phone1:'+234 9039997729',phone2:'09055567245'};
+let activityLog=S.get('activity')||[];
+let currentEditId=null,currentEditContestant=null,currentEditMedia=null,currentEditAnnounce=null,currentEditSection=null;
+let currentAppTab='pending',currentMediaTab='episodes';
+let votingOpen=settings.votingStatus==='open';
+
+// ── AUTH ──────────────────────────────────────────────────────────────
+const CREDS={user:'admin',pass:'culture9ja2026'};
+function doLogin(){
+  const u=document.getElementById('login-user').value.trim();
+  const p=document.getElementById('login-pass').value;
+  if(u===CREDS.user&&p===CREDS.pass){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('admin-app').style.display='block';
+    logActivity('Admin logged in','var(--g)');
+    refreshDashboard();initPageEditor();loadSettings();
+  } else {
+    document.getElementById('login-error').style.display='block';
+  }
+}
+document.getElementById('login-pass')?.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+document.getElementById('login-user')?.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+function doLogout(){document.getElementById('admin-app').style.display='none';document.getElementById('login-screen').style.display='flex';document.getElementById('login-error').style.display='none';document.getElementById('login-user').value='';document.getElementById('login-pass').value=''}
+
+// ── CLOCK ─────────────────────────────────────────────────────────────
+function updateClock(){const n=new Date();document.getElementById('clock').textContent=n.toLocaleTimeString('en-NG',{hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+setInterval(updateClock,1000);updateClock();
+
+// ── NAV ───────────────────────────────────────────────────────────────
+let sidebarCollapsed=false;
+const labels={'dashboard':'Dashboard','registrations':'Registrations','applications':'Applications','contestants':'Contestants','media':'Media & Episodes','voting':'Voting Monitor','payments':'Payments','announcements':'Announcements','page-editor':'Page Editor','settings':'Settings'};
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
+  document.getElementById('current-page-label').textContent=labels[id]||id;
+  if(id==='registrations')renderRegs();
+  if(id==='applications'){renderApps();updateAppTabs();}
+  if(id==='contestants')renderContestants();
+  if(id==='media')renderMedia();
+  if(id==='voting')renderVoting();
+  if(id==='payments')renderPayments();
+  if(id==='announcements')renderAnnouncements();
+}
+function toggleSidebar(){
+  sidebarCollapsed=!sidebarCollapsed;
+  const sb=document.getElementById('sidebar');
+  sb.classList.toggle('collapsed',sidebarCollapsed);
+  ['sb-text','lbl-main','lbl-manage','lbl-content','lbl-settings','sb-user-info'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.style.display=sidebarCollapsed?'none':'';
+  });
+  document.querySelectorAll('.nav-label,.nav-badge').forEach(el=>el.style.display=sidebarCollapsed?'none':'');
+}
+
+// ── MODALS ────────────────────────────────────────────────────────────
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow=''}
+document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>closeModal(m.id))});
+
+// ── TOAST ─────────────────────────────────────────────────────────────
+function toast(msg,type='success'){
+  const c=document.getElementById('toast-container');
+  const t=document.createElement('div');
+  t.className=`toast ${type}`;
+  t.innerHTML=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${type==='success'?'<path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>':type==='error'?'<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>':'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'}</svg><span>${msg}</span>`;
+  c.appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity .3s';setTimeout(()=>t.remove(),300)},3200);
+}
+
+// ── ACTIVITY LOG ──────────────────────────────────────────────────────
+function logActivity(msg,color='var(--gold)'){
+  const now=new Date();
+  const entry={msg,color,time:now.toLocaleTimeString('en-NG',{hour:'2-digit',minute:'2-digit'})};
+  activityLog.unshift(entry);
+  if(activityLog.length>50)activityLog.pop();
+  S.set('activity',activityLog);
+  const feed=document.getElementById('activity-feed');
+  if(feed){feed.innerHTML='';activityLog.slice(0,10).forEach(a=>{feed.innerHTML+=`<div class="activity-item"><div class="act-dot" style="background:${a.color}"></div><div class="act-text">${a.msg}</div><div class="act-time">${a.time}</div></div>`})}
+}
+
+// ── DASHBOARD ─────────────────────────────────────────────────────────
+function refreshDashboard(){
+  const total=regs.length;
+  const pending=regs.filter(r=>r.status==='pending').length;
+  const approved=regs.filter(r=>r.status==='approved').length;
+  const rejected=regs.filter(r=>r.status==='rejected').length;
+  const shortlisted=regs.filter(r=>r.status==='shortlisted').length;
+  const revenue=regs.filter(r=>r.payment==='confirmed').length*10000;
+  document.getElementById('ds-total').textContent=total;
+  document.getElementById('ds-pending').textContent=pending;
+  document.getElementById('ds-approved').textContent=approved;
+  document.getElementById('ds-revenue').textContent='₦'+revenue.toLocaleString();
+  document.getElementById('nb-reg').textContent=total;
+  document.getElementById('nb-app').textContent=pending;
+  // bars
+  const updateBar=(id,cnt,ttl)=>{const el=document.getElementById('bar-'+id);const cel=document.getElementById('cnt-'+id);if(el)el.style.width=(ttl?Math.round(cnt/ttl*100):0)+'%';if(cel)cel.textContent=cnt};
+  updateBar('pending',pending,total);updateBar('approved',approved,total);updateBar('rejected',rejected,total);updateBar('shortlisted',shortlisted,total);
+  // recent regs
+  const tbody=document.getElementById('dash-recent-regs');
+  if(tbody){
+    const recent=regs.slice(-5).reverse();
+    if(!recent.length){tbody.innerHTML='<tr><td colspan="4" style="padding:2rem;text-align:center;color:var(--text2);font-size:.82rem">No registrations yet</td></tr>';return;}
+    tbody.innerHTML=recent.map(r=>`<tr><td style="padding:.65rem 1rem"><div style="font-size:.82rem;font-weight:600;color:var(--text)">${r.name}</div><div style="font-size:.7rem;color:var(--text2)">${r.email}</div></td><td style="padding:.65rem 1rem;font-size:.78rem">${r.state||'—'}</td><td style="padding:.65rem 1rem">${statusBadge(r.status)}</td><td style="padding:.65rem 1rem;font-size:.75rem;color:var(--text2)">${r.date||'—'}</td></tr>`).join('');
+  }
+  logActivity(`Dashboard refreshed — ${total} registrations`,'var(--g)');
+}
+
+// ── STATUS HELPERS ────────────────────────────────────────────────────
+function statusBadge(s){const m={pending:'badge-gold',approved:'badge-green',rejected:'badge-red',shortlisted:'badge-blue',Active:'badge-green',Eliminated:'badge-red',Winner:'badge-purple',confirmed:'badge-green',failed:'badge-red',Published:'badge-green',Draft:'badge-gray',Scheduled:'badge-blue'};return`<span class="badge ${m[s]||'badge-gray'}">${s||'—'}</span>`}
+function payBadge(p){return`<span class="badge ${p==='confirmed'?'badge-green':p==='failed'?'badge-red':'badge-gold'}">${p||'pending'}</span>`}
+
+// ── REGISTRATIONS CRUD ────────────────────────────────────────────────
+function saveReg(){
+  const name=document.getElementById('r-name').value.trim();
+  const email=document.getElementById('r-email').value.trim();
+  const phone=document.getElementById('r-phone').value.trim();
+  if(!name||!email||!phone){toast('Please fill required fields','error');return;}
+  const rec={
+    id:currentEditId||(Date.now()+''),
+    name,email,phone,
+    dob:document.getElementById('r-dob').value,
+    gender:document.getElementById('r-gender').value,
+    state:document.getElementById('r-state').value,
+    location:document.getElementById('r-location').value,
+    occupation:document.getElementById('r-occupation').value,
+    category:document.getElementById('r-category').value,
+    tribe:document.getElementById('r-tribe').value,
+    bio:document.getElementById('r-bio').value,
+    social:document.getElementById('r-social').value,
+    status:document.getElementById('r-status').value,
+    payment:document.getElementById('r-payment').value,
+    payref:document.getElementById('r-payref').value||'C9JA-'+Date.now(),
+    notes:document.getElementById('r-notes').value,
+    kinName:document.getElementById('r-kin-name').value,
+    kinRel:document.getElementById('r-kin-rel').value,
+    kinPhone:document.getElementById('r-kin-phone').value,
+    kinAddr:document.getElementById('r-kin-addr').value,
+    date:new Date().toLocaleDateString('en-NG'),
+  };
+  if(currentEditId){const i=regs.findIndex(r=>r.id===currentEditId);if(i>-1)regs[i]=rec;toast('Registration updated')}
+  else{regs.push(rec);toast('Registration added')}
+  S.set('regs',regs);closeModal('reg-modal');renderRegs();refreshDashboard();
+  logActivity(`${currentEditId?'Updated':'Added'} registration: ${name}`,'var(--g)');
+  currentEditId=null;
+}
+function editReg(id){
+  const r=regs.find(x=>x.id===id);if(!r)return;
+  currentEditId=id;
+  document.getElementById('reg-modal-title').textContent='Edit Registration';
+  ['name','email','phone','dob','gender','state','location','occupation','category','tribe','bio','social','status','payment','payref','notes'].forEach(f=>{const el=document.getElementById('r-'+f);if(el)el.value=r[f]||''});
+  document.getElementById('r-kin-name').value=r.kinName||'';
+  document.getElementById('r-kin-rel').value=r.kinRel||'';
+  document.getElementById('r-kin-phone').value=r.kinPhone||'';
+  document.getElementById('r-kin-addr').value=r.kinAddr||'';
+  openModal('reg-modal');
+}
+function deleteReg(id){
+  showConfirm('Delete Registration','This registration will be permanently deleted.',()=>{
+    regs=regs.filter(r=>r.id!==id);S.set('regs',regs);renderRegs();refreshDashboard();toast('Registration deleted','error');
+    logActivity('Deleted a registration','var(--red)');
+  });
+}
+function renderRegs(){
+  const search=document.getElementById('reg-search')?.value.toLowerCase()||'';
+  const sf=document.getElementById('reg-status-filter')?.value||'';
+  const stf=document.getElementById('reg-state-filter')?.value||'';
+  let list=regs.filter(r=>{
+    const m=!search||(r.name+r.email+r.state+r.tribe).toLowerCase().includes(search);
+    const s=!sf||r.status===sf;
+    const st=!stf||r.state===stf;
+    return m&&s&&st;
+  });
+  const lbl=document.getElementById('reg-count-label');
+  if(lbl)lbl.textContent=`${list.length} record${list.length!==1?'s':''}`;
+  const tbody=document.getElementById('regs-tbody');if(!tbody)return;
+  if(!list.length){tbody.innerHTML='<tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--text2)">No records match your filters.</td></tr>';return;}
+  tbody.innerHTML=list.map(r=>`<tr>
+    <td><input type="checkbox" class="reg-cb" value="${r.id}"></td>
+    <td><div class="td-name">${r.name}</div><div class="td-id">${r.email}</div></td>
+    <td style="font-size:.8rem">${r.phone||'—'}</td>
+    <td><span class="badge badge-blue" style="font-size:.65rem">${r.state||'—'}</span></td>
+    <td style="font-size:.78rem;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.category||'—'}</td>
+    <td>${payBadge(r.payment)}</td>
+    <td>${statusBadge(r.status)}</td>
+    <td style="font-size:.75rem;color:var(--text2)">${r.date||'—'}</td>
+    <td>
+      <div style="display:flex;gap:.25rem">
+        <button class="btn btn-ghost btn-icon" onclick="viewReg('${r.id}')" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        <button class="btn btn-ghost btn-icon" onclick="editReg('${r.id}')" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="btn btn-ghost btn-icon" onclick="deleteReg('${r.id}')" title="Delete" style="color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg></button>
+      </div>
+    </td>
+  </tr>`).join('');
+}
+function filterRegs(){renderRegs()}
+function selectAllRegs(cb){document.querySelectorAll('.reg-cb').forEach(c=>c.checked=cb.checked)}
+function viewReg(id){
+  const r=regs.find(x=>x.id===id);if(!r)return;
+  const body=document.getElementById('view-app-body');
+  body.innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.25rem">Full Name</div><div style="font-size:.9rem;font-weight:600;color:var(--text)">${r.name}</div></div>
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.25rem">Email</div><div style="font-size:.85rem">${r.email}</div></div>
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.25rem">Phone</div><div>${r.phone||'—'}</div></div>
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.25rem">State</div><div>${r.state||'—'}</div></div>
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.25rem">Category</div><div>${r.category||'—'}</div></div>
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.25rem">Ethnic Group</div><div>${r.tribe||'—'}</div></div>
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.25rem">Status</div><div>${statusBadge(r.status)}</div></div>
+      <div><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.25rem">Payment</div><div>${payBadge(r.payment)} <span style="font-size:.75rem;color:var(--text2)">${r.payref||''}</span></div></div>
+    </div>
+    <div style="margin-top:1rem;padding:1rem;background:#F8FAF8;border-radius:8px;border:1px solid var(--border)">
+      <div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.5rem">Bio / Talent</div>
+      <div style="font-size:.83rem;color:var(--text);line-height:1.6">${r.bio||'No bio provided.'}</div>
+    </div>
+    ${r.notes?`<div style="margin-top:.75rem;padding:.85rem 1rem;background:#FEF3C7;border-radius:8px;border:1px solid #FDE68A"><span style="font-size:.72rem;font-weight:700;color:#92400E">ADMIN NOTE:</span> <span style="font-size:.82rem;color:#78350F">${r.notes}</span></div>`:''}
+    ${r.kinName?`<div style="margin-top:.75rem;padding:1rem;background:#F8FAF8;border-radius:8px;border:1px solid var(--border)"><div style="font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.5rem">Next of Kin</div><div style="font-size:.83rem">${r.kinName} (${r.kinRel||'—'}) · ${r.kinPhone||'—'}</div></div>`:''}`;
+  document.getElementById('view-approve-btn').onclick=()=>{updateRegStatus(id,'approved');closeModal('view-app-modal')};
+  document.getElementById('view-reject-btn').onclick=()=>{updateRegStatus(id,'rejected');closeModal('view-app-modal')};
+  document.getElementById('view-shortlist-btn').onclick=()=>{updateRegStatus(id,'shortlisted');closeModal('view-app-modal')};
+  openModal('view-app-modal');
+}
+function updateRegStatus(id,status){
+  const i=regs.findIndex(r=>r.id===id);if(i<0)return;
+  regs[i].status=status;S.set('regs',regs);
+  renderRegs();renderApps();updateAppTabs();refreshDashboard();
+  toast(`Application ${status}`);logActivity(`Application ${status}: ${regs[i].name}`,'var(--g)');
+  if(status==='approved')autoCreateContestant(regs[i]);
+}
+function autoCreateContestant(reg){
+  if(contestants.find(c=>c.regId===reg.id))return;
+  const c={id:Date.now()+'',regId:reg.id,name:reg.name,state:reg.state,category:reg.category,tribe:reg.tribe,bio:reg.bio,social:reg.social,status:'Active',votes:0,episode:1,num:contestants.length+1,date:new Date().toLocaleDateString('en-NG')};
+  contestants.push(c);S.set('contestants',contestants);toast('Contestant profile created automatically','info');
+}
+
+// ── APPLICATIONS ──────────────────────────────────────────────────────
+function switchAppTab(tab,btn){
+  currentAppTab=tab;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');renderApps();
+}
+function updateAppTabs(){
+  const counts={pending:0,shortlisted:0,approved:0,rejected:0};
+  regs.forEach(r=>{if(counts[r.status]!==undefined)counts[r.status]++});
+  document.getElementById('tab-pending-cnt').textContent=counts.pending;
+  document.getElementById('tab-short-cnt').textContent=counts.shortlisted;
+  document.getElementById('tab-approved-cnt').textContent=counts.approved;
+  document.getElementById('tab-rejected-cnt').textContent=counts.rejected;
+}
+function renderApps(){
+  const list=regs.filter(r=>r.status===currentAppTab);
+  const tbody=document.getElementById('apps-tbody');if(!tbody)return;
+  if(!list.length){tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No ${currentAppTab} applications.</td></tr>`;return;}
+  tbody.innerHTML=list.map(r=>`<tr>
+    <td><input type="checkbox" class="app-cb" value="${r.id}"></td>
+    <td><div class="td-name">${r.name}</div><div class="td-id">${r.email}</div></td>
+    <td style="font-size:.8rem">${r.state||'—'}</td>
+    <td style="font-size:.78rem;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.category||'—'}</td>
+    <td>${payBadge(r.payment)}</td>
+    <td style="font-size:.75rem;color:var(--text2)">${r.date||'—'}</td>
+    <td><div style="display:flex;gap:.25rem;flex-wrap:wrap">
+      <button class="btn btn-ghost btn-icon" onclick="viewReg('${r.id}')" title="View"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      ${currentAppTab!=='approved'?`<button class="btn btn-primary btn-sm" onclick="updateRegStatus('${r.id}','approved')">Approve</button>`:''}
+      ${currentAppTab!=='shortlisted'?`<button class="btn btn-gold btn-sm" onclick="updateRegStatus('${r.id}','shortlisted')">Shortlist</button>`:''}
+      ${currentAppTab!=='rejected'?`<button class="btn btn-danger btn-sm" onclick="updateRegStatus('${r.id}','rejected')">Reject</button>`:''}
+    </div></td>
+  </tr>`).join('');
+  updateAppTabs();
+}
+function selectAllApps(cb){document.querySelectorAll('.app-cb').forEach(c=>c.checked=cb.checked)}
+function bulkAction(action){
+  const checked=[...document.querySelectorAll('.app-cb:checked')].map(c=>c.value);
+  if(!checked.length){toast('No applications selected','error');return;}
+  showConfirm(`Bulk ${action}`,`${action.charAt(0).toUpperCase()+action.slice(1)} ${checked.length} application(s)?`,()=>{
+    checked.forEach(id=>updateRegStatus(id,action==='approve'?'approved':'rejected'));
+    toast(`${checked.length} applications ${action}d`);
+  });
+}
+
+// ── CONTESTANTS CRUD ──────────────────────────────────────────────────
+function saveContestant(){
+  const name=document.getElementById('c-name').value.trim();
+  const state=document.getElementById('c-state').value;
+  const cat=document.getElementById('c-cat').value;
+  if(!name||!state||!cat){toast('Please fill required fields','error');return;}
+  const rec={
+    id:currentEditContestant||(Date.now()+''),
+    name,state,category:cat,
+    stagename:document.getElementById('c-stagename').value,
+    tribe:document.getElementById('c-tribe').value,
+    num:parseInt(document.getElementById('c-num').value)||contestants.length+1,
+    bio:document.getElementById('c-bio').value,
+    photo:document.getElementById('c-photo').value,
+    insta:document.getElementById('c-insta').value,
+    episode:parseInt(document.getElementById('c-episode').value)||1,
+    status:document.getElementById('c-status').value,
+    votes:0,date:new Date().toLocaleDateString('en-NG')
+  };
+  if(currentEditContestant){const i=contestants.findIndex(c=>c.id===currentEditContestant);if(i>-1){rec.votes=contestants[i].votes;contestants[i]=rec;}toast('Contestant updated')}
+  else{contestants.push(rec);toast('Contestant added')}
+  S.set('contestants',contestants);closeModal('contestant-modal');renderContestants();
+  logActivity(`${currentEditContestant?'Updated':'Added'} contestant: ${name}`,'var(--g)');currentEditContestant=null;
+}
+function editContestant(id){
+  const c=contestants.find(x=>x.id===id);if(!c)return;
+  currentEditContestant=id;
+  document.getElementById('con-modal-title').textContent='Edit Contestant';
+  ['name','state','category','stagename','tribe','num','bio','photo','insta','episode','status'].forEach(f=>{const el=document.getElementById('c-'+f.replace('category','cat'));if(!el)return;el.value=c[f]||''});
+  document.getElementById('c-cat').value=c.category||'';
+  document.getElementById('c-state').value=c.state||'';
+  document.getElementById('c-status').value=c.status||'Active';
+  openModal('contestant-modal');
+}
+function deleteContestant(id){
+  showConfirm('Delete Contestant','This contestant profile will be permanently removed.',()=>{
+    contestants=contestants.filter(c=>c.id!==id);S.set('contestants',contestants);renderContestants();toast('Contestant deleted','error');
+  });
+}
+function renderContestants(){
+  const search=document.getElementById('con-search')?.value.toLowerCase()||'';
+  const sf=document.getElementById('con-status-filter')?.value||'';
+  const cf=document.getElementById('con-cat-filter')?.value||'';
+  let list=contestants.filter(c=>{
+    const m=!search||(c.name+c.state+c.category).toLowerCase().includes(search);
+    const s=!sf||c.status===sf;
+    const cat=!cf||c.category===cf;
+    return m&&s&&cat;
+  });
+  const tbody=document.getElementById('contestants-tbody');if(!tbody)return;
+  if(!list.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No contestants. Approve applications or add manually.</td></tr>';return;}
+  tbody.innerHTML=list.map(c=>`<tr>
+    <td><div style="display:flex;align-items:center;gap:.75rem"><div class="avatar" style="background:var(--g)">${c.name.charAt(0)}</div><div><div class="td-name">#${c.num||'—'} ${c.name}</div><div class="td-id">${c.tribe||'—'} · ${c.state||'—'}</div></div></div></td>
+    <td><span class="badge badge-blue" style="font-size:.65rem">${c.state||'—'}</span></td>
+    <td style="font-size:.78rem">${c.category||'—'}</td>
+    <td><div style="font-weight:700;color:var(--g)">${c.votes||0}</div></td>
+    <td>${statusBadge(c.status)}</td>
+    <td style="font-size:.78rem">Ep. ${c.episode||1}</td>
+    <td><div style="display:flex;gap:.25rem">
+      <button class="btn btn-ghost btn-icon" onclick="editContestant('${c.id}')" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+      <button class="btn btn-ghost btn-icon" onclick="deleteContestant('${c.id}')" title="Delete" style="color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg></button>
+    </div></td>
+  </tr>`).join('');
+}
+function filterContestants(){renderContestants()}
+
+// ── MEDIA CRUD ────────────────────────────────────────────────────────
+function switchMediaTab(tab,btn){
+  currentMediaTab=tab;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');renderMedia();
+}
+function saveMedia(){
+  const title=document.getElementById('m-title').value.trim();
+  const type=document.getElementById('m-type').value;
+  if(!title||!type){toast('Please fill required fields','error');return;}
+  const rec={
+    id:currentEditMedia||(Date.now()+''),
+    title,type,
+    season:document.getElementById('m-season').value,
+    epNum:document.getElementById('m-ep-num').value,
+    url:document.getElementById('m-url').value,
+    thumb:document.getElementById('m-thumb').value,
+    duration:document.getElementById('m-duration').value,
+    status:document.getElementById('m-status').value,
+    desc:document.getElementById('m-desc').value,
+    date:new Date().toLocaleDateString('en-NG')
+  };
+  if(currentEditMedia){const i=media.findIndex(m=>m.id===currentEditMedia);if(i>-1)media[i]=rec;toast('Media updated')}
+  else{media.push(rec);toast('Media uploaded')}
+  S.set('media',media);closeModal('media-modal');renderMedia();
+  logActivity(`${currentEditMedia?'Updated':'Uploaded'} media: ${title}`,'var(--gold)');currentEditMedia=null;
+}
+function editMedia(id){
+  const m=media.find(x=>x.id===id);if(!m)return;
+  currentEditMedia=id;
+  document.getElementById('media-modal-title').textContent='Edit Media';
+  ['title','type','season','url','thumb','duration','status','desc'].forEach(f=>{const el=document.getElementById('m-'+f);if(el)el.value=m[f]||''});
+  document.getElementById('m-ep-num').value=m.epNum||'';
+  document.getElementById('m-type').value=m.type||'';
+  openModal('media-modal');
+}
+function deleteMedia(id){
+  showConfirm('Delete Media','This media item will be permanently removed.',()=>{
+    media=media.filter(m=>m.id!==id);S.set('media',media);renderMedia();toast('Media deleted','error');
+  });
+}
+function renderMedia(){
+  const list=media.filter(m=>m.type===currentMediaTab);
+  const tbody=document.getElementById('media-tbody');if(!tbody)return;
+  if(!list.length){tbody.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No ${currentMediaTab} uploaded yet.</td></tr>`;return;}
+  tbody.innerHTML=list.map(m=>`<tr>
+    <td><div class="td-name">${m.title}</div><div class="td-id" style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${m.desc||'—'}</div></td>
+    <td><span class="badge badge-blue" style="font-size:.65rem">${m.type}</span></td>
+    <td style="font-size:.78rem">S${m.season||1}${m.epNum?' E'+m.epNum:''}</td>
+    <td style="font-size:.78rem">${m.duration||'—'}</td>
+    <td>${statusBadge(m.status)}</td>
+    <td style="font-size:.75rem;color:var(--text2)">${m.date||'—'}</td>
+    <td><div style="display:flex;gap:.25rem">
+      <button class="btn btn-ghost btn-icon" onclick="editMedia('${m.id}')" title="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+      <button class="btn btn-ghost btn-icon" onclick="deleteMedia('${m.id}')" style="color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg></button>
+    </div></td>
+  </tr>`).join('');
+}
+
+// ── VOTING ────────────────────────────────────────────────────────────
+function toggleVoting(){
+  votingOpen=!votingOpen;settings.votingStatus=votingOpen?'open':'closed';S.set('settings',settings);
+  document.getElementById('voting-toggle').textContent=votingOpen?'Close Voting':'Open Voting';
+  document.getElementById('voting-toggle').className=`btn btn-sm ${votingOpen?'btn-danger':'btn-outline'}`;
+  document.getElementById('vt-status').textContent=votingOpen?'Open':'Closed';
+  document.getElementById('vt-status').style.color=votingOpen?'var(--g)':'var(--red)';
+  toast(votingOpen?'Voting is now OPEN':'Voting is now CLOSED',votingOpen?'success':'error');
+  logActivity(`Voting ${votingOpen?'opened':'closed'}`,'var(--gold)');
+}
+function renderVoting(){
+  document.getElementById('vt-total').textContent=votes.length;
+  const uniq=new Set(votes.map(v=>v.voter)).size;
+  document.getElementById('vt-voters').textContent=uniq;
+  document.getElementById('vt-status').textContent=votingOpen?'Open':'Closed';
+  document.getElementById('vt-status').style.color=votingOpen?'var(--g)':'var(--red)';
+  document.getElementById('voting-toggle').textContent=votingOpen?'Close Voting':'Open Voting';
+  document.getElementById('voting-toggle').className=`btn btn-sm ${votingOpen?'btn-danger':'btn-outline'}`;
+  // bars by contestant
+  const container=document.getElementById('vote-bars-container');
+  if(!contestants.length){container.innerHTML='<div style="text-align:center;color:var(--text2);font-size:.82rem;padding:1rem">No contestants yet.</div>';return;}
+  const counts={};
+  contestants.forEach(c=>counts[c.id]=c.votes||0);
+  votes.forEach(v=>{if(counts[v.contestantId]!==undefined)counts[v.contestantId]++});
+  const maxV=Math.max(...Object.values(counts),1);
+  container.innerHTML=contestants.map(c=>`<div class="vote-bar-row"><div class="vote-bar-name" style="font-size:.75rem;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.name}</div><div class="vote-bar-track"><div class="vote-bar-fill" style="width:${Math.round((counts[c.id]||0)/maxV*100)}%"></div></div><div class="vote-bar-count">${counts[c.id]||0}</div></div>`).join('');
+  // recent votes table
+  const tbody=document.getElementById('votes-tbody');
+  if(!votes.length){tbody.innerHTML='<tr><td colspan="3" style="padding:2rem;text-align:center;color:var(--text2)">No votes recorded</td></tr>';return;}
+  const recent=votes.slice(-10).reverse();
+  tbody.innerHTML=recent.map(v=>{const c=contestants.find(x=>x.id===v.contestantId);return`<tr><td style="padding:.6rem 1rem;font-size:.8rem">${v.voter||'Anonymous'}</td><td style="padding:.6rem 1rem;font-size:.8rem">${c?c.name:'Unknown'}</td><td style="padding:.6rem 1rem;font-size:.75rem;color:var(--text2)">${v.time||'—'}</td></tr>`}).join('');
+}
+
+// ── PAYMENTS ──────────────────────────────────────────────────────────
+function renderPayments(){
+  const confirmed=regs.filter(r=>r.payment==='confirmed');
+  const pending=regs.filter(r=>r.payment==='pending');
+  const revenue=confirmed.length*10000;
+  document.getElementById('pay-total').textContent='₦'+revenue.toLocaleString();
+  document.getElementById('pay-confirmed').textContent=confirmed.length;
+  document.getElementById('pay-pending').textContent=pending.length;
+  const tbody=document.getElementById('payments-tbody');if(!tbody)return;
+  if(!regs.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--text2)">No payment records.</td></tr>';return;}
+  tbody.innerHTML=regs.map(r=>`<tr>
+    <td><div class="td-name">${r.name}</div><div class="td-id">${r.email}</div></td>
+    <td style="font-weight:700;color:var(--g)">₦10,000</td>
+    <td style="font-size:.75rem;font-family:'Space Grotesk',sans-serif">${r.payref||'—'}</td>
+    <td style="font-size:.78rem">Online</td>
+    <td>${payBadge(r.payment)}</td>
+    <td style="font-size:.75rem;color:var(--text2)">${r.date||'—'}</td>
+    <td><div style="display:flex;gap:.25rem">
+      ${r.payment!=='confirmed'?`<button class="btn btn-primary btn-sm" onclick="confirmPayment('${r.id}')">Confirm</button>`:'<span style="font-size:.75rem;color:var(--g)">✓ Confirmed</span>'}
+    </div></td>
+  </tr>`).join('');
+}
+function confirmPayment(id){
+  const i=regs.findIndex(r=>r.id===id);if(i<0)return;
+  regs[i].payment='confirmed';S.set('regs',regs);renderPayments();refreshDashboard();
+  toast('Payment confirmed');logActivity(`Payment confirmed: ${regs[i].name}`,'var(--g)');
+}
+
+// ── ANNOUNCEMENTS CRUD ────────────────────────────────────────────────
+function saveAnnouncement(){
+  const title=document.getElementById('an-title').value.trim();
+  const content=document.getElementById('an-content').value.trim();
+  if(!title||!content){toast('Please fill required fields','error');return;}
+  const rec={
+    id:currentEditAnnounce||(Date.now()+''),
+    title,content,
+    type:document.getElementById('an-type').value,
+    date:document.getElementById('an-date').value||new Date().toLocaleDateString('en-NG'),
+    status:document.getElementById('an-status').value,
+    link:document.getElementById('an-link').value,
+    created:new Date().toLocaleDateString('en-NG')
+  };
+  if(currentEditAnnounce){const i=announcements.findIndex(a=>a.id===currentEditAnnounce);if(i>-1)announcements[i]=rec;toast('Announcement updated')}
+  else{announcements.unshift(rec);toast('Announcement published')}
+  S.set('announcements',announcements);closeModal('announce-modal');renderAnnouncements();
+  logActivity(`${currentEditAnnounce?'Updated':'Published'} announcement: ${title}`,'var(--gold)');currentEditAnnounce=null;
+}
+function editAnnouncement(id){
+  const a=announcements.find(x=>x.id===id);if(!a)return;
+  currentEditAnnounce=id;
+  document.getElementById('announce-modal-title').textContent='Edit Announcement';
+  ['title','content','type','date','status','link'].forEach(f=>{const el=document.getElementById('an-'+f);if(el)el.value=a[f]||''});
+  openModal('announce-modal');
+}
+function deleteAnnouncement(id){
+  showConfirm('Delete Announcement','This announcement will be permanently removed.',()=>{
+    announcements=announcements.filter(a=>a.id!==id);S.set('announcements',announcements);renderAnnouncements();toast('Deleted','error');
+  });
+}
+function togglePublish(id){
+  const i=announcements.findIndex(a=>a.id===id);if(i<0)return;
+  announcements[i].status=announcements[i].status==='Published'?'Draft':'Published';
+  S.set('announcements',announcements);renderAnnouncements();toast('Status updated');
+}
+function renderAnnouncements(){
+  const container=document.getElementById('announcements-list');if(!container)return;
+  if(!announcements.length){container.innerHTML='<div style="text-align:center;padding:3rem;color:var(--text2)">No announcements yet.</div>';return;}
+  const typeColors={Announcement:'badge-blue',Auditions:'badge-green',Events:'badge-gold',Contestant:'badge-purple','Press Release':'badge-gray'};
+  container.innerHTML=announcements.map(a=>`
+    <div class="announce-card">
+      <div class="announce-card-header">
+        <span class="badge ${typeColors[a.type]||'badge-gray'}">${a.type||'Announcement'}</span>
+        <span class="announce-title">${a.title}</span>
+        ${statusBadge(a.status)}
+      </div>
+      <div class="announce-body">${a.content}</div>
+      <div class="announce-footer">
+        <span class="announce-meta">${a.date||''} · Created ${a.created||''}</span>
+        <div style="display:flex;gap:.5rem">
+          <button class="btn btn-ghost btn-sm" onclick="togglePublish('${a.id}')">${a.status==='Published'?'Unpublish':'Publish'}</button>
+          <button class="btn btn-ghost btn-sm" onclick="editAnnouncement('${a.id}')">Edit</button>
+          <button class="btn btn-ghost btn-sm" onclick="deleteAnnouncement('${a.id}')" style="color:var(--red)">Delete</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── CMS PAGE EDITOR ───────────────────────────────────────────────────
+
+// Full page/section/field schema for every Culture9ja page
+const CMS_PAGES = [
+  {
+    id:'index', name:'Home Page', file:'index.html', icon:'🏠',
+    desc:'Hero section, About, Contestants teaser, News, Events, Sponsors, CTA, Ticker',
+    sections:[
+      { id:'hero', label:'Hero Section', fields:[
+        {id:'eyebrow',      label:'Eyebrow Text',       type:'text',    hint:'Small label above the title',   default:"Nigeria's Cultural Reality TV Show"},
+        {id:'title',        label:'Hero Title Words',    type:'list',    hint:'Rotating words — one per line', default:['Culture.','Heritage.','Stage.']},
+        {id:'description',  label:'Hero Description',    type:'textarea',hint:'One or two sentences under the title', default:'Culture9ja gives talented Nigerians a platform to showcase their traditions, languages, and creativity — celebrating over 250 cultures on one unforgettable stage.'},
+        {id:'bg-image',     label:'Hero Background Image URL', type:'image', hint:'Pexels or direct image URL', default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
+        {id:'ticker',       label:'Ticker Items',        type:'list',    hint:'Items scrolled in the ticker bar', default:['Auditions Open 2026','250+ Cultures Represented','Official Launch — Abuja FCT','Register Now at Culture9ja.com','Nigeria\'s First Cultural Reality TV Show','Partner With Us Today']},
+      ]},
+      { id:'about', label:'About Section', fields:[
+        {id:'title',        label:'Section Title',       type:'text',    hint:'H2 heading',          default:'Reality TV That Actually Reflects Who We Are'},
+        {id:'body-1',       label:'Paragraph 1',         type:'textarea',hint:'First body paragraph',default:"Nigerians have begun turning back to their roots, hungry for entertainment that reflects their true cultural heritage. From traditional music and dance to folklore and indigenous storytelling, there is a renewed desire to preserve what makes us distinct."},
+        {id:'quote',        label:'Pull Quote',          type:'textarea',hint:'Blockquote text',      default:'Culture9ja is a cultural-based reality television program designed to showcase, preserve, and celebrate the rich heritage, traditions, creativity, and diversity of Nigeria.'},
+        {id:'body-2',       label:'Paragraph 2',         type:'textarea',hint:'Second body paragraph',default:'Launching at a time when audiences are demanding authenticity, Culture9ja entertains while preserving the soul of Nigeria\'s many communities. This is not just television — it is a movement.'},
+        {id:'video-url',    label:'About Video URL',     type:'video',   hint:'Relative path or full URL to MP4', default:'about culture9ja.mp4'},
+      ]},
+      { id:'stats', label:'Hero Stats', fields:[
+        {id:'stat1-num',    label:'Stat 1 — Number',    type:'text',    default:'250+'},
+        {id:'stat1-label',  label:'Stat 1 — Label',     type:'text',    default:'Cultures'},
+        {id:'stat2-num',    label:'Stat 2 — Number',    type:'text',    default:'36'},
+        {id:'stat2-label',  label:'Stat 2 — Label',     type:'text',    default:'States'},
+        {id:'stat3-num',    label:'Stat 3 — Number',    type:'text',    default:'1'},
+        {id:'stat3-label',  label:'Stat 3 — Label',     type:'text',    default:'Champion'},
+        {id:'stat4-num',    label:'Stat 4 — Number',    type:'text',    default:'2026'},
+        {id:'stat4-label',  label:'Stat 4 — Label',     type:'text',    default:'Season 1'},
+      ]},
+      { id:'cta', label:'CTA Section', fields:[
+        {id:'title',        label:'CTA Title',           type:'text',    default:'Your Culture Deserves a Stage.'},
+        {id:'desc',         label:'CTA Description',     type:'textarea',default:'Whether you are a contestant ready to represent your heritage, a brand that wants to align with cultural excellence, or a fan who wants to follow the journey — there is a place for you in Culture9ja.'},
+      ]},
+    ],
+  },
+  {
+    id:'about', name:'About Page', file:'about.html', icon:'📖',
+    desc:'Show overview, Mission & Vision, How It Works, Judges & Hosts, Prizes, Rules',
+    sections:[
+      { id:'hero', label:'Page Hero', fields:[
+        {id:'title',        label:'Page Title',          type:'text',    default:'About Culture9ja'},
+        {id:'desc',         label:'Hero Description',    type:'textarea',default:'A purpose-driven entertainment platform designed to celebrate, showcase, and preserve the extraordinary diversity of Nigeria\'s cultural heritage through world-class television.'},
+        {id:'bg-image',     label:'Hero Background Image URL', type:'image', default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
+      ]},
+      { id:'overview', label:'Show Overview', fields:[
+        {id:'para1',        label:'Paragraph 1',         type:'textarea',default:'Nigeria is home to one of the most diverse and vibrant cultural landscapes in the world, boasting over 500 distinct languages and ethnic traditions.'},
+        {id:'quote',        label:'Pull Quote',          type:'textarea',default:'Culture9ja is a cultural-based reality television program designed to showcase, preserve, and celebrate the rich heritage, traditions, creativity, and diversity of Nigeria.'},
+        {id:'para2',        label:'Paragraph 2',         type:'textarea',default:'Culture9ja is not just a TV show — it is a movement. A movement to reclaim cultural pride, inspire the youth, and preserve the living heritage of one of Africa\'s greatest nations.'},
+      ]},
+      { id:'mission', label:'Mission & Vision', fields:[
+        {id:'vision',       label:'Vision Statement',    type:'textarea',default:"To become Africa's leading cultural reality television platform — a beacon of heritage, unity, and creative excellence that amplifies the richness of Nigerian culture to the world."},
+        {id:'mission',      label:'Mission Statement',   type:'textarea',default:"To showcase, preserve, and celebrate Nigeria's diverse cultural heritage through world-class reality television programming that educates, entertains, and inspires — while empowering talented Nigerians and fostering national pride and unity."},
+      ]},
+      { id:'prizes', label:'Prizes & Rewards', fields:[
+        {id:'champion-title',label:'Champion Prize Title',type:'text',  default:'Culture9ja Champion'},
+        {id:'champion-desc', label:'Champion Prize Description',type:'textarea',default:'The winner is crowned Culture9ja Champion — Nigeria\'s foremost cultural ambassador. The grand prize combines cash, recognition, endorsement opportunities, and a platform to represent Nigerian culture on the national and international stage.'},
+        {id:'prize-note',   label:'Prize Note',          type:'textarea',default:'The full breakdown of prize values will be officially announced at the Culture9ja Grand Launch in Abuja, Federal Capital Territory.'},
+      ]},
+    ],
+  },
+  {
+    id:'register', name:'Registration Page', file:'register.html', icon:'📝',
+    desc:'Registration instructions, fee, success message',
+    sections:[
+      { id:'hero', label:'Page Hero', fields:[
+        {id:'title',        label:'Page Title',          type:'text',    default:'Register for Culture9ja'},
+        {id:'desc',         label:'Hero Description',    type:'textarea',default:'Complete your application to audition for Nigeria\'s premier cultural reality TV show. Represent your heritage on the national stage. Registration fee: ₦10,000.'},
+      ]},
+      { id:'fee', label:'Registration Fee', fields:[
+        {id:'amount',       label:'Fee Amount',          type:'text',    hint:'Displayed prominently on payment step', default:'₦10,000'},
+        {id:'covers',       label:'What the Fee Covers', type:'list',    default:['Application processing','Contestant screening','Audition logistics','Administrative costs']},
+        {id:'refund-note',  label:'Non-Refund Notice',   type:'textarea',default:'Please Note: The ₦10,000 registration fee is non-refundable. It covers application processing, contestant screening, audition logistics, and administrative costs.'},
+      ]},
+      { id:'success', label:'Success Screen', fields:[
+        {id:'title',        label:'Success Title',       type:'text',    default:"Congratulations, You're Registered!"},
+        {id:'body',         label:'Success Message',     type:'textarea',default:'Your registration for Culture9ja Reality TV Season 1 has been successfully completed. Your Application Number, next steps, and audition information are detailed below. A confirmation has been sent to your email and phone.'},
+        {id:'step1',        label:'Next Step 1',         type:'text',    default:'Your application will be reviewed by the Culture9ja team within 5–7 business days.'},
+        {id:'step2',        label:'Next Step 2',         type:'text',    default:'Shortlisted applicants will be contacted for auditions via email and SMS.'},
+        {id:'step3',        label:'Next Step 3',         type:'text',    default:'Full audition details, venue, and schedule will be sent to your registered contacts.'},
+      ]},
+    ],
+  },
+  {
+    id:'contestants', name:'Contestants Page', file:'contestants.html', icon:'⭐',
+    desc:'Hero text, season label — individual contestant data is managed in the Contestants section',
+    sections:[
+      { id:'hero', label:'Page Hero', fields:[
+        {id:'title',        label:'Page Title',          type:'text',    default:'Meet the Faces of Culture'},
+        {id:'desc',         label:'Hero Description',    type:'textarea',default:'36 states. 250+ cultures. One stage. These are the Nigerians stepping forward to represent their heritage, talent, and identity before the nation.'},
+        {id:'season-label', label:'Season Label',        type:'text',    default:'Season 1 · 2026'},
+        {id:'ticker',       label:'Ticker Bar Text',     type:'list',    default:['Season 1 Contestants','Auditions Nationwide · 6 Geopolitical Zones','250+ Cultures Represented','Vote for Your Champion','Culture9ja · Season 1 · 2026']},
+      ]},
+    ],
+  },
+  {
+    id:'sponsors', name:'Sponsors & Partners', file:'sponsors.html', icon:'🤝',
+    desc:'Page hero, partnership CTA band, sponsorship policy',
+    sections:[
+      { id:'hero', label:'Page Hero', fields:[
+        {id:'title',        label:'Page Title',          type:'text',    default:'Sponsors & Partners'},
+        {id:'desc',         label:'Hero Description',    type:'textarea',default:'Culture9ja Limited invites visionary brands, cultural organisations, and government institutions to partner with Nigeria\'s premier cultural reality TV platform. Together, we amplify the nation\'s heritage.'},
+      ]},
+      { id:'visibility', label:'Brand Visibility', fields:[
+        {id:'section-title',label:'Section Title',       type:'text',    default:"What Your Brand Gains"},
+        {id:'section-desc', label:'Section Description', type:'textarea',default:'Partnering with Culture9ja means aligning your brand with Nigeria\'s most culturally significant entertainment platform — reaching millions of viewers across TV, digital platforms, and live events nationwide.'},
+      ]},
+      { id:'cta', label:'Partnership CTA Band', fields:[
+        {id:'title',        label:'CTA Title',           type:'text',    default:"Align Your Brand with Nigeria's Cultural Future."},
+        {id:'sub',          label:'CTA Subtitle',        type:'textarea',default:'Contact the Culture9ja partnerships team today to discuss sponsorship packages and opportunities for Season 1.'},
+        {id:'email',        label:'Sponsorship Email',   type:'text',    default:'support@culture9ja.com'},
+      ]},
+    ],
+  },
+  {
+    id:'contact', name:'Contact Page', file:'contact.html', icon:'📞',
+    desc:'All contact details — phone, email, address, social media, form intro',
+    sections:[
+      { id:'hero', label:'Page Hero', fields:[
+        {id:'title',        label:'Page Title',          type:'text',    default:'Contact Culture9ja'},
+        {id:'desc',         label:'Hero Description',    type:'textarea',default:'We would love to hear from you. Whether you are a prospective contestant, a sponsor, a media partner, or a cultural enthusiast — please reach out through any of the following channels.'},
+      ]},
+      { id:'details', label:'Contact Details', fields:[
+        {id:'email',        label:'Email Address',       type:'text',    hint:'Primary contact email', default:'support@culture9ja.com'},
+        {id:'phone1',       label:'Phone Number 1',      type:'text',    default:'+234 9039997729'},
+        {id:'phone2',       label:'Phone Number 2',      type:'text',    default:'09055567245'},
+        {id:'phone3',       label:'Phone Number 3',      type:'text',    default:'09095777082'},
+        {id:'address',      label:'Office Address',      type:'textarea',hint:'Full mailing/office address', default:'Culture9ja Limited\nAbuja, Federal Capital Territory\nFederal Republic of Nigeria'},
+        {id:'website',      label:'Website URL',         type:'url',     default:'www.culture9ja.com'},
+      ]},
+      { id:'social', label:'Social Media Links', fields:[
+        {id:'instagram',    label:'Instagram URL',       type:'url',     default:'https://instagram.com/culture9ja'},
+        {id:'facebook',     label:'Facebook URL',        type:'url',     default:'https://facebook.com/culture9ja'},
+        {id:'youtube',      label:'YouTube URL',         type:'url',     default:'https://youtube.com/@culture9ja'},
+        {id:'tiktok',       label:'TikTok URL',          type:'url',     default:'https://tiktok.com/@culture9ja'},
+        {id:'twitter',      label:'X (Twitter) URL',     type:'url',     default:'https://x.com/culture9ja'},
+      ]},
+      { id:'form', label:'Contact Form', fields:[
+        {id:'form-title',   label:'Form Title',          type:'text',    default:'Get in Touch'},
+        {id:'form-desc',    label:'Form Description',    type:'textarea',default:'Fill in the form below and a member of the Culture9ja team will respond within 2–3 business days. For urgent matters, please call us directly.'},
+        {id:'response-time',label:'Response Time Note',  type:'text',    default:'2–3 business days'},
+      ]},
+    ],
+  },
+  {
+    id:'faq', name:'FAQ Page', file:'faq.html', icon:'❓',
+    desc:'Page hero and section descriptions — individual FAQ questions are managed in the Announcements section',
+    sections:[
+      { id:'hero', label:'Page Hero', fields:[
+        {id:'title',        label:'Page Title',          type:'text',    default:'Frequently Asked Questions'},
+        {id:'desc',         label:'Hero Description',    type:'textarea',default:'Everything you need to know about applying, auditioning, registering, and participating in Culture9ja Reality TV Show Season 1.'},
+      ]},
+      { id:'help', label:'Help Band (Bottom)', fields:[
+        {id:'title',        label:'Help Title',          type:'text',    default:"Can't Find Your Answer?"},
+        {id:'sub',          label:'Help Subtitle',       type:'text',    default:'Contact the Culture9ja team directly — we respond within 2–3 business days.'},
+      ]},
+    ],
+  },
+  {
+    id:'legal', name:'Legal Pages', file:'legal.html', icon:'⚖️',
+    desc:'Terms & Conditions, Privacy Policy, Disclaimer — effective dates and contact info',
+    sections:[
+      { id:'meta', label:'Document Metadata', fields:[
+        {id:'effective-date',label:'Effective Date',     type:'text',    default:'April 2026'},
+        {id:'last-updated', label:'Last Updated Date',   type:'text',    default:'April 2026'},
+        {id:'company',      label:'Company Name',        type:'text',    default:'Culture9ja Limited'},
+        {id:'registered',   label:'Registration Note',   type:'text',    default:'Registered in the Federal Republic of Nigeria (CAMA)'},
+        {id:'hq',           label:'Headquarters',        type:'text',    default:'Abuja, Federal Capital Territory, Nigeria'},
+        {id:'website',      label:'Website',             type:'text',    default:'www.culture9ja.com'},
+        {id:'legal-email',  label:'Legal Contact Email', type:'text',    default:'support@culture9ja.com'},
+        {id:'legal-phone',  label:'Legal Contact Phone', type:'text',    default:'+234 9039997729'},
+      ]},
+      { id:'terms', label:'Terms & Conditions', fields:[
+        {id:'min-age',      label:'Minimum Age',         type:'text',    default:'18 years'},
+        {id:'reg-fee',      label:'Registration Fee',    type:'text',    default:'₦10,000'},
+        {id:'refund-policy',label:'Refund Policy',       type:'text',    default:'Non-refundable'},
+        {id:'extra-clause', label:'Additional Clause (Optional)', type:'textarea', default:''},
+      ]},
+      { id:'privacy', label:'Privacy Policy', fields:[
+        {id:'data-contact', label:'Data Enquiries Contact', type:'text', default:'support@culture9ja.com'},
+        {id:'payment-processor',label:'Payment Processor',  type:'text', default:'Paystack / Flutterwave'},
+        {id:'privacy-law',  label:'Governing Privacy Law',  type:'text', default:'Applicable Nigerian privacy laws'},
+      ]},
+    ],
+  },
+  {
+    id:'global', name:'Global / All Pages', file:'(all pages)', icon:'🌍',
+    desc:'Shared content that appears on every page — footer, nav, company info',
+    sections:[
+      { id:'company', label:'Company Info', fields:[
+        {id:'name',         label:'Company Name',        type:'text',    default:'Culture9ja Limited'},
+        {id:'tagline',      label:'Footer Tagline',      type:'textarea',default:"Africa's cultural reality television show — celebrating people, living traditions, and the stories that define who we are."},
+        {id:'copyright',    label:'Copyright Line',      type:'text',    default:'© 2026 Culture9ja Limited. All Rights Reserved. Built with Purpose.'},
+        {id:'email',        label:'Contact Email',       type:'text',    default:'support@culture9ja.com'},
+        {id:'phone1',       label:'Contact Phone 1',     type:'text',    default:'+234 9039997729'},
+        {id:'phone2',       label:'Contact Phone 2',     type:'text',    default:'09055567245'},
+        {id:'phone3',       label:'Contact Phone 3',     type:'text',    default:'09095777082'},
+        {id:'address',      label:'Headquarters',        type:'text',    default:'Abuja, Federal Capital Territory, Nigeria'},
+        {id:'logo-url',     label:'Logo Image URL',      type:'image',   hint:'URL to the main logo image', default:'https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png'},
+      ]},
+      { id:'nav', label:'Navigation', fields:[
+        {id:'cta-text',     label:'Nav CTA Button Text', type:'text',    default:'Apply Now'},
+        {id:'cta-link',     label:'Nav CTA Button Link', type:'url',     default:'register.html'},
+      ]},
+      { id:'seo', label:'SEO / Meta', fields:[
+        {id:'site-name',    label:'Site Name',           type:'text',    default:'Culture9ja Reality TV Show'},
+        {id:'meta-desc',    label:'Meta Description',    type:'textarea',hint:'Used in search engine results (150-160 chars)', default:"Nigeria's premier cultural reality TV show — celebrating 250+ ethnic groups, traditions, languages, and creativity on one unforgettable national stage."},
+        {id:'og-image',     label:'Social Share Image URL', type:'image',hint:'Used when links are shared on WhatsApp, Twitter etc.', default:'https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg'},
+      ]},
+    ],
+  },
+];
+
+let currentCMSPageId = null;
+let currentCMSSectionId = null;
+let cmsUnsaved = {}; // track which pages have unsaved changes
+
+function initPageEditor(){
+  renderCMSGrid();
+  updateCMSSummary();
+}
+
+function renderCMSGrid(filter=''){
+  const grid = document.getElementById('page-grid');
+  if(!grid) return;
+  const pages = filter
+    ? CMS_PAGES.filter(p => p.name.toLowerCase().includes(filter) || p.desc.toLowerCase().includes(filter))
+    : CMS_PAGES;
+
+  const allFieldCount = CMS_PAGES.reduce((sum, p) => sum + p.sections.reduce((s2, sec) => s2 + sec.fields.length, 0), 0);
+  document.getElementById('cms-field-count').textContent = allFieldCount;
+
+  grid.innerHTML = pages.map(p => {
+    const fieldCount = p.sections.reduce((s, sec) => s + sec.fields.length, 0);
+    const hasEdits = pageContent[p.id] && Object.keys(pageContent[p.id]).length > 0;
+    const isLinked = p.file !== '(all pages)';
+    return `<div class="page-card" onclick="openCMSPage('${p.id}')">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.25rem;">
+        <div class="pc-icon" style="font-size:1.4rem;background:#D1FAE5;width:42px;height:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;">${p.icon}</div>
+        <div style="display:flex;gap:.3rem;align-items:center;">
+          ${hasEdits ? '<span class="cms-unsaved-dot" title="Has saved edits"></span>' : ''}
+          ${isLinked ? `<a href="${p.file}" target="_blank" class="btn btn-ghost btn-sm btn-icon" onclick="event.stopPropagation()" title="Preview page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>` : ''}
+        </div>
+      </div>
+      <div class="pc-name">${p.name}</div>
+      <div class="pc-desc">${p.desc}</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:.2rem;">
+        <div class="pc-sections">${p.sections.length} section${p.sections.length!==1?'s':''} · ${fieldCount} fields</div>
+        <span class="pc-badge ${hasEdits?'pc-badge-edited':'pc-badge-clean'}">${hasEdits?'Edited':'Default'}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterPageGrid(val){
+  renderCMSGrid(val.toLowerCase().trim());
+}
+
+function updateCMSSummary(){
+  const edited = Object.keys(pageContent).filter(k => pageContent[k] && Object.keys(pageContent[k]).length > 0).length;
+  document.getElementById('cms-saved-count').textContent = `${edited} page${edited!==1?'s':''} with saved edits`;
+}
+
+function openCMSPage(pageId){
+  const page = CMS_PAGES.find(p => p.id === pageId);
+  if(!page) return;
+  currentCMSPageId = pageId;
+
+  document.getElementById('pe-home').style.display = 'none';
+  document.getElementById('pe-detail').style.display = 'block';
+  document.getElementById('pe-page-title').textContent = `Editing: ${page.name}`;
+  document.getElementById('pe-page-sub').textContent = `${page.file} · ${page.sections.length} section${page.sections.length!==1?'s':''} · ${page.sections.reduce((s,sec)=>s+sec.fields.length,0)} fields`;
+  const viewLink = document.getElementById('pe-view-link');
+  if(page.file !== '(all pages)'){viewLink.href=page.file;viewLink.style.display='';}
+  else{viewLink.style.display='none';}
+
+  // Build tabs
+  const tabBar = document.getElementById('pe-section-tabs');
+  tabBar.innerHTML = page.sections.map((sec,i) =>
+    `<button class="tab-btn ${i===0?'active':''}" onclick="switchCMSSection('${sec.id}',this,'${pageId}')">${sec.label}</button>`
+  ).join('');
+
+  // Build all section panels
+  const panels = document.getElementById('pe-field-panels');
+  const saved = pageContent[pageId] || {};
+  panels.innerHTML = page.sections.map((sec, i) => `
+    <div class="cms-section-panel ${i===0?'active':''}" id="cms-panel-${pageId}-${sec.id}">
+      <div style="display:flex;flex-direction:column;gap:.85rem;">
+        ${sec.fields.map(f => buildCMSField(pageId, sec.id, f, saved[`${sec.id}__${f.id}`])).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  currentCMSSectionId = page.sections[0]?.id;
+
+  // Watch for changes
+  panels.querySelectorAll('input,textarea').forEach(el => {
+    el.addEventListener('input', () => markUnsaved(pageId));
+  });
+}
+
+function buildCMSField(pageId, sectionId, field, savedValue){
+  const val = savedValue !== undefined ? savedValue : (Array.isArray(field.default) ? field.default : field.default || '');
+  const fid = `cms-f-${pageId}-${sectionId}-${field.id}`;
+
+  let inputHtml = '';
+  if(field.type === 'textarea' || field.type === 'richtext'){
+    inputHtml = `<textarea class="cms-textarea" id="${fid}" data-page="${pageId}" data-sec="${sectionId}" data-field="${field.id}" rows="4">${escHtml(Array.isArray(val)?val.join('\n'):val)}</textarea>`;
+  } else if(field.type === 'list'){
+    const items = Array.isArray(val) ? val : (val ? val.split('\n').filter(Boolean) : (Array.isArray(field.default) ? field.default : []));
+    inputHtml = `
+      <div class="cms-list-items" id="${fid}-list">
+        ${items.map((item,i) => `
+          <div class="cms-list-item">
+            <input type="text" value="${escHtml(item)}" placeholder="Item ${i+1}" data-page="${pageId}" data-sec="${sectionId}" data-field="${field.id}">
+            <button class="cms-list-remove" onclick="removeCMSListItem(this)" title="Remove">✕</button>
+          </div>`).join('')}
+      </div>
+      <button class="cms-list-add" onclick="addCMSListItem('${fid}-list','${pageId}','${sectionId}','${field.id}')">+ Add Item</button>`;
+  } else if(field.type === 'image'){
+    const imgVal = Array.isArray(val)?val[0]:val;
+    inputHtml = `
+      <input class="cms-input" type="url" id="${fid}" data-page="${pageId}" data-sec="${sectionId}" data-field="${field.id}" value="${escHtml(imgVal)}" placeholder="https://..." oninput="previewCMSImage('${fid}')">
+      <div class="cms-img-preview ${imgVal?'show':''}" id="${fid}-preview">
+        <img src="${escHtml(imgVal)}" alt="preview" onerror="this.parentElement.classList.remove('show')">
+      </div>`;
+  } else if(field.type === 'url'){
+    const urlVal = Array.isArray(val)?val[0]:val;
+    inputHtml = `
+      <div class="cms-url-row">
+        <input class="cms-input" type="url" id="${fid}" data-page="${pageId}" data-sec="${sectionId}" data-field="${field.id}" value="${escHtml(urlVal)}" placeholder="https://...">
+        <a href="${escHtml(urlVal)||'#'}" target="_blank" class="btn btn-outline btn-sm cms-url-open" id="${fid}-open" onclick="updateUrlOpen('${fid}')">Open ↗</a>
+      </div>`;
+  } else if(field.type === 'video'){
+    inputHtml = `<input class="cms-input" type="text" id="${fid}" data-page="${pageId}" data-sec="${sectionId}" data-field="${field.id}" value="${escHtml(Array.isArray(val)?val[0]:val)}" placeholder="e.g. about culture9ja.mp4 or https://youtube.com/...">`;
+  } else {
+    inputHtml = `<input class="cms-input" type="text" id="${fid}" data-page="${pageId}" data-sec="${sectionId}" data-field="${field.id}" value="${escHtml(Array.isArray(val)?val.join(', '):val)}" placeholder="${escHtml(field.hint||'')}">`;
+  }
+
+  const typeLabel = field.type==='richtext'?'textarea':field.type;
+  return `
+    <div class="cms-field-card">
+      <div class="cms-field-header">
+        <span class="cms-field-type-pill cms-ft-${typeLabel}">${typeLabel}</span>
+        <span class="cms-field-label">${field.label}</span>
+        ${field.hint ? `<span class="cms-field-hint">${field.hint}</span>` : ''}
+      </div>
+      <div class="cms-field-body">${inputHtml}</div>
+    </div>`;
+}
+
+function switchCMSSection(sectionId, btn, pageId){
+  document.querySelectorAll('.cms-section-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#pe-section-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById(`cms-panel-${pageId}-${sectionId}`);
+  if(panel) panel.classList.add('active');
+  btn.classList.add('active');
+  currentCMSSectionId = sectionId;
+}
+
+function addCMSListItem(listId, pageId, sectionId, fieldId){
+  const list = document.getElementById(listId);
+  if(!list) return;
+  const count = list.children.length + 1;
+  const div = document.createElement('div');
+  div.className = 'cms-list-item';
+  div.innerHTML = `<input type="text" placeholder="Item ${count}" data-page="${pageId}" data-sec="${sectionId}" data-field="${fieldId}"><button class="cms-list-remove" onclick="removeCMSListItem(this)" title="Remove">✕</button>`;
+  list.appendChild(div);
+  div.querySelector('input').addEventListener('input', () => markUnsaved(pageId));
+  markUnsaved(pageId);
+}
+
+function removeCMSListItem(btn){
+  const item = btn.closest('.cms-list-item');
+  const pageId = item.querySelector('input').dataset.page;
+  item.remove();
+  markUnsaved(pageId);
+}
+
+function previewCMSImage(fid){
+  const input = document.getElementById(fid);
+  const preview = document.getElementById(`${fid}-preview`);
+  if(!input || !preview) return;
+  const img = preview.querySelector('img');
+  if(input.value){
+    img.src = input.value;
+    preview.classList.add('show');
+  } else {
+    preview.classList.remove('show');
+  }
+}
+
+function updateUrlOpen(fid){
+  const input = document.getElementById(fid);
+  const link = document.getElementById(`${fid}-open`);
+  if(input && link) link.href = input.value || '#';
+}
+
+function markUnsaved(pageId){
+  cmsUnsaved[pageId] = true;
+}
+
+function collectPageData(pageId){
+  const page = CMS_PAGES.find(p => p.id === pageId);
+  if(!page) return {};
+  const data = {};
+  page.sections.forEach(sec => {
+    sec.fields.forEach(f => {
+      const fid = `cms-f-${pageId}-${sec.id}-${f.id}`;
+      const key = `${sec.id}__${f.id}`;
+      if(f.type === 'list'){
+        const list = document.getElementById(`${fid}-list`);
+        if(list){
+          data[key] = [...list.querySelectorAll('input')].map(i => i.value.trim()).filter(Boolean);
+        }
+      } else {
+        const el = document.getElementById(fid);
+        if(el) data[key] = el.value;
+      }
+    });
+  });
+  return data;
+}
+
+function saveCurrentPage(){
+  if(!currentCMSPageId) return;
+  const data = collectPageData(currentCMSPageId);
+  if(!pageContent[currentCMSPageId]) pageContent[currentCMSPageId] = {};
+  Object.assign(pageContent[currentCMSPageId], data);
+  S.set('pageContent', pageContent);
+  delete cmsUnsaved[currentCMSPageId];
+  const page = CMS_PAGES.find(p => p.id === currentCMSPageId);
+  toast(`${page?.name || 'Page'} saved`, 'success');
+  logActivity(`CMS: Saved "${page?.name}"`, 'var(--blue)');
+  updateCMSSummary();
+}
+
+function saveAllPageContent(){
+  CMS_PAGES.forEach(page => {
+    const data = collectPageData(page.id);
+    if(Object.keys(data).length){
+      if(!pageContent[page.id]) pageContent[page.id] = {};
+      Object.assign(pageContent[page.id], data);
+    }
+  });
+  S.set('pageContent', pageContent);
+  cmsUnsaved = {};
+  toast('All page content saved', 'success');
+  logActivity('CMS: Saved all pages', 'var(--blue)');
+  updateCMSSummary();
+}
+
+function resetPageToDefaults(){
+  if(!currentCMSPageId) return;
+  showConfirm('Reset to Defaults', `Clear all saved edits for this page and restore default content?`, () => {
+    delete pageContent[currentCMSPageId];
+    S.set('pageContent', pageContent);
+    openCMSPage(currentCMSPageId);
+    toast('Page reset to defaults');
+    updateCMSSummary();
+  });
+}
+
+function exportPageContent(){
+  const json = JSON.stringify(pageContent, null, 2);
+  const a = document.createElement('a');
+  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
+  a.download = `culture9ja-cms-${Date.now()}.json`;
+  a.click();
+  toast('CMS content exported as JSON');
+}
+
+function backToPageList(){
+  document.getElementById('pe-home').style.display = 'block';
+  document.getElementById('pe-detail').style.display = 'none';
+  renderCMSGrid();
+  updateCMSSummary();
+  currentCMSPageId = null;
+}
+
+function escHtml(str){
+  if(typeof str !== 'string') return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// legacy alias so existing initPageEditor() call still works
+function openPageEditor(id){ openCMSPage(id); }
+
+// ── SETTINGS ──────────────────────────────────────────────────────────
+function loadSettings(){
+  const s=S.get('settings');if(!s)return;
+  document.getElementById('set-season').value=s.season||1;
+  document.getElementById('set-fee').value=s.fee||10000;
+  document.getElementById('set-votes').value=s.vpd||3;
+  document.getElementById('set-show-status').value=s.showStatus||'Pre-Launch';
+  document.getElementById('set-reg-status').value=s.regStatus||'open';
+  document.getElementById('set-voting-status').value=s.votingStatus||'closed';
+  document.getElementById('set-email').value=s.email||'support@culture9ja.com';
+  document.getElementById('set-phone1').value=s.phone1||'+234 9039997729';
+  document.getElementById('set-phone2').value=s.phone2||'09055567245';
+}
+function saveSettings(){
+  const np=document.getElementById('set-newpass').value;
+  const cp=document.getElementById('set-confpass').value;
+  if(np&&np!==cp){toast('Passwords do not match','error');return;}
+  settings={
+    season:parseInt(document.getElementById('set-season').value)||1,
+    fee:parseInt(document.getElementById('set-fee').value)||10000,
+    vpd:parseInt(document.getElementById('set-votes').value)||3,
+    showStatus:document.getElementById('set-show-status').value,
+    regStatus:document.getElementById('set-reg-status').value,
+    votingStatus:document.getElementById('set-voting-status').value,
+    email:document.getElementById('set-email').value,
+    phone1:document.getElementById('set-phone1').value,
+    phone2:document.getElementById('set-phone2').value,
+  };
+  if(np){CREDS.pass=np;document.getElementById('set-newpass').value='';document.getElementById('set-confpass').value='';toast('Password updated');}
+  votingOpen=settings.votingStatus==='open';
+  S.set('settings',settings);toast('Settings saved');logActivity('Settings updated','var(--blue)');
+}
+
+// ── CONFIRM ───────────────────────────────────────────────────────────
+let confirmCallback=null;
+function showConfirm(title,msg,cb){
+  document.getElementById('confirm-title').textContent=title;
+  document.getElementById('confirm-msg').textContent=msg;
+  confirmCallback=cb;openModal('confirm-modal');
+}
+document.getElementById('confirm-action-btn').onclick=()=>{if(confirmCallback)confirmCallback();closeModal('confirm-modal');confirmCallback=null};
+
+// ── EXPORT ────────────────────────────────────────────────────────────
+function exportCSV(type){
+  let data=[],headers=[];
+  if(type==='regs'){headers=['Name','Email','Phone','State','Category','Status','Payment','Date'];data=regs.map(r=>[r.name,r.email,r.phone,r.state,r.category,r.status,r.payment,r.date]);}
+  else if(type==='payments'){headers=['Name','Email','Amount','Reference','Status','Date'];data=regs.map(r=>[r.name,r.email,'10000',r.payref,r.payment,r.date]);}
+  else if(type==='votes'){headers=['Voter','Contestant ID','Time'];data=votes.map(v=>[v.voter,v.contestantId,v.time]);}
+  const csv=[headers,...data].map(r=>r.map(c=>`"${(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download=`culture9ja-${type}-${Date.now()}.csv`;a.click();
+  toast(`${type} exported as CSV`);
+}
+function exportReport(){
+  const data={totalRegistrations:regs.length,approved:regs.filter(r=>r.status==='approved').length,revenue:regs.filter(r=>r.payment==='confirmed').length*10000,contestants:contestants.length,media:media.length,announcements:announcements.length,exportDate:new Date().toLocaleDateString()};
+  const json=JSON.stringify(data,null,2);
+  const a=document.createElement('a');a.href='data:application/json;charset=utf-8,'+encodeURIComponent(json);
+  a.download=`culture9ja-report-${Date.now()}.json`;a.click();toast('Report exported');
+}
+
+// ── DEMO DATA ─────────────────────────────────────────────────────────
+function seedDemoData(){
+  showConfirm('Load Demo Data','This will add sample data to all sections. Existing data will be kept.',()=>{
+    const states=['Lagos','Kano','Anambra','Benue','Rivers','Plateau','Ogun','Edo'];
+    const cats=['Traditional Dance','Cultural Fashion','Native Language Oratory','Traditional Music','Nigerian Cuisine'];
+    const names=['Adaeze Okafor','Musa Ibrahim','Chidinma Eze','Yusuf Aliyu','Ngozi Obi','Fatima Bello','Emeka Nwosu','Aisha Mohammed'];
+    names.forEach((name,i)=>{
+      const id=Date.now()+i+'';
+      regs.push({id,name,email:name.toLowerCase().replace(' ','.')+'@example.com',phone:'0803'+Math.random().toString().slice(2,9),state:states[i%states.length],category:cats[i%cats.length],tribe:['Igbo','Hausa','Yoruba','Tiv','Ijaw'][i%5],bio:`${name} is a talented cultural practitioner from ${states[i%states.length]} State.`,status:['pending','approved','shortlisted','pending','approved','rejected','pending','approved'][i],payment:['confirmed','confirmed','pending','confirmed','confirmed','pending','pending','confirmed'][i],payref:'C9JA-2026-'+Math.random().toString(36).slice(2,8).toUpperCase(),date:new Date().toLocaleDateString('en-NG'),notes:'Demo data entry'});
+      if(['approved'][0]===['pending','approved','shortlisted','pending','approved','rejected','pending','approved'][i]){
+        contestants.push({id:'con'+id,name,state:states[i%states.length],category:cats[i%cats.length],tribe:['Igbo','Hausa','Yoruba','Tiv','Ijaw'][i%5],status:'Active',votes:Math.floor(Math.random()*500),episode:1,num:contestants.length+1,bio:`${name} represents the ${['Igbo','Hausa','Yoruba','Tiv','Ijaw'][i%5]} heritage.`,date:new Date().toLocaleDateString('en-NG')});
+      }
+    });
+    ['culture9ja-season1-ep1.mp4','culture9ja-highlight-dance.mp4','culture9ja-bts-rehearsal.mp4'].forEach((f,i)=>{
+      media.push({id:'med'+Date.now()+i,title:['Season 1 Episode 1 Premiere','Best Moments Dance Highlight','Backstage Rehearsal BTS'][i],type:['episodes','highlights','bts'][i],season:1,epNum:i+1,status:'Published',duration:'45:00',date:new Date().toLocaleDateString('en-NG')});
+    });
+    ['Official Launch Announced — Abuja FCT','Auditions Now Open Nationwide','Culture9ja Cultural Economic Summit Recap'].forEach((title,i)=>{
+      announcements.unshift({id:'ann'+Date.now()+i,title,content:`This is a demo announcement for: ${title}. Full content would appear here.`,type:['Announcement','Auditions','Events'][i],status:'Published',date:new Date().toLocaleDateString('en-NG'),created:new Date().toLocaleDateString('en-NG')});
+    });
+    for(let i=0;i<20;i++){
+      votes.push({voter:'Voter'+Math.random().toString(36).slice(2,6),contestantId:contestants[i%Math.max(contestants.length,1)]?.id||'',time:new Date().toLocaleTimeString()});
+    }
+    S.set('regs',regs);S.set('contestants',contestants);S.set('media',media);S.set('announcements',announcements);S.set('votes',votes);
+    toast('Demo data loaded');refreshDashboard();logActivity('Demo data seeded','var(--gold)');
+  });
+}
+function clearAllData(){
+  showConfirm('Clear All Data','WARNING: This will permanently delete ALL registrations, contestants, media, and announcements.',()=>{
+    regs=[];contestants=[];media=[];announcements=[];votes=[];activityLog=[];
+    ['regs','contestants','media','announcements','votes','activity','pageContent'].forEach(k=>S.del(k));
+    refreshDashboard();renderRegs();renderContestants();renderMedia();renderAnnouncements();
+    toast('All data cleared','error');logActivity('All data cleared','var(--red)');
+  });
+}
+</script>
+</body>
+</html>
