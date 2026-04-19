@@ -106,7 +106,7 @@ nav.scrolled {
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1001; flex-shrink: 0; }
 .hamburger span { width: 26px; height: 2px; background: var(--cream); display: block; transition: all 0.3s ease; border-radius: 2px; }
 
-/* ========== PAGE HERO (EXACT MATCH WITH AUDITIONS.HTML) ========== */
+/* ========== PAGE HERO ========== */
 .page-hero {
   position: relative;
   padding-top: 80px;
@@ -114,35 +114,24 @@ nav.scrolled {
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  background: linear-gradient(160deg, #072416 0%, #0A2F1F 50%, #0D3B26 100%);
+  background: linear-gradient(160deg,#072416 0%,#0A2F1F 50%,#0D3B26 100%);
   isolation: isolate;
-  background-size: cover;
-  background-position: center 25%;
 }
-/* Firefly glow overlay */
+/* CMS background image layer (if provided) */
 .page-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(ellipse 65% 55% at 15% 28%, rgba(34,145,58,0.30) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 45% at 82% 72%, rgba(200,150,12,0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 38% 32% at 58% 8%,  rgba(26,107,60,0.24) 0%, transparent 62%),
-    radial-gradient(ellipse 55% 48% at 92% 18%, rgba(34,145,58,0.13) 0%, transparent 65%),
-    radial-gradient(ellipse 42% 38% at 4%  82%, rgba(200,150,12,0.11) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 28% at 45% 60%, rgba(26,107,60,0.15) 0%, transparent 55%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Ccircle cx='52'  cy='88'  r='1.6' fill='%23C8960C' opacity='.48'/%3E%3Ccircle cx='190' cy='155' r='1.1' fill='%23E8B020' opacity='.38'/%3E%3Ccircle cx='340' cy='65'  r='1.5' fill='%2322913A' opacity='.42'/%3E%3Ccircle cx='480' cy='200' r='1.2' fill='%23C8960C' opacity='.36'/%3E%3Ccircle cx='620' cy='90'  r='1.8' fill='%23E8B020' opacity='.32'/%3E%3Ccircle cx='730' cy='310' r='1.1' fill='%2322913A' opacity='.40'/%3E%3Ccircle cx='110' cy='380' r='1.4' fill='%23E8B020' opacity='.30'/%3E%3Ccircle cx='270' cy='430' r='1.6' fill='%23C8960C' opacity='.44'/%3E%3Ccircle cx='530' cy='370' r='1.0' fill='%2322913A' opacity='.38'/%3E%3Ccircle cx='680' cy='460' r='1.5' fill='%23C8960C' opacity='.35'/%3E%3Ccircle cx='60'  cy='580' r='1.2' fill='%23E8B020' opacity='.42'/%3E%3Ccircle cx='160' cy='650' r='1.8' fill='%2322913A' opacity='.28'/%3E%3Ccircle cx='390' cy='540' r='1.1' fill='%23C8960C' opacity='.46'/%3E%3Ccircle cx='560' cy='620' r='1.4' fill='%23E8B020' opacity='.33'/%3E%3Ccircle cx='750' cy='560' r='1.6' fill='%2322913A' opacity='.38'/%3E%3Ccircle cx='310' cy='730' r='1.2' fill='%23C8960C' opacity='.40'/%3E%3Ccircle cx='470' cy='770' r='1.5' fill='%23E8B020' opacity='.30'/%3E%3Ccircle cx='700' cy='740' r='1.0' fill='%2322913A' opacity='.44'/%3E%3Ccircle cx='130' cy='760' r='1.3' fill='%23C8960C' opacity='.36'/%3E%3Ccircle cx='800' cy='130' r='1.4' fill='%23E8B020' opacity='.35'/%3E%3Ccircle cx='420' cy='300' r='1.0' fill='%23C8960C' opacity='.28'/%3E%3Ccircle cx='640' cy='220' r='1.3' fill='%2322913A' opacity='.32'/%3E%3Ccircle cx='230' cy='270' r='1.5' fill='%23E8B020' opacity='.40'/%3E%3Ccircle cx='800' cy='650' r='1.2' fill='%23C8960C' opacity='.38'/%3E%3C/svg%3E");
-  background-size: auto, auto, auto, auto, auto, auto, 800px 800px;
+  background: radial-gradient(ellipse at 70% 20%, rgba(200,150,12,0.1) 0%, transparent 70%);
   z-index: 1;
-  pointer-events: none;
 }
-.hero-pattern {
+.page-hero-pattern {
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='26' fill='none' stroke='%231A6B3C' stroke-width='1' opacity='0.3'/%3E%3Ccircle cx='30' cy='30' r='18' fill='none' stroke='%23C8960C' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='30' cy='30' r='10' fill='none' stroke='%231A6B3C' stroke-width='0.6' opacity='0.2'/%3E%3Ccircle cx='30' cy='30' r='4' fill='%23C8960C' opacity='0.15'/%3E%3C/svg%3E");
-  background-size: 60px 60px;
-  opacity: 0.2;
-  z-index: 2;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Ccircle cx='28' cy='28' r='24' fill='none' stroke='%231A6B3C' stroke-width='1' opacity='0.3'/%3E%3Ccircle cx='28' cy='28' r='16' fill='none' stroke='%23C8960C' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='28' cy='28' r='8' fill='none' stroke='%231A6B3C' stroke-width='0.6' opacity='0.25'/%3E%3Ccircle cx='28' cy='28' r='3' fill='%23C8960C' opacity='0.2'/%3E%3C/svg%3E");
+  background-size:56px 56px;
+  opacity:.8;
+  z-index: 1;
 }
 .page-hero-content {
   position: relative;
@@ -180,7 +169,6 @@ nav.scrolled {
 .eyebrow-text {
   font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--gold); font-family: 'Times New Roman', Times, serif;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 .page-title {
   font-family: 'Times New Roman', Times, serif;
@@ -192,8 +180,6 @@ nav.scrolled {
 .page-hero-desc {
   max-width: 540px; font-size: 1.2rem; color: rgba(248,244,236,0.95);
   line-height: 1.75; margin-top: 1rem; font-weight: 400;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  border-left: 3px solid rgba(200,150,12,0.6); padding-left: 1.1rem;
 }
 .page-hero-right { display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
 .hero-stat-pill {
@@ -643,32 +629,8 @@ section { position: relative; overflow: hidden; }
 .ticker-sep { color: var(--gold); font-size: 1rem; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* ========== FOOTER (WITH FIREFLY GLOW) ========== */
-footer {
-  background: var(--bg-dark);
-  padding: 4rem 6vw 2rem;
-  border-top: 1px solid rgba(200,150,12,0.15);
-  position: relative;
-  isolation: isolate;
-}
-/* Firefly glow overlay */
-footer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(ellipse 65% 55% at 15% 28%, rgba(34,145,58,0.30) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 45% at 82% 72%, rgba(200,150,12,0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 38% 32% at 58% 8%,  rgba(26,107,60,0.24) 0%, transparent 62%),
-    radial-gradient(ellipse 55% 48% at 92% 18%, rgba(34,145,58,0.13) 0%, transparent 65%),
-    radial-gradient(ellipse 42% 38% at 4%  82%, rgba(200,150,12,0.11) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 28% at 45% 60%, rgba(26,107,60,0.15) 0%, transparent 55%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Ccircle cx='52'  cy='88'  r='1.6' fill='%23C8960C' opacity='.48'/%3E%3Ccircle cx='190' cy='155' r='1.1' fill='%23E8B020' opacity='.38'/%3E%3Ccircle cx='340' cy='65'  r='1.5' fill='%2322913A' opacity='.42'/%3E%3Ccircle cx='480' cy='200' r='1.2' fill='%23C8960C' opacity='.36'/%3E%3Ccircle cx='620' cy='90'  r='1.8' fill='%23E8B020' opacity='.32'/%3E%3Ccircle cx='730' cy='310' r='1.1' fill='%2322913A' opacity='.40'/%3E%3Ccircle cx='110' cy='380' r='1.4' fill='%23E8B020' opacity='.30'/%3E%3Ccircle cx='270' cy='430' r='1.6' fill='%23C8960C' opacity='.44'/%3E%3Ccircle cx='530' cy='370' r='1.0' fill='%2322913A' opacity='.38'/%3E%3Ccircle cx='680' cy='460' r='1.5' fill='%23C8960C' opacity='.35'/%3E%3Ccircle cx='60'  cy='580' r='1.2' fill='%23E8B020' opacity='.42'/%3E%3Ccircle cx='160' cy='650' r='1.8' fill='%2322913A' opacity='.28'/%3E%3Ccircle cx='390' cy='540' r='1.1' fill='%23C8960C' opacity='.46'/%3E%3Ccircle cx='560' cy='620' r='1.4' fill='%23E8B020' opacity='.33'/%3E%3Ccircle cx='750' cy='560' r='1.6' fill='%2322913A' opacity='.38'/%3E%3Ccircle cx='310' cy='730' r='1.2' fill='%23C8960C' opacity='.40'/%3E%3Ccircle cx='470' cy='770' r='1.5' fill='%23E8B020' opacity='.30'/%3E%3Ccircle cx='700' cy='740' r='1.0' fill='%2322913A' opacity='.44'/%3E%3Ccircle cx='130' cy='760' r='1.3' fill='%23C8960C' opacity='.36'/%3E%3Ccircle cx='800' cy='130' r='1.4' fill='%23E8B020' opacity='.35'/%3E%3Ccircle cx='420' cy='300' r='1.0' fill='%23C8960C' opacity='.28'/%3E%3Ccircle cx='640' cy='220' r='1.3' fill='%2322913A' opacity='.32'/%3E%3Ccircle cx='230' cy='270' r='1.5' fill='%23E8B020' opacity='.40'/%3E%3Ccircle cx='800' cy='650' r='1.2' fill='%23C8960C' opacity='.38'/%3E%3C/svg%3E");
-  background-size: auto, auto, auto, auto, auto, auto, 800px 800px;
-  z-index: 0;
-  pointer-events: none;
-}
-footer * { position: relative; z-index: 1; }
+/* FOOTER */
+footer { background: var(--bg-dark); padding: 4rem 6vw 2rem; border-top: 1px solid rgba(200,150,12,0.15); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
 .footer-brand p { font-size: 0.92rem; color: rgba(248,244,236,0.55); line-height: 1.65; margin-top: 1rem; }
 .footer-social { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
@@ -733,8 +695,8 @@ footer * { position: relative; z-index: 1; }
 <div class="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="page-hero">
-<div class="hero-pattern"></div>
+<div class="page-hero" data-cms-bg="hero-bg">
+<div class="page-hero-pattern"></div>
 <div class="page-hero-content">
 <div>
 <div class="breadcrumb"><a href="index.html" data-cms-text="hero-breadcrumb-home">Home</a><span>›</span><span data-cms-text="hero-breadcrumb-news">News &amp; Updates</span></div>

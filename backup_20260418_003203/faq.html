@@ -1,0 +1,1042 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FAQ — Culture9ja Reality TV Show</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<style>
+:root{
+  --green:#1A6B3C;
+  --green-deep:#0F4526;
+  --green-bright:#22913A;
+  --gold:#C8960C;
+  --gold-light:#E8B020;
+  --bg-dark:#0A2F1F;
+  --bg-dark-2:#072416;
+  --bg-dark-3:#0D3B26;
+  --cream:#F8F4EC;
+  --white:#FFFFFF;
+  --text-muted:#6B7A65;
+  --dark:#1A0505;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Times New Roman', Times, Georgia, serif; /* Updated to Times New Roman */
+  background:var(--bg-dark);
+  color:var(--cream);
+  overflow-x:hidden;
+  font-size:18px; /* Slightly larger base for readability */
+  line-height:1.6;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+  opacity:0.6;
+}
+
+/* Navbar - kept exactly as original but with Times New Roman */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 4vw;
+  height:85px;
+  background:rgba(10,47,31,0.93);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(200,150,12,0.2);
+  transition:all 0.4s;
+}
+nav.scrolled{
+  height:74px;
+  background:rgba(7,36,22,0.97);
+}
+.logo{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+  line-height:0;
+}
+.logo img{
+  display:block;
+  height:55px;
+  width:auto;
+  object-fit:contain;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:2.5rem;
+  list-style:none;
+}
+.nav-links a{
+  font-size:0.82rem;
+  font-weight:500;
+  color:rgba(248,244,236,0.7);
+  text-decoration:none;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  transition:color 0.2s;
+  position:relative;
+  font-family:'Times New Roman', Times, Georgia, serif;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  bottom:-4px;
+  left:0;
+  width:0;
+  height:1px;
+  background:var(--gold);
+  transition:width 0.3s;
+}
+.nav-links a:hover{
+  color:var(--cream);
+}
+.nav-links a:hover::after,
+.nav-links a.active::after{
+  width:100%;
+}
+.nav-links a.active{
+  color:var(--gold);
+}
+.nav-cta{
+  background:var(--gold)!important;
+  color:var(--bg-dark)!important;
+  padding:0.55rem 1.4rem!important;
+  font-size:0.78rem!important;
+  letter-spacing:0.08em!important;
+  font-weight:600!important;
+  transition:background 0.2s!important;
+  text-transform:uppercase!important;
+  border-radius:40px;
+  font-family:'Times New Roman', Times, Georgia, serif;
+}
+.nav-cta::after{
+  display:none!important;
+}
+.nav-cta:hover{
+  background:var(--gold-light)!important;
+}
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  padding:4px;
+  z-index:1001;
+}
+.hamburger span{
+  width:26px;
+  height:2px;
+  background:var(--cream);
+  display:block;
+  transition:all 0.3s ease;
+  border-radius:2px;
+}
+
+/* Hero */
+.page-hero{
+  position:relative;
+  padding-top:85px;
+  min-height:300px;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  background-image:url(https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg);
+  background-size:cover;
+  background-position:center 20%;
+}
+.page-hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,rgba(7,36,22,0.7) 0%,rgba(10,47,31,0.97) 100%);
+  z-index:1;
+}
+.hero-pattern{
+  position:absolute;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect width='56' height='56' fill='%230A2F1F'/%3E%3Ccircle cx='28' cy='28' r='24' fill='none' stroke='%231A6B3C' stroke-width='1' opacity='0.35'/%3E%3Ccircle cx='28' cy='28' r='16' fill='none' stroke='%23C8960C' stroke-width='0.8' opacity='0.35'/%3E%3C/svg%3E");
+  background-size:56px;
+  opacity:0.18;
+  z-index:1;
+}
+.phc{
+  position:relative;
+  z-index:3;
+  padding:3rem 6vw 4rem;
+  width:100%;
+}
+.breadcrumb{
+  display:flex;
+  align-items:center;
+  gap:0.55rem;
+  font-size:0.7rem;
+  font-weight:500;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(200,150,12,0.55);
+  font-family:'Times New Roman', Times, Georgia, serif;
+  margin-bottom:1.1rem;
+}
+.breadcrumb a{
+  color:rgba(200,150,12,0.55);
+  text-decoration:none;
+}
+.breadcrumb a:hover{
+  color:var(--gold);
+}
+.breadcrumb span{
+  color:var(--gold);
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:0.7rem;
+  margin-bottom:0.8rem;
+}
+.eyebrow-line{
+  width:36px;
+  height:2px;
+  background:var(--gold);
+}
+.eyebrow-text{
+  font-size:0.7rem;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  font-family:'Times New Roman', Times, Georgia, serif;
+}
+.hero-title{
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:clamp(2.6rem,5vw,4.5rem);
+  font-weight:700;
+  line-height:1.0;
+  color:var(--white);
+}
+.hero-title em{
+  color:var(--gold);
+  font-style:italic;
+}
+.hero-desc{
+  max-width:540px;
+  font-size:0.95rem;
+  color:rgba(248,244,236,0.6);
+  line-height:1.65;
+  margin-top:0.8rem;
+  font-weight:300;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity 0.65s ease,transform 0.65s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* FAQ LAYOUT */
+.faq-main{
+  padding:4rem 6vw 5rem;
+  position:relative;
+  z-index:1;
+}
+.faq-layout{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:3rem;
+  max-width:1100px;
+  margin:0 auto;
+  align-items:start;
+}
+
+/* SIDEBAR */
+.faq-sidebar{
+  position:sticky;
+  top:105px;
+}
+.faq-nav-card{
+  background:rgba(13,59,38,0.5);
+  border:1px solid rgba(200,150,12,0.12);
+  border-radius:14px;
+  overflow:hidden;
+}
+.faq-nav-title{
+  padding:1.2rem 1.4rem;
+  border-bottom:1px solid rgba(200,150,12,0.08);
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:0.65rem;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.faq-nav-item{
+  display:flex;
+  align-items:center;
+  gap:0.7rem;
+  padding:0.85rem 1.4rem;
+  border-bottom:1px solid rgba(248,244,236,0.04);
+  cursor:pointer;
+  transition:all 0.2s;
+  text-decoration:none;
+}
+.faq-nav-item:last-child{
+  border-bottom:none;
+}
+.faq-nav-item:hover,
+.faq-nav-item.active{
+  background:rgba(200,150,12,0.06);
+}
+.faq-nav-item.active .fn-dot{
+  background:var(--gold);
+}
+.faq-nav-item.active .fn-text{
+  color:var(--gold);
+}
+.fn-dot{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:rgba(248,244,236,0.15);
+  flex-shrink:0;
+  transition:background 0.2s;
+}
+.fn-text{
+  font-size:0.8rem;
+  font-weight:500;
+  color:rgba(248,244,236,0.45);
+  transition:color 0.2s;
+  font-family:'Times New Roman', Times, Georgia, serif;
+}
+.faq-count-badge{
+  margin-left:auto;
+  background:rgba(200,150,12,0.1);
+  color:var(--gold);
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:0.6rem;
+  font-weight:700;
+  padding:0.15rem 0.4rem;
+  border-radius:10px;
+}
+
+/* SEARCH */
+.faq-search-wrap{
+  position:relative;
+  margin-bottom:3rem;
+}
+.faq-search{
+  width:100%;
+  background:rgba(248,244,236,0.04);
+  border:1px solid rgba(248,244,236,0.1);
+  color:var(--cream);
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:0.95rem;
+  padding:0.8rem 1rem 0.8rem 2.8rem;
+  outline:none;
+  transition:all 0.2s;
+  border-radius:10px;
+}
+.faq-search::placeholder{
+  color:rgba(248,244,236,0.2);
+}
+.faq-search:focus{
+  border-color:rgba(200,150,12,0.4);
+  background:rgba(200,150,12,0.03);
+}
+.faq-search-icon{
+  position:absolute;
+  left:1rem;
+  top:50%;
+  transform:translateY(-50%);
+  width:16px;
+  height:16px;
+  color:rgba(248,244,236,0.25);
+}
+
+/* CATEGORY */
+.faq-category{
+  margin-bottom:3.5rem;
+}
+.cat-header{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  margin-bottom:1.5rem;
+  padding-bottom:0.8rem;
+  border-bottom:1px solid rgba(200,150,12,0.12);
+}
+.cat-icon{
+  width:40px;
+  height:40px;
+  background:rgba(200,150,12,0.08);
+  border:1px solid rgba(200,150,12,0.2);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.cat-icon svg{
+  width:18px;
+  height:18px;
+  color:var(--gold);
+}
+.cat-label{
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:0.65rem;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(200,150,12,0.6);
+}
+.cat-title{
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:1.5rem;
+  font-weight:700;
+  color:var(--white);
+  line-height:1.1;
+}
+.cat-title em{
+  color:var(--gold);
+  font-style:italic;
+}
+
+/* ACCORDION */
+.faq-item{
+  border:1px solid rgba(248,244,236,0.06);
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:0.6rem;
+  transition:border-color 0.25s;
+}
+.faq-item:hover{
+  border-color:rgba(200,150,12,0.15);
+}
+.faq-item.open{
+  border-color:rgba(200,150,12,0.25);
+}
+.faq-q{
+  display:flex;
+  align-items:flex-start;
+  gap:1rem;
+  padding:1.1rem 1.4rem;
+  cursor:pointer;
+  background:rgba(248,244,236,0.02);
+  transition:background 0.2s;
+}
+.faq-q:hover{
+  background:rgba(200,150,12,0.04);
+}
+.faq-item.open .faq-q{
+  background:rgba(200,150,12,0.05);
+}
+.faq-q-num{
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:1.1rem;
+  font-weight:700;
+  color:rgba(200,150,12,0.25);
+  flex-shrink:0;
+  margin-top:1px;
+  min-width:1.5rem;
+}
+.faq-q-text{
+  font-size:0.95rem;
+  font-weight:500;
+  color:rgba(248,244,236,0.75);
+  line-height:1.45;
+  flex:1;
+  font-family:'Times New Roman', Times, Georgia, serif;
+}
+.faq-item.open .faq-q-text{
+  color:var(--cream);
+}
+.faq-chevron{
+  color:rgba(200,150,12,0.35);
+  font-size:0.75rem;
+  flex-shrink:0;
+  margin-top:0.2rem;
+  transition:transform 0.3s;
+}
+.faq-item.open .faq-chevron{
+  transform:rotate(180deg);
+  color:var(--gold);
+}
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease;
+}
+.faq-item.open .faq-a{
+  max-height:600px;
+}
+.faq-a-inner{
+  padding:0 1.4rem 1.4rem 3.5rem;
+  font-size:0.9rem;
+  color:rgba(248,244,236,0.55);
+  line-height:1.75;
+  font-weight:300;
+  font-family:'Times New Roman', Times, Georgia, serif;
+}
+.faq-a-inner a{
+  color:var(--gold);
+  text-decoration:none;
+}
+.faq-a-inner a:hover{
+  text-decoration:underline;
+}
+.faq-a-inner strong{
+  color:rgba(248,244,236,0.8);
+  font-weight:500;
+}
+.faq-a-inner ul{
+  padding-left:1.2rem;
+  margin-top:0.5rem;
+}
+.faq-a-inner ul li{
+  margin-bottom:0.3rem;
+}
+
+/* NO RESULTS */
+.no-results{
+  text-align:center;
+  padding:4rem 2rem;
+  display:none;
+}
+.no-results.show{
+  display:block;
+}
+.no-results p{
+  font-size:0.95rem;
+  color:rgba(248,244,236,0.3);
+}
+
+/* STILL NEED HELP */
+.help-band{
+  background:var(--green-deep);
+  border-top:1px solid rgba(200,150,12,0.15);
+  padding:3.5rem 6vw;
+  margin-top:2rem;
+}
+.help-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:2rem;
+  max-width:1100px;
+  margin:0 auto;
+}
+.help-tag{
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:0.68rem;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:0.4rem;
+}
+.help-title{
+  font-family:'Times New Roman', Times, Georgia, serif;
+  font-size:2rem;
+  font-weight:700;
+  color:var(--white);
+}
+.help-title em{
+  color:var(--gold);
+  font-style:italic;
+}
+.help-sub{
+  font-size:0.9rem;
+  color:rgba(248,244,236,0.45);
+  margin-top:0.3rem;
+  font-weight:300;
+}
+.help-btns{
+  display:flex;
+  gap:0.8rem;
+  flex-wrap:wrap;
+}
+.btn-gold{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  background:var(--gold);
+  color:var(--dark);
+  padding:0.7rem 1.8rem;
+  font-size:0.85rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  font-family:'Times New Roman', Times, Georgia, serif;
+  border-radius:60px;
+  transition:background 0.2s;
+}
+.btn-gold:hover{
+  background:var(--gold-light);
+}
+.btn-ol{
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
+  border:1px solid rgba(248,244,236,0.2);
+  color:rgba(248,244,236,0.6);
+  padding:0.7rem 1.8rem;
+  font-size:0.85rem;
+  font-weight:500;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  font-family:'Times New Roman', Times, Georgia, serif;
+  border-radius:60px;
+  transition:all 0.2s;
+}
+.btn-ol:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+footer{
+  background:var(--bg-dark);
+  padding:2.5rem 6vw;
+  border-top:1px solid rgba(200,150,12,0.1);
+  position:relative;
+  z-index:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .faq-layout{grid-template-columns:1fr;}
+  .faq-sidebar{position:static;display:none;}
+}
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav-links{
+    position:fixed;
+    top:85px;
+    left:0;
+    width:100%;
+    height:calc(100vh - 85px);
+    background:rgba(7,36,22,0.98);
+    backdrop-filter:blur(16px);
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding:2rem 0;
+    gap:1.5rem;
+    transform:translateX(100%);
+    transition:transform 0.3s cubic-bezier(0.2,0.9,0.4,1.1);
+    z-index:999;
+    display:flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    overflow-y:auto;
+  }
+  .nav-links.nav-active{
+    transform:translateX(0);
+  }
+  .nav-links li{
+    width:100%;
+    text-align:center;
+  }
+  .nav-links a{
+    display:inline-block;
+    padding:0.8rem 1rem;
+    color:#F8F4EC;
+    font-size:1rem;
+    text-decoration:none;
+    letter-spacing:0.08em;
+  }
+  .hamburger.toggle span:nth-child(1){
+    transform:rotate(45deg) translate(5px,5px);
+  }
+  .hamburger.toggle span:nth-child(2){
+    opacity:0;
+  }
+  .hamburger.toggle span:nth-child(3){
+    transform:rotate(-45deg) translate(5px,-5px);
+  }
+  body.menu-open{
+    overflow:hidden;
+  }
+}
+</style>
+</head>
+<body>
+<nav id="navbar">
+<a class="logo" href="index.html">
+<img alt="Culture9ja Logo" data-cms-src="nav-logo-url" src="https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png" style="height:80px;"/>
+</a>
+<ul class="nav-links">
+<li><a data-cms-href="nav-about-link" data-cms-text="nav-about" href="about.html">About</a></li>
+<li><a data-cms-href="nav-auditions-link" data-cms-text="nav-auditions" href="auditions.html">Auditions</a></li>
+<li><a data-cms-href="nav-contestants-link" data-cms-text="nav-contestants" href="contestants.html">Contestants</a></li>
+<li><a data-cms-href="nav-episodes-link" data-cms-text="nav-episodes" href="episodes.html">Highlights</a></li>
+<li><a data-cms-href="nav-voting-link" data-cms-text="nav-voting" href="voting.html">Voting</a></li>
+<li><a data-cms-href="nav-news-link" data-cms-text="nav-news" href="news.html">News</a></li>
+<li><a data-cms-href="nav-gallery-link" data-cms-text="nav-gallery" href="gallery.html">Gallery</a></li>
+<li><a data-cms-href="nav-sponsors-link" data-cms-text="nav-sponsors" href="sponsors.html">Sponsors</a></li>
+<li><a class="nav-cta" data-cms-href="nav-cta-url" data-cms-text="nav-cta-text" href="register.html">Apply Now</a></li>
+</ul>
+<div class="hamburger">
+<span></span><span></span><span></span>
+</div>
+</nav>
+
+<div class="page-hero" data-cms-bg="hero-bg">
+<div class="hero-pattern"></div>
+<div class="phc">
+<div class="breadcrumb"><a href="index.html" data-cms-text="breadcrumb-home">Home</a><span>›</span><span data-cms-text="breadcrumb-current">Frequently Asked Questions</span></div>
+<div class="eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text" data-cms-text="hero-eyebrow">Help &amp; Information</span></div>
+<h1 class="hero-title"><span data-cms-html="hero-title">Frequently Asked <em>Questions</em></span></h1>
+<p class="hero-desc" data-cms-text="hero-desc">Everything you need to know about applying, auditioning, registering, and participating in Culture9ja Reality TV Show Season 1.</p>
+</div>
+</div>
+
+<div class="faq-main">
+<div class="faq-layout">
+<!-- SIDEBAR NAV -->
+<div class="faq-sidebar reveal">
+<div class="faq-nav-card">
+<div class="faq-nav-title" data-cms-text="sidebar-title">Categories</div>
+<a class="faq-nav-item active" href="#eligibility"><div class="fn-dot"></div><div class="fn-text" data-cms-text="cat1-name">Eligibility</div><span class="faq-count-badge">5</span></a>
+<a class="faq-nav-item" href="#auditions"><div class="fn-dot"></div><div class="fn-text" data-cms-text="cat2-name">Auditions</div><span class="faq-count-badge">6</span></a>
+<a class="faq-nav-item" href="#registration"><div class="fn-dot"></div><div class="fn-text" data-cms-text="cat3-name">Registration</div><span class="faq-count-badge">6</span></a>
+<a class="faq-nav-item" href="#voting"><div class="fn-dot"></div><div class="fn-text" data-cms-text="cat4-name">Voting</div><span class="faq-count-badge">5</span></a>
+<a class="faq-nav-item" href="#technical"><div class="fn-dot"></div><div class="fn-text" data-cms-text="cat5-name">Technical Support</div><span class="faq-count-badge">5</span></a>
+<a class="faq-nav-item" href="#general"><div class="fn-dot"></div><div class="fn-text" data-cms-text="cat6-name">General</div><span class="faq-count-badge">4</span></a>
+</div>
+</div>
+<!-- FAQ CONTENT -->
+<div class="faq-content reveal" style="transition-delay:0.1s;">
+<div class="faq-search-wrap">
+<svg class="faq-search-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<input class="faq-search" oninput="searchFaq(this.value)" placeholder="Search all questions…" type="text"/>
+</div>
+<div class="no-results" id="no-results"><p>No questions match your search. Try different keywords or <a href="contact.html" style="color:var(--gold);">contact us directly</a>.</p></div>
+<!-- ── ELIGIBILITY ── -->
+<div class="faq-category" id="eligibility">
+<div class="cat-header">
+<div class="cat-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87"></path><path d="M16 3.13a4 4 0 010 7.75"></path></svg></div>
+<div><div class="cat-label" data-cms-text="cat1-label">Category 1</div><div class="cat-title"><span data-cms-html="cat1-title">Eligibility <em>Requirements</em></span></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">1</div><div class="faq-q-text" data-cms-text="faq1-q">Who is eligible to apply for Culture9ja Reality TV Show?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner" data-cms-html="faq1-a">To be eligible, you must: <ul><li>Be <strong>18 years or older</strong> at the time of registration</li><li>Be a <strong>Nigerian citizen or individual of Nigerian descent</strong></li><li>Possess a <strong>valid means of identification</strong></li><li>Demonstrate knowledge, talent, or interest in Nigerian culture</li><li>Be physically and mentally fit to participate in the show</li></ul>The organisers reserve the right to request proof of age, identity, and eligibility at any time.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">2</div><div class="faq-q-text" data-cms-text="faq2-q">Can Nigerians living abroad (diaspora) apply?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner" data-cms-html="faq2-a">Yes. Culture9ja specifically welcomes Nigerians living abroad as part of our diaspora engagement strategy. The show offers <strong>online audition submission options</strong> for participants who cannot attend physical auditions in Nigeria. Diaspora-focused campaigns are also part of our outreach strategy to bring the Nigerian cultural experience to Nigerians worldwide.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">3</div><div class="faq-q-text" data-cms-text="faq3-q">Is there an upper age limit for applicants?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner" data-cms-html="faq3-a">There is <strong>no upper age limit</strong> for Culture9ja applicants. The minimum age is 18 years at the time of registration. Culture9ja celebrates cultural heritage across all generations, and participants of all adult age groups are welcome and encouraged to apply.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">4</div><div class="faq-q-text" data-cms-text="faq4-q">What cultural background or talent do I need to have?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner" data-cms-html="faq4-a">Applicants must demonstrate <strong>knowledge, talent, or genuine interest in Nigerian culture</strong>. Competition categories include: Traditional Dance, Cultural Fashion, Native Language Oratory, Traditional Music, Nigerian Cuisine, Storytelling &amp; Folklore, and Cultural Crafts. You do not need to be a professional — passion, knowledge, and authentic cultural connection are highly valued.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">5</div><div class="faq-q-text" data-cms-text="faq5-q">Can someone with a criminal record apply?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner" data-cms-html="faq5-a">Individuals with criminal records involving <strong>violence, fraud, or misconduct</strong> may be disqualified from participation. All applicants are subject to a background check as part of the screening process. Culture9ja is committed to maintaining a safe, respectful, and authentic competition environment.</div></div>
+</div>
+</div>
+<!-- ── AUDITIONS ── -->
+<div class="faq-category" id="auditions">
+<div class="cat-header">
+<div class="cat-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect height="14" rx="2" ry="2" width="15" x="1" y="5"></rect></svg></div>
+<div><div class="cat-label">Category 2</div><div class="cat-title">Audition <em>Questions</em></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">1</div><div class="faq-q-text">How do auditions work?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Auditions for Culture9ja Season 1 are held in <strong>multiple cities across Nigeria</strong> as well as online. Applicants showcase their cultural knowledge, talent, or skill before a panel of regional judges. Shortlisted candidates advance to the screening stage which includes interviews, cultural assessments, and background checks. Those who pass proceed to bootcamp.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">2</div><div class="faq-q-text">Where will auditions be held?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Physical auditions will be conducted across <strong>all six geopolitical zones of Nigeria</strong>. The nationwide audition tour will cover multiple cities per zone to ensure every state has access. An online audition submission option is also available for those who cannot attend in person. Official audition cities and dates will be announced on <a href="#">www.culture9ja.com</a> and all official social media channels.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">3</div><div class="faq-q-text">Do I need to pay before attending an audition?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Yes. A <strong>non-refundable registration fee of ₦10,000</strong> is required to complete your application before attending an audition. This fee covers application processing, contestant screening, audition logistics, and administrative costs. Payment must be made through the official payment channels on the Culture9ja website. <strong>Please note: Registration fees are non-refundable.</strong></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">4</div><div class="faq-q-text">What happens if I am shortlisted after auditions?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Shortlisted applicants will be contacted via <strong>email and SMS</strong> for further stages. The selection process may include: Application review and background check, Screening assessment, In-person auditions, and Interviews. Only shortlisted applicants will be contacted — submitting an application does not guarantee selection.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">5</div><div class="faq-q-text">Can I submit an online audition video?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Yes. Culture9ja accepts online audition submissions for applicants who cannot attend physical audition venues — particularly those in the Nigerian diaspora or in states without a nearby audition centre. Your introduction video (uploaded during registration, maximum 3 minutes) forms the basis of your online audition. Full online audition instructions are provided upon registration.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">6</div><div class="faq-q-text">When does Season 1 audition tour begin?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">The nationwide audition tour dates for Season 1 will be officially announced at the <strong>Culture9ja Grand Launch in Abuja, Federal Capital Territory</strong>. Audition dates, venues, and schedules will be published on <a href="#">www.culture9ja.com</a> and all official social media platforms. Follow us to stay updated on all announcements.</div></div>
+</div>
+</div>
+<!-- ── REGISTRATION ── -->
+<div class="faq-category" id="registration">
+<div class="cat-header">
+<div class="cat-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></div>
+<div><div class="cat-label">Category 3</div><div class="cat-title">Registration <em>Process</em></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">1</div><div class="faq-q-text">How do I register for Culture9ja?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">To register, visit <a href="register.html">the registration page</a> and complete all 6 steps: <ul><li>Personal Information (name, DOB, gender, phone, email, state)</li><li>Background &amp; Talent (occupation, ethnicity, talent category, bio)</li><li>Media Uploads (passport photo, introduction video, valid ID)</li><li>Next of Kin / Guardian details</li><li>Accept the Terms &amp; Conditions</li><li>Complete the ₦10,000 registration payment</li></ul>Your Application Number will be sent to your email and phone after successful payment.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">2</div><div class="faq-q-text">What is the registration fee and is it refundable?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">The registration fee is <strong>₦10,000 (Ten Thousand Naira only)</strong>. This fee is <strong>non-refundable</strong> under all circumstances. It covers application processing, contestant screening, audition logistics, and administrative costs. Payment must be made through the official payment channels on the Culture9ja website — Paystack or Flutterwave.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">3</div><div class="faq-q-text">What documents do I need to register?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">You will need to upload the following during registration: <ul><li><strong>Passport Photograph</strong> — clear, recent photo with plain background (JPG/PNG, max 5MB)</li><li><strong>Introduction Video</strong> — maximum 3 minutes showcasing your cultural talent (MP4/MOV, max 200MB)</li><li><strong>Valid ID</strong> — NIN slip, Voter's card, Driver's license, International passport, or Student ID</li></ul>You will also need your Next of Kin's full name, address, phone number, and relationship to you.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">4</div><div class="faq-q-text">What payment methods are accepted?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">The following payment options are accepted: <ul><li><strong>Debit / ATM Card</strong> — pay securely online using your Nigerian debit card</li><li><strong>Bank Transfer</strong> — transfer to Culture9ja Limited's official account</li><li><strong>Online Payment Gateway</strong> — via Paystack or Flutterwave</li></ul>After successful payment, a confirmation message and unique Application Number will be sent to your registered email and phone. <strong>Keep your Application Number safe for future reference.</strong></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">5</div><div class="faq-q-text">I paid but did not receive my confirmation. What should I do?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">If you completed payment but did not receive a confirmation email or SMS, please: <ul><li>Check your spam or junk email folder</li><li>Ensure your email and phone number were entered correctly during registration</li><li>Wait up to 30 minutes for payment verification to complete</li><li>If the issue persists, contact us at <a href="mailto:support@culture9ja.com">support@culture9ja.com</a> or call <strong>+234 9039997729</strong> with your payment details and reference number</li></ul></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">6</div><div class="faq-q-text">Can I update my application after submitting?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Once submitted and paid, applications cannot be edited through the portal. If you need to correct critical information (such as your contact details or uploaded documents), please contact our team immediately at <a href="mailto:support@culture9ja.com">support@culture9ja.com</a> or call <strong>09055567245</strong>. Providing false or misleading information in your application may result in disqualification.</div></div>
+</div>
+</div>
+<!-- ── VOTING ── -->
+<div class="faq-category" id="voting">
+<div class="cat-header">
+<div class="cat-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg></div>
+<div><div class="cat-label">Category 4</div><div class="cat-title">Voting <em>Procedures</em></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">1</div><div class="faq-q-text">How does audience voting work on Culture9ja?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Culture9ja features an <strong>active audience voting system</strong> that empowers viewers to support their favourite contestants during the live show phase. Voting instructions, eligible contestants, and voting periods will be published on the official Culture9ja website and social media platforms during each live show episode. Voting processes are transparent, fair, and verifiable per our Anti-Corruption Policy.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">2</div><div class="faq-q-text">Who can vote for contestants?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Voting is open to members of the public — both within Nigeria and in the Nigerian diaspora globally. The voting system supports digital and social media integration, allowing for <strong>nationwide and global participation</strong>. Full voting eligibility rules and restrictions per user will be published when the live show phase begins.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">3</div><div class="faq-q-text">Is voting free or paid?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Full details on voting costs, platforms, and procedures will be announced when the live show phase commences. Culture9ja is committed to making voting as <strong>accessible as possible</strong> for Nigerian audiences both at home and in the diaspora. Follow official channels at <a href="#">www.culture9ja.com</a> for all voting announcements.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">4</div><div class="faq-q-text">Are there limits on how many times I can vote?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Yes. Voting limits and restrictions per user will be enforced to ensure a <strong>fair and transparent competition</strong>. Specific voting limits will be published on the official Voting Page when the live show begins. Per our Anti-Corruption and Fairness Policy, <strong>vote manipulation or artificial voting is strictly prohibited</strong> and may result in disqualification of affected contestants.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">5</div><div class="faq-q-text">Can judges be influenced by sponsors or the public to favour specific contestants?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner"><strong>Absolutely not.</strong> Culture9ja maintains a strict Anti-Corruption and Fairness Policy. Bribery, vote manipulation, or favouritism is strictly prohibited. Judges and production staff must maintain full neutrality and integrity. Sponsors are explicitly prohibited from influencing judging outcomes. Any conflict of interest must be declared immediately to the Executive Committee. The integrity of the competition is fully protected.</div></div>
+</div>
+</div>
+<!-- ── TECHNICAL SUPPORT ── -->
+<div class="faq-category" id="technical">
+<div class="cat-header">
+<div class="cat-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 010 14.14M4.93 19.07a10 10 0 010-14.14M17.66 6.34a8 8 0 010 11.32M6.34 17.66a8 8 0 010-11.32"></path></svg></div>
+<div><div class="cat-label">Category 5</div><div class="cat-title">Technical <em>Support</em></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">1</div><div class="faq-q-text">My file upload failed during registration. What should I do?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">If your file upload fails, please check the following: <ul><li><strong>File format:</strong> Photos must be JPG or PNG (max 5MB). Videos must be MP4 or MOV (max 200MB). ID documents must be JPG, PNG, or PDF (max 5MB).</li><li><strong>File size:</strong> Reduce file size if it exceeds limits using a compression tool before uploading.</li><li><strong>Internet connection:</strong> Ensure you have a stable connection before uploading large video files.</li><li>If the problem persists, contact <a href="mailto:support@culture9ja.com">support@culture9ja.com</a> with a description of the error.</li></ul></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">2</div><div class="faq-q-text">The registration form is not submitting. What is wrong?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">The system validates all required fields before allowing submission. Check the following: <ul><li>All required fields marked with * are filled in correctly</li><li>Your email address is in a valid format (e.g., name@email.com)</li><li>Your phone number is valid</li><li>Uploaded files meet the size and format requirements</li><li>Your date of birth confirms you are 18 years or older</li></ul>If the form still does not submit after checking all fields, clear your browser cache and try again, or use a different browser. Contact us if the issue persists.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">3</div><div class="faq-q-text">My payment was deducted but my application shows "Pending Payment". What do I do?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">This may occur due to a network interruption during payment processing. Please: <ul><li>Wait up to <strong>30 minutes</strong> for the payment system to automatically verify and update your status.</li><li>Check your email for a confirmation message from Paystack/Flutterwave.</li><li>If your status has not updated after 1 hour, contact <a href="mailto:support@culture9ja.com">support@culture9ja.com</a> with your full name, phone number, email, and payment transaction reference number.</li></ul>Our team will manually verify and update your application status within 24 hours of your enquiry.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">4</div><div class="faq-q-text">I did not receive my Application Number. How do I get it?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Your unique Application Number is sent to your registered email and phone number via SMS after successful payment. If you did not receive it: <ul><li>Check your spam/junk folder for the confirmation email</li><li>Ensure the email and phone number you registered with are correct</li><li>Contact <a href="mailto:support@culture9ja.com">support@culture9ja.com</a> or call <strong>+234 9039997729</strong> with your full name and payment proof</li></ul><strong>Keep your Application Number safe</strong> — you will need it for all future correspondence regarding your application.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">5</div><div class="faq-q-text">How do I contact the Culture9ja technical support team?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">For technical support with the registration portal, payment system, or website: <ul><li><strong>Email:</strong> <a href="mailto:support@culture9ja.com">support@culture9ja.com</a></li><li><strong>Phone:</strong> +234 9039997729</li><li><strong>Phone:</strong> 09055567245</li><li><strong>Phone:</strong> 09095777082</li></ul>Please provide your full name, registered phone number, email address, and a description of the issue you are experiencing. Our team responds within 2–3 business days, with urgent payment issues resolved within 24 hours.</div></div>
+</div>
+</div>
+<!-- ── GENERAL ── -->
+<div class="faq-category" id="general">
+<div class="cat-header">
+<div class="cat-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg></div>
+<div><div class="cat-label">Category 6</div><div class="cat-title">General <em>Questions</em></div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">1</div><div class="faq-q-text">What is Culture9ja Reality TV Show?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Culture9ja Reality TV Show is a <strong>cultural-based reality television program</strong> designed to showcase, preserve, and celebrate the rich heritage, traditions, creativity, and diversity of Nigeria. It is a structured cultural competition broadcast on television and digital platforms, featuring contestants from different Nigerian states and ethnic groups competing through culturally themed challenges and performances. Culture9ja Limited — the company behind the show — is registered in the Federal Republic of Nigeria and operates under National Broadcasting Commission (NBC) guidelines.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">2</div><div class="faq-q-text">Where will the show be broadcast?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Culture9ja will be broadcast across multiple platforms: <ul><li><strong>National and regional television stations</strong> across Nigeria</li><li><strong>YouTube</strong> — official Culture9ja channel</li><li><strong>Official website</strong> — www.culture9ja.com</li><li><strong>Social media</strong> — Instagram, TikTok, Facebook, X (Twitter)</li></ul>Broadcast partnerships are currently being finalised. All broadcasting announcements will be made at the Grand Launch in Abuja, FCT.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">3</div><div class="faq-q-text">When does Season 1 officially launch?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">The <strong>Official Launch and Grand Opening of Culture9ja Reality TV Show</strong> will take place in Abuja, Federal Capital Territory — the capital city of Nigeria. The exact date will be officially announced on the Culture9ja website and social media platforms. Previous major events include the unveiling ceremonies in Benue State and Jos, Plateau State, as well as the Culture9ja 2025 Cultural Economic Summit in Jos.</div></div>
+</div>
+<div class="faq-item" onclick="toggle(this)">
+<div class="faq-q"><div class="faq-q-num">4</div><div class="faq-q-text">How can brands and organisations partner with Culture9ja?</div><div class="faq-chevron">▼</div></div>
+<div class="faq-a"><div class="faq-a-inner">Culture9ja Limited welcomes sponsorship and partnership enquiries from corporations, government bodies, media organisations, and cultural institutions. We offer tiered sponsorship packages including Title Sponsor, Gold Sponsor, and Silver/Brand Partner levels — each with specific brand visibility benefits across TV broadcast, digital platforms, live events, and the annual Cultural Economic Summit. Contact us at <a href="mailto:support@culture9ja.com">support@culture9ja.com</a> or visit our <a href="sponsors.html">Sponsors &amp; Partners page</a> for full details.</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STILL NEED HELP -->
+<div class="help-band">
+<div class="help-inner">
+<div class="help-left">
+<div class="help-tag">Still Have Questions?</div>
+<div class="help-title">Can't Find Your <em>Answer?</em></div>
+<div class="help-sub">Contact the Culture9ja team directly — we respond within 2–3 business days.</div>
+</div>
+<div class="help-btns">
+<a class="btn-gold" href="contact.html">Contact Us →</a>
+<a class="btn-ol" href="mailto:support@culture9ja.com">support@culture9ja.com</a>
+</div>
+</div>
+</div>
+
+<footer>
+<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+<div><a class="logo" href="index.html" style="display:inline-flex;"><img alt="Culture9ja" data-cms-src="footer-logo-url" src="https://culture9ja.com/wp-content/uploads/2026/02/culture9ja-logo-2.png" style="height:48px;width:auto;"/></a><p style="font-size:0.72rem;color:rgba(248,244,236,0.3);margin-top:0.3rem;" data-cms-text="footer-email-phone">support@culture9ja.com · +234 9039997729</p></div>
+<div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+<a href="index.html" style="font-size:0.72rem;color:rgba(248,244,236,0.3);text-decoration:none;font-family:'Times New Roman', Times, Georgia, serif;" data-cms-text="footer-link-home">Home</a>
+<a href="register.html" style="font-size:0.72rem;color:rgba(248,244,236,0.3);text-decoration:none;font-family:'Times New Roman', Times, Georgia, serif;" data-cms-text="footer-link-register">Register</a>
+<a href="contact.html" style="font-size:0.72rem;color:rgba(248,244,236,0.3);text-decoration:none;font-family:'Times New Roman', Times, Georgia, serif;" data-cms-text="footer-link-contact">Contact</a>
+<a href="legal.html" style="font-size:0.72rem;color:rgba(248,244,236,0.3);text-decoration:none;font-family:'Times New Roman', Times, Georgia, serif;" data-cms-text="footer-link-legal">Legal</a>
+</div>
+</div>
+<div style="border-top:1px solid rgba(248,244,236,0.05);margin-top:1.5rem;padding-top:1.2rem;"><p style="font-size:0.66rem;color:rgba(248,244,236,0.18);font-family:'Times New Roman', Times, Georgia, serif;" data-cms-text="footer-copyright">© 2026 Culture9ja Limited. All Rights Reserved.</p></div>
+</footer>
+
+<script>
+// ========== CMS BOOT SCRIPT ==========
+(function() {
+  function getPageData() {
+    try { const raw = localStorage.getItem('c9_pageContent'); return raw ? (JSON.parse(raw).faq || {}) : {}; }
+    catch(e) { return {}; }
+  }
+  function applyCMS() {
+    const data = getPageData();
+    document.querySelectorAll('[data-cms-text]').forEach(el => { const key = el.getAttribute('data-cms-text'); if (data[key]) el.innerText = data[key]; });
+    document.querySelectorAll('[data-cms-html]').forEach(el => { const key = el.getAttribute('data-cms-html'); if (data[key]) el.innerHTML = data[key]; });
+    document.querySelectorAll('[data-cms-href]').forEach(el => { const key = el.getAttribute('data-cms-href'); if (data[key]) el.href = data[key]; });
+    document.querySelectorAll('[data-cms-src]').forEach(el => { const key = el.getAttribute('data-cms-src'); if (data[key]) el.src = data[key]; });
+    document.querySelectorAll('[data-cms-bg]').forEach(el => { const key = el.getAttribute('data-cms-bg'); if (data[key]) el.style.backgroundImage = `url('${data[key]}')`; });
+  }
+  applyCMS();
+})();
+
+// Navbar scroll
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60));
+
+// Reveal animations
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// Accordion toggle
+function toggle(item){
+  const isOpen=item.classList.contains('open');
+  // Optional: close others in the same category? Keeping original behavior: only one open at a time? Original didn't auto-close others. We'll keep it simple.
+  item.classList.toggle('open');
+}
+
+// Sidebar active state and smooth scroll
+document.querySelectorAll('.faq-nav-item').forEach(item => {
+  item.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.faq-nav-item').forEach(i=>i.classList.remove('active'));
+    this.classList.add('active');
+    const targetId = this.getAttribute('href');
+    const targetEl = document.querySelector(targetId);
+    if(targetEl) targetEl.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// Update active sidebar on scroll
+const sections = document.querySelectorAll('.faq-category');
+const navItems = document.querySelectorAll('.faq-nav-item');
+function updateActiveNav() {
+  let current = '';
+  const scrollPos = window.scrollY + 150;
+  sections.forEach(section => {
+    if (scrollPos >= section.offsetTop) current = section.getAttribute('id');
+  });
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if (item.getAttribute('href') === '#' + current) item.classList.add('active');
+  });
+}
+window.addEventListener('scroll', updateActiveNav);
+updateActiveNav();
+
+// Search functionality
+function searchFaq(val){
+  const q=val.toLowerCase().trim();
+  let any=false;
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const text=item.textContent.toLowerCase();
+    const show=!q||text.includes(q);
+    item.style.display=show?'':'none';
+    if(show)any=true;
+  });
+  document.querySelectorAll('.faq-category').forEach(cat=>{
+    const visible=[...cat.querySelectorAll('.faq-item')].some(i=>i.style.display!=='none');
+    cat.style.display=visible?'':'none';
+  });
+  document.getElementById('no-results').classList.toggle('show',!any);
+}
+
+// Hamburger menu
+(function() {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const body = document.body;
+  if (!hamburger || !navLinks) return;
+  function closeMenu() {
+    navLinks.classList.remove('nav-active');
+    hamburger.classList.remove('toggle');
+    body.classList.remove('menu-open');
+  }
+  function openMenu() {
+    navLinks.classList.add('nav-active');
+    hamburger.classList.add('toggle');
+    body.classList.add('menu-open');
+  }
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (navLinks.classList.contains('nav-active')) closeMenu();
+    else openMenu();
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth > 768 && navLinks.classList.contains('nav-active')) closeMenu();
+    }, 100);
+  });
+})();
+</script>
+</body>
+</html>

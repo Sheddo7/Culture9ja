@@ -6,9 +6,8 @@
 <title>Contestants — Culture9ja Reality TV Show | Season 1 Talent</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
 <style>
-/* ----- UNIFIED STYLE (Base matches original, hero adjusted to auditions style) ----- */
+/* ----- UNIFIED STYLE (Matches about.html + index.html) ----- */
 :root {
   --green: #1A6B3C;
   --green-deep: #0F4526;
@@ -44,7 +43,6 @@ body {
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
 }
-/* Simple noise texture (original) */
 body::before {
   content: '';
   position: fixed;
@@ -54,7 +52,7 @@ body::before {
   z-index: 0;
 }
 
-/* ========== NAVBAR (unchanged) ========== */
+/* ========== NAVBAR (Exact match with index.html) ========== */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -113,7 +111,7 @@ nav.scrolled {
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; z-index: 1001; flex-shrink: 0; }
 .hamburger span { width: 26px; height: 2px; background: var(--cream); display: block; transition: all 0.3s ease; border-radius: 2px; }
 
-/* ========== PAGE HERO (NOW MATCHES AUDITIONS.HTML) ========== */
+/* ========== PAGE HERO ========== */
 .page-hero {
   position: relative;
   padding-top: 80px;
@@ -121,26 +119,24 @@ nav.scrolled {
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  background: linear-gradient(160deg, #072416 0%, #0A2F1F 50%, #0D3B26 100%);
-  isolation: isolate;
+  background-image: url(https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg);
   background-size: cover;
   background-position: center 25%;
+  isolation: isolate;
 }
 .page-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(ellipse 65% 55% at 15% 28%, rgba(34,145,58,0.30) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 45% at 82% 72%, rgba(200,150,12,0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 38% 32% at 58% 8%,  rgba(26,107,60,0.24) 0%, transparent 62%),
-    radial-gradient(ellipse 55% 48% at 92% 18%, rgba(34,145,58,0.13) 0%, transparent 65%),
-    radial-gradient(ellipse 42% 38% at 4%  82%, rgba(200,150,12,0.11) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 28% at 45% 60%, rgba(26,107,60,0.15) 0%, transparent 55%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Ccircle cx='52'  cy='88'  r='1.6' fill='%23C8960C' opacity='.48'/%3E%3Ccircle cx='190' cy='155' r='1.1' fill='%23E8B020' opacity='.38'/%3E%3Ccircle cx='340' cy='65'  r='1.5' fill='%2322913A' opacity='.42'/%3E%3Ccircle cx='480' cy='200' r='1.2' fill='%23C8960C' opacity='.36'/%3E%3Ccircle cx='620' cy='90'  r='1.8' fill='%23E8B020' opacity='.32'/%3E%3Ccircle cx='730' cy='310' r='1.1' fill='%2322913A' opacity='.40'/%3E%3Ccircle cx='110' cy='380' r='1.4' fill='%23E8B020' opacity='.30'/%3E%3Ccircle cx='270' cy='430' r='1.6' fill='%23C8960C' opacity='.44'/%3E%3Ccircle cx='530' cy='370' r='1.0' fill='%2322913A' opacity='.38'/%3E%3Ccircle cx='680' cy='460' r='1.5' fill='%23C8960C' opacity='.35'/%3E%3Ccircle cx='60'  cy='580' r='1.2' fill='%23E8B020' opacity='.42'/%3E%3Ccircle cx='160' cy='650' r='1.8' fill='%2322913A' opacity='.28'/%3E%3Ccircle cx='390' cy='540' r='1.1' fill='%23C8960C' opacity='.46'/%3E%3Ccircle cx='560' cy='620' r='1.4' fill='%23E8B020' opacity='.33'/%3E%3Ccircle cx='750' cy='560' r='1.6' fill='%2322913A' opacity='.38'/%3E%3Ccircle cx='310' cy='730' r='1.2' fill='%23C8960C' opacity='.40'/%3E%3Ccircle cx='470' cy='770' r='1.5' fill='%23E8B020' opacity='.30'/%3E%3Ccircle cx='700' cy='740' r='1.0' fill='%2322913A' opacity='.44'/%3E%3Ccircle cx='130' cy='760' r='1.3' fill='%23C8960C' opacity='.36'/%3E%3Ccircle cx='800' cy='130' r='1.4' fill='%23E8B020' opacity='.35'/%3E%3Ccircle cx='420' cy='300' r='1.0' fill='%23C8960C' opacity='.28'/%3E%3Ccircle cx='640' cy='220' r='1.3' fill='%2322913A' opacity='.32'/%3E%3Ccircle cx='230' cy='270' r='1.5' fill='%23E8B020' opacity='.40'/%3E%3Ccircle cx='800' cy='650' r='1.2' fill='%23C8960C' opacity='.38'/%3E%3C/svg%3E");
-  background-size: auto, auto, auto, auto, auto, auto, 800px 800px;
+  background: linear-gradient(135deg, rgba(7,36,22,0.85) 0%, rgba(10,47,31,0.7) 50%, rgba(0,0,0,0.4) 100%);
   z-index: 1;
-  pointer-events: none;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 20%, rgba(200,150,12,0.08) 0%, transparent 70%);
+  z-index: 1;
 }
 .hero-pattern {
   position: absolute;
@@ -148,7 +144,7 @@ nav.scrolled {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='26' fill='none' stroke='%231A6B3C' stroke-width='1' opacity='0.3'/%3E%3Ccircle cx='30' cy='30' r='18' fill='none' stroke='%23C8960C' stroke-width='0.8' opacity='0.25'/%3E%3Ccircle cx='30' cy='30' r='10' fill='none' stroke='%231A6B3C' stroke-width='0.6' opacity='0.2'/%3E%3Ccircle cx='30' cy='30' r='4' fill='%23C8960C' opacity='0.15'/%3E%3C/svg%3E");
   background-size: 60px 60px;
   opacity: 0.2;
-  z-index: 2;
+  z-index: 1;
 }
 .page-hero-content {
   position: relative;
@@ -170,7 +166,7 @@ nav.scrolled {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(200,150,12,0.7);
-  font-family: 'EB Garamond','Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif;
   margin-bottom: 1.8rem;
 }
 .breadcrumb a { color: rgba(200,150,12,0.7); text-decoration: none; transition: color 0.2s; }
@@ -185,21 +181,17 @@ nav.scrolled {
 .eyebrow-line { width: 48px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); }
 .eyebrow-text {
   font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); font-family: 'EB Garamond','Times New Roman', Times, serif;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  color: var(--gold); font-family: 'Times New Roman', Times, serif;
 }
 .hero-title {
   font-family: 'Times New Roman', Times, serif;
   font-size: clamp(3rem, 5vw, 5rem); font-weight: 700; line-height: 1.08;
-  color: var(--white); text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  color: var(--white); text-shadow: 0 2px 12px rgba(0,0,0,0.3);
 }
-.hero-title em { color: var(--gold); font-style: italic; text-shadow: 0 0 6px rgba(200,150,12,0.5); }
-.hero-title .t-green { color: var(--green-bright); } /* green accent */
+.hero-title em { color: var(--gold); font-style: italic; }
 .hero-desc {
   max-width: 540px; font-size: 1.2rem; color: rgba(248,244,236,0.95);
   line-height: 1.75; margin-top: 1rem; font-weight: 400;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-  border-left: 3px solid rgba(200,150,12,0.6); padding-left: 1.1rem;
 }
 .hero-right { display: flex; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; }
 .season-pill {
@@ -209,11 +201,11 @@ nav.scrolled {
 }
 .s-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
 .season-pill span {
-  font-family: 'EB Garamond','Times New Roman', Times, serif; font-size: 0.8rem;
+  font-family: 'Times New Roman', Times, serif; font-size: 0.8rem;
   font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream);
 }
 
-/* Sticky Filter Bar (original styling) */
+/* Sticky Filter Bar */
 .filter-bar {
   background: rgba(7,36,22,0.92); backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(200,150,12,0.2);
@@ -261,7 +253,7 @@ nav.scrolled {
 }
 .view-btn.active { background: rgba(200,150,12,0.3); color: var(--gold); }
 
-/* Main Content (original) */
+/* Main Content */
 .contestants-main { padding: 3rem 6vw 5rem; position: relative; z-index: 1; }
 .season-header {
   display: flex; align-items: flex-end; justify-content: space-between;
@@ -283,7 +275,7 @@ nav.scrolled {
   color: rgba(248,244,236,0.85); margin-top: 0.4rem; font-weight: 500;
 }
 
-/* Grid & cards (original) */
+/* Grid */
 .contestants-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
 .contestants-grid.list-view { grid-template-columns: 1fr; }
 .c-card {
@@ -383,7 +375,7 @@ nav.scrolled {
 }
 .announce-sub { font-size: 0.8rem; color: rgba(248,244,236,0.55); font-weight: 500; }
 
-/* Modal (original) */
+/* Modal */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(7,36,22,0.98); backdrop-filter: blur(14px);
   z-index: 500; opacity: 0; pointer-events: none; transition: opacity 0.35s;
@@ -486,7 +478,7 @@ nav.scrolled {
   color: var(--gold-light);
 }
 
-/* Ticker (original) */
+/* Ticker (reduced size, matching index) */
 .ticker-wrap {
   background: var(--green-deep); overflow: hidden; white-space: nowrap;
   height: 44px; display: flex; align-items: center;
@@ -502,31 +494,11 @@ nav.scrolled {
 .ticker-sep { color: var(--gold); font-size: 1rem; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-/* Footer (INDEX STYLE: EB Garamond, firefly glow overlay) */
+/* Footer */
 footer {
-  background: var(--bg-dark);
-  padding: 4rem 6vw 2rem;
+  background: var(--bg-dark); padding: 4rem 6vw 2rem;
   border-top: 1px solid rgba(200,150,12,0.15);
-  position: relative;
-  isolation: isolate;
 }
-footer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(ellipse 65% 55% at 15% 28%, rgba(34,145,58,0.30) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 45% at 82% 72%, rgba(200,150,12,0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 38% 32% at 58% 8%,  rgba(26,107,60,0.24) 0%, transparent 62%),
-    radial-gradient(ellipse 55% 48% at 92% 18%, rgba(34,145,58,0.13) 0%, transparent 65%),
-    radial-gradient(ellipse 42% 38% at 4%  82%, rgba(200,150,12,0.11) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 28% at 45% 60%, rgba(26,107,60,0.15) 0%, transparent 55%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Ccircle cx='52'  cy='88'  r='1.6' fill='%23C8960C' opacity='.48'/%3E%3Ccircle cx='190' cy='155' r='1.1' fill='%23E8B020' opacity='.38'/%3E%3Ccircle cx='340' cy='65'  r='1.5' fill='%2322913A' opacity='.42'/%3E%3Ccircle cx='480' cy='200' r='1.2' fill='%23C8960C' opacity='.36'/%3E%3Ccircle cx='620' cy='90'  r='1.8' fill='%23E8B020' opacity='.32'/%3E%3Ccircle cx='730' cy='310' r='1.1' fill='%2322913A' opacity='.40'/%3E%3Ccircle cx='110' cy='380' r='1.4' fill='%23E8B020' opacity='.30'/%3E%3Ccircle cx='270' cy='430' r='1.6' fill='%23C8960C' opacity='.44'/%3E%3Ccircle cx='530' cy='370' r='1.0' fill='%2322913A' opacity='.38'/%3E%3Ccircle cx='680' cy='460' r='1.5' fill='%23C8960C' opacity='.35'/%3E%3Ccircle cx='60'  cy='580' r='1.2' fill='%23E8B020' opacity='.42'/%3E%3Ccircle cx='160' cy='650' r='1.8' fill='%2322913A' opacity='.28'/%3E%3Ccircle cx='390' cy='540' r='1.1' fill='%23C8960C' opacity='.46'/%3E%3Ccircle cx='560' cy='620' r='1.4' fill='%23E8B020' opacity='.33'/%3E%3Ccircle cx='750' cy='560' r='1.6' fill='%2322913A' opacity='.38'/%3E%3Ccircle cx='310' cy='730' r='1.2' fill='%23C8960C' opacity='.40'/%3E%3Ccircle cx='470' cy='770' r='1.5' fill='%23E8B020' opacity='.30'/%3E%3Ccircle cx='700' cy='740' r='1.0' fill='%2322913A' opacity='.44'/%3E%3Ccircle cx='130' cy='760' r='1.3' fill='%23C8960C' opacity='.36'/%3E%3Ccircle cx='800' cy='130' r='1.4' fill='%23E8B020' opacity='.35'/%3E%3Ccircle cx='420' cy='300' r='1.0' fill='%23C8960C' opacity='.28'/%3E%3Ccircle cx='640' cy='220' r='1.3' fill='%2322913A' opacity='.32'/%3E%3Ccircle cx='230' cy='270' r='1.5' fill='%23E8B020' opacity='.40'/%3E%3Ccircle cx='800' cy='650' r='1.2' fill='%23C8960C' opacity='.38'/%3E%3C/svg%3E");
-  background-size: auto, auto, auto, auto, auto, auto, 800px 800px;
-  z-index: 0;
-  pointer-events: none;
-}
-footer * { position: relative; z-index: 1; }
 .footer-grid {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;
 }
@@ -536,36 +508,35 @@ footer * { position: relative; z-index: 1; }
   width: 38px; height: 38px; border: 1px solid rgba(200,150,12,0.25);
   display: flex; align-items: center; justify-content: center; cursor: pointer;
   transition: all 0.25s; text-decoration: none; color: rgba(248,244,236,0.5);
-  font-size: 0.8rem; font-weight: 600; font-family: 'EB Garamond','Times New Roman', Times, serif;
+  font-size: 0.8rem; font-weight: 600; font-family: 'Times New Roman', Times, serif;
   border-radius: 60px;
 }
 .social-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--bg-dark); transform: translateY(-2px); }
 .footer-col h4 {
-  font-family: 'EB Garamond','Times New Roman', Times, serif; font-size: 0.75rem; font-weight: 600;
+  font-family: 'Times New Roman', Times, serif; font-size: 0.75rem; font-weight: 600;
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
 }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
 .footer-links a {
   font-size: 0.85rem; color: rgba(248,244,236,0.55); text-decoration: none;
   transition: color 0.2s; display: flex; align-items: center; gap: 0.5rem;
-  font-family: 'EB Garamond','Times New Roman', Times, serif;
 }
 .footer-links a:hover { color: var(--cream); }
 .footer-contact-item { display: flex; flex-direction: column; gap: 0.2rem; margin-bottom: 0.9rem; }
 .footer-contact-label {
   font-size: 0.65rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase;
-  font-family: 'EB Garamond','Times New Roman', Times, serif; font-weight: 600;
+  font-family: 'Times New Roman', Times, serif; font-weight: 600;
 }
-.footer-contact-val { font-size: 0.85rem; color: rgba(248,244,236,0.65); font-family: 'EB Garamond','Times New Roman', Times, serif; }
+.footer-contact-val { font-size: 0.85rem; color: rgba(248,244,236,0.65); }
 .footer-bottom {
   border-top: 1px solid rgba(248,244,236,0.06); padding-top: 1.5rem;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
 }
-.footer-copy { font-size: 0.78rem; color: rgba(248,244,236,0.35); font-family: 'EB Garamond','Times New Roman', Times, serif; }
+.footer-copy { font-size: 0.78rem; color: rgba(248,244,236,0.35); font-family: 'Times New Roman', Times, serif; }
 .footer-legal { display: flex; gap: 1.5rem; list-style: none; }
 .footer-legal a {
   font-size: 0.72rem; color: rgba(248,244,236,0.35); text-decoration: none;
-  font-family: 'EB Garamond','Times New Roman', Times, serif; transition: color 0.2s;
+  font-family: 'Times New Roman', Times, serif; transition: color 0.2s;
 }
 .footer-legal a:hover { color: rgba(248,244,236,0.6); }
 
@@ -614,13 +585,13 @@ footer * { position: relative; z-index: 1; }
 <div class="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="page-hero" data-cms-bg="hero-bg" style="background-image: none;">
+<div class="page-hero" data-cms-bg="hero-bg" style="background-image: url(https://images.pexels.com/photos/10615468/pexels-photo-10615468.jpeg);">
 <div class="hero-pattern"></div>
 <div class="page-hero-content">
 <div>
 <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Contestants</span></div>
 <div class="hero-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text" data-cms-text="con-season">Season 1 · 2026</span></div>
-<h1 class="hero-title" data-cms-html="con-title">Meet the <em>Faces</em><br/><span class="t-green">of Culture</span></h1>
+<h1 class="hero-title" data-cms-html="con-title">Meet the <em>Faces</em><br/>of Culture</h1>
 <p class="hero-desc" data-cms-text="con-desc">36 states. 250+ cultures. One stage. These are the Nigerians stepping forward to represent their heritage, talent, and identity before the nation.</p>
 </div>
 <div class="hero-right"><div class="season-pill"><div class="s-dot"></div><span>Auditions Open · Season 1</span></div></div>
@@ -781,8 +752,10 @@ try {
   if (stored) contestants = JSON.parse(stored);
 } catch(e) { contestants = []; }
 
+// If no contestants, we'll show placeholder cards later
 let currentFilter = 'all', currentSearch = '', isListView = false;
 
+// Helper to build a card
 function buildCard(c) {
   const img = c.photo ? `<img src="${c.photo}" alt="${c.name}" loading="lazy">` : `<div class="c-img-placeholder"><div class="c-placeholder-num">${c.num || '—'}</div></div>`;
   const socialBtns = [
@@ -818,6 +791,7 @@ function openProfile(id) {
     c.facebook ? `<a class="p-social-btn" href="https://facebook.com/${c.facebook}" target="_blank">📘 Facebook</a>` : ''
   ].filter(Boolean).join('');
 
+  // Highlights parsing (if stored as JSON string)
   let highlightsHtml = '';
   try {
     const highlights = typeof c.highlights === 'string' ? JSON.parse(c.highlights) : c.highlights;
@@ -830,7 +804,7 @@ function openProfile(id) {
           <div class="perf-score">⭐ ${h.score || ''}</div>
         </div>`).join('')}</div>`;
     }
-  } catch(e) {}
+  } catch(e) { /* ignore */ }
   if (!highlightsHtml) {
     highlightsHtml = `<div class="auditions-pending"><p>Performance highlights for ${c.name.split(' ')[0]} will be updated after the live show begins.</p></div>`;
   }
@@ -890,6 +864,7 @@ function renderGrid() {
     return matchFilter && matchSearch;
   });
 
+  // Update filter counts
   const counts = { all: contestants.length };
   ['North','South','East','West','dance','music','fashion','cuisine','oratory','craft'].forEach(f => {
     counts[f] = contestants.filter(c => c.zone === f || c.region === f || c.talentKey === f).length;
@@ -907,6 +882,7 @@ function renderGrid() {
   }
 
   let html = filtered.map(c => buildCard(c)).join('');
+  // Fill remaining slots with "Coming Soon" placeholders up to a multiple of 4
   const remainder = (4 - (filtered.length % 4)) % 4;
   for (let i = 0; i < remainder; i++) {
     html += `<div class="c-card announce"><div class="announce-inner"><div class="announce-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="announce-title">Contestant to be Announced</div><div class="announce-sub">After nationwide auditions · Season 1</div></div></div>`;
@@ -933,6 +909,7 @@ function setView(view) {
   document.getElementById('list-btn').classList.toggle('active', isListView);
 }
 
+// Navbar & reveal animations
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
 });
@@ -941,6 +918,7 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
+// Hamburger menu
 (function() {
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
@@ -953,6 +931,7 @@ document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
   window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
 })();
 
+// Initialize
 renderGrid();
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 </script>
