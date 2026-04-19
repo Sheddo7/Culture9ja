@@ -635,13 +635,98 @@ footer * { position: relative; z-index: 1; }
 // ========== GALLERY DATA & RENDERING ==========
 let galleryData = { photos: [], videos: [] };
 function loadGalleryData() {
-  try {
-    const stored = localStorage.getItem('c9_gallery');
-    if (stored) galleryData = JSON.parse(stored);
-  } catch(e) { console.warn('Gallery data load error'); }
-  if (!galleryData.photos) galleryData.photos = [];
-  if (!galleryData.videos) galleryData.videos = [];
+  galleryData = {
+    photos: [
+      {
+        id: "1",
+        title: "Culture9ja Event",
+        category: "Unveiling",
+        subtitle: "Benue State, 2025",
+        url: "https://i.ibb.co/8nHr5TNL/Whats-App-Image-2026-04-01-at-16-42-32.jpg", // e.g., https://i.ibb.co/XXXXX/photo1.jpg
+        orientation: "landscape"
+      },
+      {
+        id: "2",
+        title: "Culture9ja Event",
+        category: "Unveiling",
+        subtitle: "Benue State, 2025",
+        url: "https://i.ibb.co/XZgjRNKG/Whats-App-Image-2026-04-01-at-16-42-33-1.jpg",
+        orientation: "landscape"
+      },
+      {
+        id: "3",
+        title: "Culture9ja Event",
+        category: "Unveiling",
+        subtitle: "Benue State, 2025",
+        url: "https://i.ibb.co/20jqF1zh/Whats-App-Image-2026-04-01-at-16-42-33-2.jpg",
+        orientation: "landscape"
+      },
+      {
+        id: "4",
+        title: "Culture9ja Event",
+        category: "Summit",
+        subtitle: "Jos, Plateau State, 2025",
+        url: "https://i.ibb.co/tM1fxZgs/Whats-App-Image-2026-04-01-at-16-42-33-3.jpg",
+        orientation: "landscape"
+      },
+      {
+        id: "5",
+        title: "Culture9ja Event",
+        category: "Summit",
+        subtitle: "Jos, Plateau State, 2025",
+        url: "https://i.ibb.co/HDxRSWxX/Whats-App-Image-2026-04-01-at-16-42-33.jpg",
+        orientation: "landscape"
+      },
+      {
+        id: "6",
+        title: "Culture9ja Event",
+        category: "Summit",
+        subtitle: "Jos, Plateau State, 2025",
+        url: "https://i.ibb.co/XGNB4W8/Whats-App-Image-2026-04-01-at-16-42-34-1.jpg",
+        orientation: "landscape"
+      },
+      {
+        id: "7",
+        title: "Culture9ja Event",
+        category: "Summit",
+        subtitle: "Jos, Plateau State, 2025",
+        url: "https://i.ibb.co/d4gn3GHH/Whats-App-Image-2026-04-01-at-16-42-34-2.jpg",
+        orientation: "landscape"
+      },
+      {
+        id: "8",
+        title: "Culture9ja Event",
+        category: "Summit",
+        subtitle: "Jos, Plateau State, 2025",
+        url: "https://i.ibb.co/gLG2Mnr3/Whats-App-Image-2026-04-01-at-16-42-34.jpg",
+        orientation: "landscape"
+      },
+      {
+        id: "9",
+        title: "Culture9ja Event",
+        category: "Season 1",
+        subtitle: "Abuja, FCT, 2026",
+        url: "https://i.ibb.co/d4ZPdPVb/Whats-App-Image-2026-04-01-at-16-42-35-1.jpg",
+        orientation: "landscape"
+      },
+      {
+        id: "10",
+        title: "Culture9ja Event",
+        category: "Season 1",
+        subtitle: "Abuja, FCT, 2026",
+        url: "https://i.ibb.co/VcmBHTgb/Whats-App-Image-2026-04-01-at-16-42-35-2.jpg",
+        orientation: "landscape"
+      }
+      // Add the remaining 70+ photos following the same pattern
+    ],
+    videos: []
+  };
+  // Save to localStorage for admin panel compatibility
+  localStorage.setItem('c9_gallery', JSON.stringify(galleryData));
+  renderAll();
+  updateStats();
 }
+
 function saveGalleryData() {
   localStorage.setItem('c9_gallery', JSON.stringify(galleryData));
   renderAll();
